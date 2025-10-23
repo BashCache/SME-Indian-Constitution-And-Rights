@@ -162,18 +162,19 @@ class PPTExtractor:
         try:
             presentation = Presentation(ppt_path)
             all_content = []
-            
+            # Save extracted content
+            base_name = os.path.splitext(os.path.basename(ppt_path))[0]
+            output_filename = os.path.join(self.output_folder, f"{base_name}_extracted.txt")
+
             for i, slide in enumerate(presentation.slides, 1):
                 slide_content = self.process_slide(slide)
                 slide_content["slide_number"] = i
                 all_content.append(slide_content)
-            
-            # Save extracted content
-            base_name = os.path.splitext(os.path.basename(ppt_path))[0]
-            output_filename = os.path.join(self.output_folder, f"{base_name}_extracted.json")
+
             with open(output_filename, 'w', encoding='utf-8') as f:
-                json.dump(all_content, f, indent=2, ensure_ascii=False)
-            
+                for content in all_content:
+                    f.write('\n'.join(content['text']) + '\n')
+
             print(f"Successfully processed: {os.path.basename(ppt_path)}")
             
         except Exception as e:
