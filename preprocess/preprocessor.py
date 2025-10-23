@@ -169,7 +169,7 @@ def preprocess_text(text):
     # Remove short sentences as the final step
     text = remove_short_sentences(text)
 
-    text = identify_and_remove_toxic_sentence(text)
+    # text = identify_and_remove_toxic_sentence(text)
     return text
 
 def process_file_in_chunks(input_file: str, output_file: str, batch_size: int = 10):
@@ -229,7 +229,7 @@ def preprocess_all_data(input_base_folder: str, output_base_folder: str):
                 process_file_in_chunks(input_file_path, output_file_path)
 
 if __name__ == "__main__":
-    INPUT_BASE_FOLDER = os.path.join("extracted_data")
-    OUTPUT_BASE_FOLDER = os.path.join("cleaned_data")
+    INPUT_BASE_FOLDER = os.path.join("extracted_data\\books_extracted")
+    OUTPUT_BASE_FOLDER = os.path.join("cleaned_data\\books_extracted")
 
     preprocess_all_data(INPUT_BASE_FOLDER, OUTPUT_BASE_FOLDER)

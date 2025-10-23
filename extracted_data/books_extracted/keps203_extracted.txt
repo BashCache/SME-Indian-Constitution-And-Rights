@@ -1,9 +1,4 @@
-51
-Chapter 3: Election and Representation
-Chapter Three
-ELECTION AND
-REPRESENTATION
-INTRODUCTION
+Election and Representation
 Have you ever played chess? What would happen if the black knight suddenly
 started moving straight rather than two and a half squares? Or, what would
 happen if in a game of cricket, there were no umpires? In any sport, we need to
@@ -28,17 +23,8 @@ reading this chapter, you would understand:
 ± the importance of the provisions for free and fair elections; and
 ± the debate on electoral reforms.
 
-table starts| Shankar. Copyright: Children’s Book Trust. | R C
-EAD A ARTOON
-17 February 1957 |
-| --- | --- |
-|  | They say elections are carnival of democracy. But this cartoon depicts chaos instead. Is this true of elections always? Is it good for democracy? |
 
-table ends
-
-
-Chapter 3: Election and Representation
-democracy. But this kind of direct democracy cannot be
+But this kind of direct democracy cannot be
 practiced when a decision has to be taken by lakhs and
 crores of people. That is why rule by the people usually
 means rule by people’s representatives.
@@ -93,6 +79,8 @@ are about ensuring that elections are free and fair and can thus be
 called democratic. The last two questions are about ensuring a fair
 representation. In this chapter you will consider both these aspects
 of the Constitutional provisions about elections.
+
+
 ELECTION SYSTEM IN INDIA
 You may have noted above a reference to different methods or the
 systems of elections. You may have wondered what these were all
@@ -118,16 +106,9 @@ System of representation
 b. Voter eligibility
 c.
 Role of the Election Commission.
-If you have access to internet, visit the
-websites of the Election Commission of India,
-https://eci.gov.in, and ACE project, The Electoral
-Knowledge Network, http://aceproject.org and
-collect the information mentioned above for at
-least four countries.
 
-Chapter 3: Election and Representation
-can be very different ways in which people make their choices and
-very different ways in which their preferences can be counted. These
+
+These
 different rules of the game can make a difference to who the winner
 of the game will be. Some rules can favour bigger parties; some rules
 can help the smaller players. Some rules can favour the majority
@@ -182,14 +163,13 @@ Congress
  48.0
 415
 BJP
-   7.4
-    2
+   7.42
 Janata
    6.7
   10
 Lok Dal
    5.7
-    3
+   3
 CPI (M)
    5.7
   22
@@ -204,10 +184,11 @@ AIADMK
   12
 Akali Dal
    1.0
-    7
+   7
 AGP
    1.0
-    7
+   7
+
 This happened because in our country we follow a
 special method of elections. Under this system:
 ±
@@ -218,8 +199,6 @@ Each constituency elects one representative; and
 The candidate who secures the highest number of
 votes in that constituency is declared elected.
 It is important to note that in this system whoever has
-
-Chapter 3: Election and Representation
 more votes than all other candidates, is declared elected.
 The winning candidate need not secure a majority of the
 votes. This method is called the First Past the Post (FPTP)
@@ -263,66 +242,7 @@ MLA in this system? Who
 would I go to if I have any
 work?
 
-table starts| Propor
-Israel f
-the legi
-list of it
-A party
-This al
-represe
-votes t
-multi-p
-The
-Based
-in that
-Name
-Likud
-Zionist
-Joint L
-Democr
-for Ren
-Yesh At
-Kulanu
-Habayi
-Shas
-Yisrael
-United
-58 |  | by a party. Thus, representatives from a constituency, would and
-do belong to different parties. In India, we have adopted PR system |  |  |  |
-| --- | --- | --- | --- | --- | --- |
-|  |  | tional Representation in Israel ollows proportional representation system of election. Elections to slature (Knesset) take place every four years. Every party declares a s candidates, but voters vote for the party and not for the candidates. gets seats in the legislature in proportion to the votes polled by it. lows even smaller parties with very small support base to get ntation in the legislature. (A party must get a minimum of 3.25% o be eligible to get seats in the legislature.) This often leads to a arty coalition government. following table shows the result of the 2015 elections to the Knesset. on this, you can find out what percentage of seats various parties got election. |  |  |  |
-|  | Name | of List (Party) | % of total votes | Number of seats | % of total seats |
-|  | Likud |  | 23.40 | 30 |  |
-|  | Zionist | Camp | 18.67 | 24 |  |
-|  | Joint L Democr for Ren | ist (Hadash, National atic Assembly, Arab Movement ewal, United Arab List) | 10.61 | 13 |  |
-|  | Yesh At | id | 8.82 | 11 |  |
-|  | Kulanu |  | 7.49 | 10 |  |
-|  | Habayi | t Hayehudi | 6.74 | 8 |  |
-|  | Shas |  | 5.74 | 7 |  |
-|  | Yisrael | Beitenu | 5.10 | 6 |  |
-|  | United | Torah Judaism | 4.99 | 6 |  |
-|  | 8 |  |  |  |  |
-|  | Israel’s | Left | 3.93 | 5 |  |
-|  | Other P | arties | 4.51 | 0 |  |
-|  | Total |  | 100 | 120 |  |
-
-table ends
-
-
-table starts|  |  |  |  |
-| --- | --- | --- | --- |
-|  | Comparison of FPTP an FPTP The country is divided into small geographical units called constituencies or districts Every constituency elects one representative Voter votes for a candidate A party may get more seats than votes in the legislature Candidate who wins the election may not get majority (50%+1) votes Examples: U.K., India | d PR system of election PR Large geographical areas are demarcated as constituencies. The entire country may be a single constituency More than one representative may be elected from one constituency Voter votes for the party Every party gets seats in the legislature in proportion to the percentage of votes that it gets Candidate who wins the elections gets majority of votes. Examples: Israel, Netherlands |  |
-|  |  |  |  |
-
-table ends
-
-table starts| Comparison of FPTP an | d PR system of election |
-| --- | --- |
-
-table ends
-
-Chapter 3: Election and Representation
-on a limited scale for indirect elections. The Constitution prescribes
+The Constitution prescribes
 a third and complex variation of the PR system for the election of
 President, Vice President, and for the election to the Rajya Sabha
 and Vidhan Parishads.
@@ -334,18 +254,7 @@ has a specific quota of seats in the Rajya Sabha. The
 members are elected by the respective State legislative
 assemblies. The voters are the MLAs in that State. Every
 voter is required to rank candidates according to her or
-his preference. To be declared the winner, a candidate
-must secure a minimum quota of votes, which is
-determined by a formula:
-
-
-
-
-
-
-Total votes polled
-+1
-Total number of candidates to be elected +1
+his preference. 
 For example if 4 Rajya Sabha members have to be
 elected by the 200 MLAs in Rajasthan, the winner would
 require (200/4+1= 40+1) 41 votes. When the votes are
@@ -367,8 +276,6 @@ but would be difficult to work in a sub-continental country like India.
 The reason for the popularity and success of the FPTP system is its
 simplicity. The entire election system is extremely simple to
 understand even for common voters who may have no specialised
-
-Chapter 3: Election and Representation
 knowledge about politics and elections.  There is also a clear choice
 presented to the voters at the time of elections. Voters have to simply
 endorse a candidate or a party while voting. Depending on the nature
@@ -390,10 +297,9 @@ PR system may not produce a clear majority because seats in the
 legislature would be divided on the basis of share of votes. The FPTP
 These members of the ruling party are trying to listen to the
 ‘tiny’ opposition! Was this the effect of our electoral system?
-Shankar. Copyright: Children’s Book Trust.
-29 May 1949
+Shankar. 
 
-table starts| ± Which party would have a majority?
+± Which party would have a majority?
 ± Who would form the government?
 ± What would be the effect of this system on
 the relationship of political parties?
@@ -405,35 +311,9 @@ DMK 31.64 88
 INC 6.42 8
 PMK 5.32 0
 BJP 2.84 0
-DMDK 2.39 0 |  |  |  |  |
-| --- | --- | --- | --- | --- |
-|  | Total Seats: 234 (Election held in 232) |  |  |  |
-|  | Party | % of total votes | Number of seats | Seats in PR |
-|  | AIADMK | 40.77 | 135 |  |
-|  | DMK | 31.64 | 88 |  |
-|  | INC | 6.42 | 8 |  |
-|  | PMK | 5.32 | 0 |  |
-|  | BJP | 2.84 | 0 |  |
-|  | DMDK | 2.39 | 0 |  |
-|  |  |  |  |  |
-|  | CPI | 0.79 | 0 |  |
-|  | IUML | 0.73 | 1 |  |
-|  | Others Parties | 6.37 | 0 |  |
-| Independents 1.43 0 NOTA 1.30 – system generally gives the largest party or coalition some extra bonus seats, more than their share of votes would allow. Thus this system makes it possible for parliamentary government to function smoothly and effectively by facilitating the formation of a stable government. Finally, the FPTP system encourages voters from different social groups to come together to win an election in a locality. In a diverse country like India, a PR system would encourage each community to form its own nation-wide party. This may also have been at the back of the mind of our constitution makers. The experience of the working of the Constitution has confirmed 62 the expectation of the constitution makers. The FPTP system has |  |  |  |  |
-|  | Independents | 1.43 | 0 |  |
-|  | NOTA | 1.30 | – |  |
+DMDK 2.39 0
 
-table ends
-
-Check your progress
-Here are the results of the Tamil Nadu Assembly
-Election held in 2016.
-±
-What would be the composition of the
-Assembly if it was a PR system like in Israel?
-
-Chapter 3: Election and Representation
-votes only from one caste or community. Normally, the working of
+Normally, the working of
 the FPTP system results in a two-party system. This means that
 there are two major competitors for power and power is often shared
 by these two parties alternately. It is difficult for new parties or the
@@ -447,6 +327,8 @@ party competition is emerging. But the distinguishing feature of
 India’s party system is that the rise of coalitions has made it possible
 for new and smaller parties to enter into electoral competition in spite
 of the FPTP system.
+
+
 RESERVATION OF CONSTITUENCIES
 We have noticed that in the FPTP election system, the candidate who
 secures the highest votes in a particular constituency is declared
@@ -503,9 +385,8 @@ electorates; ...Under the 1935 Act, throughout the
 Legislatures in India, there were altogether only 24
 Adivasi MLAs out of a total of 1585, …and not a single
 representative at the Centre.”
-Jaipal Singh, CAD, Vol. V, pp. 209-210, 27 August 1947
 
-Chapter 3: Election and Representation
+
 Who decides which constituency is to be reserved? On what basis
 is this decision taken? This decision is taken by an independent
 body called the Delimitation Commission. The Delimitation
@@ -535,31 +416,8 @@ We shall discuss this in chapter on Local Governments. A similar
 provision for Lok Sabha and Vidhan Sabhas has been provided
 through the Nari Shakti Vandan Adhiniyam (Women's Reservation
 Act, 2023).
-FREE
-REE
-REE
-REE
-REE AND
-AND
-AND
-AND
-AND F
- F
- F
- F
- FAIR
-AIR
-AIR
-AIR
-AIR E
- E
- E
- E
- ELECTIONS
-LECTIONS
-LECTIONS
-LECTIONS
-LECTIONS
+
+
 The true test of any election system is its ability to ensure a free and
 fair electoral process. If we want democracy to be translated into
 reality on the ground, it is important that the election system is
@@ -567,45 +425,10 @@ impartial and transparent. The system of election must also allow
 the aspirations of the voter to find legitimate expression through the
 electoral results.
 
-table starts|  | similar situation prevails in most State Assemblies.
-Three students drew different conclusions from this
-fact. Write down whether and why you agree or
-disagree with each of them.
-Hilal: This demonstrates the unfairness of the
-FPTP system. We should have opted for PR system.
-Arif: This shows the wisdom of granting
-reservations to SC and ST. What is needed is a
-reservation of seats for Muslims on the same lines as
-for SC and ST.
-Saba: There is no point in talking about Muslims
-as a whole. Muslim women are not going to get any
-share in any of these systems. We need a separate
-quota for Muslim women.
-Universal franchise and right to contest
-Apart from laying down a method of elections, the
-Constitution answers two basic questions about elections: |  |
-| --- | --- | --- |
-|  |  | Who are the voters? Who can contest elections? In both these respects our Constitution follows the well established |
-|  | democratic practices. Am I or am I not an adult? I You already know that democratic elections require am mature enough to choose that all adult citizens of the country must be eligible to my future career, old enough vote in the elections. This is known as universal adult to get a driving license, but not franchise. In many countries, citizens had to fight long old enough to vote! If laws battles with the rulers to get this right. In many countries, can apply to me, why can’t I decide on who makes those women could get this right very late and only after laws? struggle. One of the important decisions of the framers of the Indian Constitution was to guarantee every adult citizen in India, the right to vote. 66 Till 1989, an adult Indian meant an Indian citizen |  |
 
-table ends
-
-
-table starts|  | R A C
-EAD ARTOON
-21 October 1951 |  |  |
-| --- | --- | --- | --- |
-| R A C EAD ARTOON right. But our Constitution makers had a firm belief in the ability and worth of all adult citizens as equals in the matter of deciding what is good for the society, the country and for their own constituencies. What is true of the right to vote is also true of right to contest election. All citizens have the right to stand for election and become the representative of the people. However, there are different minimum age requirements for contesting elections. For example, in order to stand for Lok Sabha or Assembly election, a candidate must be at least 25 years old. There are some other restrictions also. For instance, there is a legal provision that a person who has undergone imprisonment for two or more years for some offence is disqualified from contesting 21 October 195 elections. But there are no restrictions of income, education Why is universal adult franchise compare or class or gender on the right to to an elephant? Is it unmanageable? Or is i contest elections. In this sense, like the story in which everyone describes th our system of election is open to elephant only by its parts? all citizens. | R A C EAD ARTOON 21 October | 195 |  |
-|  | Why is universal adult franchise compare to an elephant? Is it unmanageable? Or is i like the story in which everyone describes th elephant only by its parts? |  | d t e |
-
-table ends
-
-Chapter 3: Election and Representation
 Independent Election Commission
 Several efforts have been made in India to ensure the free and fair
 election system and process. The most important among these is the
-Shankar. Copyright: Children’s Book Trust.
-
 creation of an independent Election Commission to ‘supervise and
 conduct’ elections. Do you know that in many countries, there is an
 absence of an independent mechanism for conducting elections?
@@ -642,7 +465,7 @@ President held under this Constitution shall
 be vested in a Commission (referred to in this
 Constitution as the Election Commission).
 
-Chapter 3: Election and Representation
+
 Commissioner and the other Commissioners about who
 had how much power. The matter had to be settled by the
 Supreme Court. Now there is a general consensus that a
@@ -690,8 +513,8 @@ least three other chapters.  One is in the next chapter on Executive,
 where we discuss the impeachment of the President of India. Find
 out the other two places where special majority is discussed.
 
-the term, by the President if both Houses of Parliament make such a
-recommendation with a special majority. This is done to ensure that
+
+This is done to ensure that
 a ruling party cannot remove a CEC who refuses to favour it in
 elections. The Election Commissioners can be removed by the
 President of India.
@@ -735,7 +558,6 @@ fairness in the election process. It has acted in an impartial and
 unbiased manner in order to protect the sanctity of the electoral
 process. The record of Election Commission also shows that every
 
-table starts| had in the Constitution.
 Since 1951–52, seventeen
 Lok Sabha elections have been
 held. Many more State assembly
@@ -762,41 +584,9 @@ Commission found that
 unprecedented violence in
 that State had made it
 impossible to hold free and fair
-elections immediately. The
-Election Commission decided
-to postpone elections to the
-The Netaji is afraid of EC. Why do leader
-State Assembly by a few |  |  |  |
-| --- | --- | --- | --- |
-|  | R A C EAD ARTOON |  |  |
-|  | The Netaji is afraid of EC. Why do le | ader |  |
-|  | fear the Election Commission? Is this for democracy? |  |  |
-
-table ends
-
-Chapter 3: Election and Representation
-R K Laxman in The Times of India.
-
-table starts| The Commission can issue orders to
-government employees engaged in any election
-related duty.
-The government cannot remove the Chief
-Election Commissioner.
-The Commission can cancel an election if it
-thinks that it was not fair.
-E R
-LECTORAL EFORMS |  |
-| --- | --- |
-|  | No system of election can ever be perfect. And in actual election process, there are bound to be many flaws and |
-| limitations. Any democratic society has to keep searching for mechanisms to make elections free and fair to the maximum. With the acceptance of adult suffrage, freedom to contest elections, and the establishment of an independent Election Commission, India has tried to make Can we reduce the influence of its election process free and fair. However, the experience money and muscle power by of the past 72 years has given rise to many suggestions changing the law? Does for reforming our election system. The Election anything change in reality by Commission, political parties, various independent changing the law? groups, and many scholars have come up with proposals for electoral reform. Some of these suggestions are about 72 changing the constitutional provisions discussed in this |  |
-
-table ends
+elections immediately.
 
 
-table starts| elections expenses should
-be paid by the government R A C
-EAD ARTOON
-out of a special fund.
 ± Candidates with any
 criminal case should be
 barred from contesting
@@ -826,25 +616,16 @@ candidates, the parties and
 be barred from contesting elections?
 those involved in the election
 process agree to abide by the
-spirit of democratic competition. | R K Laxman in The Times of India. |
-| --- | --- |
+spirit of democratic competition.
 
-table ends
 
-table starts| R A C
-EAD ARTOON |  |
-| --- | --- |
-| Should a person accused of a serious crime be barred from contesting elections? |  |
-
-table ends
-
-Chapter 3: Election and Representation
-
-vigilant, more actively involved in political activities. But there are
+But there are
 limits to the extent to which ordinary people can engage in politics
 on a regular basis. Therefore, it is necessary that various political
 institutions and voluntary organisations are developed and are active
 in functioning as watchdog for ensuring free and fair elections.
+
+
 Conclusion
 In countries where representative democracy is practiced,
 elections and the representative character of those elections
@@ -881,7 +662,7 @@ formed without holding elections. In fact, regularity and
 periodicity of elections has earned fame for India as a great
 democratic experiment.
 
-Chapter 3: Election and Representation
+
 All these factors have earned for our election system a
 respect within and outside the country. The voter in India has
 gained confidence. The legitimacy of the Election Commission

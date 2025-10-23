@@ -1,29 +1,3 @@
-150
-INTRODUCTION
-Look at the political maps (on next two pages) of India 1947 and 2017. They
-have changed dramatically over the years. Boundaries of States have changed,
-names of States have changed, and the number of States has changed. When
-India became independent, we had a number of provinces that the British
-government had organised only for administrative convenience. Then a number
-of princely states merged with the newly independent Indian union. These
-were joined to the existing provinces. This is what you see in the first map.
-Since then boundaries of States have been reorganised many times. During this
-entire period, not only did boundaries of States change, but in some cases, even
-their names changed according to the wishes of the people of those States. Thus,
-Mysore changed to Karnataka and Madras became Tamil Nadu. The maps show
-these large scale changes that have taken place in the span of over seventy years.
-In a way, these maps also tell us the story of functioning of federalism in India.
-After studying this chapter you will be able to understand the following:
-± what is Federalism;
-± the federal provisions in the Indian Constitution;
-± the issues involved  in the relations between the centre and the States; and
-± the special provisions for certain States having a distinct composition and
-historical features.
-
-Chapter 7: Federalism
-INDIA IN 1947
-
-Chapter 7: Federalism
 WHAT IS FEDERALISM?
 USSR was one of the world’s super
 powers, but after 1989 it simply
@@ -149,31 +123,9 @@ of government.
 The details of this dual system of government are
 generally spelt out in a written constitution, which is
 considered to be supreme and which is also the source
-of the power of both sets of government. Certain
-subjects, which concern the nation as a whole, for
-example, defence or currency, are the responsibility
-of the union or central government. Regional or local
-I get it! It’s like our school. We
-have our identity as students
-of class XI or XII and so on.
-And we also have competition
-among the various divisions.
-But we all belong to the school
-and are proud of it.
+of the power of both sets of government.
 
-table starts| The judiciary has the powers to resolve disputes | what we read
-chapter: a
-decides who
-w much power. |  |
-| --- | --- | --- |
-| between the central government and the States on legal matters about the division of power. Real politics, culture, ideology and history determine the actual working of a federation. A culture of trust, cooperation, mutual respect and restraint helps federations to function smoothly. Political parties also determine the way a constitution would work. If any single Yes, I remember what we re unit or State or linguistic group or ideology comes to in the first chapter: dominate the entire federation it could generate a deep constitution decides w resentment among people or its units not sharing the should have how much pow dominant voice. These situations could lead to demands for secession by the aggrieved units or could even result in civil wars. Many countries are embroiled in such conflict situations. | what we re chapter: decides w w much pow |  |
-|  |  |  |
 
-table ends
-
-Chapter 7: Federalism
-matters are the responsibility of the regional or State
-government.
 
 Federalism in Nigeria
 If the regions and various communities do not trust each
@@ -207,35 +159,6 @@ How are conflicts between the central
 government and the States resolved in a
 federation?
 
-table starts| ours, it would be necessary to divide the powers between
-provinces and the central government. There was also | rpose of living
-e that all of us
-ust make each |  |
-| --- | --- | --- |
-| awareness that Indian society had regional diversity and linguistic diversity. This diversity needed recognition. People of different regions and languages had to share power and in each region, people of that region should govern themselves. This was only logical if we wanted a democratic government. The only question was what should be the extent of powers to be enjoyed by the regional governments. In view After all, the purpose of liv of the agitation of the Muslim League for greater together must be that all of representation to the Muslims, a compromise formula to are happy and must make e give very large powers to the regions was discussed during other be happy. the negotiations before Partition. Once the decision to partition India was taken, the Constituent Assembly decided to frame a government that would be based on the principles of unity and cooperation between the centre and the States and separate powers to the States. The most important feature of the federal system adopted by the Indian Constitution is the principle that relations between the States and the centre would be based on cooperation. Thus, while recognising diversity, the Constitution emphasised unity. Do you know for example, that the Constitution of India does not even mention the word federation? This is how the Constitution describes India — Article 1: (1) India, that is Bharat, shall be a Union of States. (2) The States and the territories thereof shall be as specified in the | rpose of liv e that all of ust make e |  |
-|  |  |  |
-
-table ends
-
-Chapter 7: Federalism
-
-table starts|  |  |  |
-| --- | --- | --- |
-|  | I feel that Sta very little mon How can the affairs? It is li where the mo husband and | constitutional status and clearly identified area of activity. If there is any dispute about which powers come under the control of the union and which under the States, this tes would have can be resolved by the Judiciary on the basis of the ey of their own. constitutional provisions. The Constitution clearly y manage their demarcates subjects, which are under the exclusive ke some families domain of the Union and those under the States. (Study ney is with the the chart given on the next page carefully. It shows how the wife has to |
-|  | manage the ho | powers are distributed between the centre and the States.) usehold. One of the important aspects of this division of powers is |
-| that economic and financial powers are centralised in the hands of the central government by the Constitution. The States have immense responsibilities but very meagre revenue sources. Check your progress ± Do you think that there is a need for mentioning Residuary powers separately? Why? ± Why do the States feel dissatisfied about the division of powers? 158 |  |  |
-
-table ends
-
-
-table starts|  | Constitution of India |  |
-| --- | --- | --- |
-|  | Union List State List Concurrent Includes subjects Includes subjects List like, like Includes ± Defence ± Agriculture subjects like, ± Atomic ± Police ± Education Energy ± Prison ± Transfer of ± Foreign ± Local Property Affairs Government other than ± War and ± Public Heath Agricultural Peace ± Land land ± Banking ± Liquor ± Forests ± Railways ± Trade and ± Trade ± Post and Commerce Unions Telegraph ± Livestock ± Adulteration ± Airways and Animal ± Adoption ± Ports Husbandry and ± Foreign Trade ± State Public Succession ± Currency & Services Coinage Both Union and Normally only the State Union Legislature State Legislature Legislature alone can make can make laws on alone can make laws on these these matters laws on these matters. matters. Residuary Powers Include all other matters not mentioned in any of the Lists. ± Cyber Laws Union Legislature alone has the power to legislate on such matters |  |
-|  |  |  |
-
-table ends
-
-Chapter 7: Federalism
 
 FEDERALISM WITH A STRONG CENTRAL GOVERNMENT
 It is generally accepted that the Indian Constitution has created a
@@ -275,21 +198,8 @@ Constitution to create a strong central government.
 Let us look at the important provisions that create a strong central
 government:
 
-table starts| States…’. It can also alter the boundary of any State | and why our
-not only about
-others. It must
-d federalism
-r needs. |  |
-| --- | --- | --- |
-| or even its name. The Constitution provides for some safeguards by way of securing the view of the concerned State legislature. ± The Constitution has certain very powerful emergency provisions, which can turn our federal polity into a highly centralised system once emergency is declared. During an emergency, power becomes lawfully centralised. Parliament also assumes the power to I now understand why make laws on subjects within the jurisdiction of Constitution is not only ab the States. borrowing from others. It m ± Even during normal circumstances, the central have designed federali government has very effective financial powers and according to our needs. responsibilities. In the first place, items generating revenue are under the control of the central government. Thus, the central government has many revenue sources and the States are mostly dependent on the grants and financial assistance from the centre. Secondly, India adopted planning as the instrument of rapid economic progress and development after independence. Planning led to considerable centralisation of economic decision making. Planning commission appointed by the union government is the coordinating machinery that controls and supervises the resources management of the States. Besides, the Union government uses its discretion to give grants and loans to States. This distribution of economic resources is considered lopsided and has led to charges of discrimination against States ruled by an opposition party. ± As you will study later, the Governor has certain | and why not only ab others. It m d federali r needs. |  |
-|  |  |  |
 
-table ends
-
-Chapter 7: Federalism
-
-has the power to reserve a bill passed by the State
-legislature, for the assent of the President.  This gives
+This gives
 the central government an opportunity to delay the
 State legislation and also to examine such bills and
 veto them completely.
@@ -330,8 +240,8 @@ appears to me to be all-
 powerful. Don’t the States
 complain about it?
 
-Chapter 7: Federalism
-±
+
+
 Articles 33 and 34 authorise the Parliament to protect persons in the
 service of the union or a state in respect of any action taken by
 them during martial law to maintain or restore order. This
@@ -339,16 +249,9 @@ provisions further strengthens the powers of the union government.
 The Armed Forces Special Powers Act has been made on the basis
 of these provisions. This Act has created tensions between the
 people and the armed forces on some occasions.
-Check your progress
-±
-Give two reasons for the claim that our
-Constitution has a unitary bias.
-±
-Do you think that:
-√
-a strong centre makes the States weak?
-√
-strong States will weaken the centre?
+
+
+
 CONFLICTS IN INDIA’S FEDERAL SYSTEM
 In the previous section, we have seen that the Constitution has vested
 very strong powers in the centre. Thus, the Constitution recognises
@@ -363,10 +266,11 @@ the centre and the States. While the legal disputes between the centre
 and the States (or between States) can be resolved by the  judiciary,
 demands for autonomy are of political nature and need to be resolved
 through negotiations.
+
+
 Centre-State Relations
 The Constitution is only a framework or a skeleton, its flesh and
 blood is provided by the actual processes of politics. Hence federalism
-
 in India has to a large extent been influenced by the
 changing nature of the political process. In the 1950s and
 early 1960s the foundation of our federalism was laid
@@ -410,57 +314,9 @@ decide everything. After all,
 actual politics decides the nature
 of our government!
 
-table starts| more powers and important powers be assigned to the |  | hat Hindi is
-language. But
-friends from
-of the country
-ndi. |  |
-| --- | --- | --- | --- |
-| States. Many States (Tamil Nadu, Punjab, West Bengal) and many parties (DMK, Akali Dal, CPI-M) have made demands of autonomy from time to time. ± Another demand is that States should have independent sources of revenue and greater control over the resources. This is also known as financial autonomy. In 1977, the Left Front Government in West Bengal brought out a Yes, I know that Hindi document demanding a restructuring of centre-State India’s official language. B relations in India. In the autonomy demands of Tamil many of my friends fr Nadu and Punjab also, there was an implicit support to different parts of the coun the idea of greater financial powers. don’t know Hindi. ± The third aspect of the autonomy demands relates to administrative powers of the States. States resent the control of the centre over the administrative machinery. ± Fourthly, autonomy demands may also be R EAD A CARTOON related to cultural and linguistic issues. The opposition to the domination of Hindi (in Tamil Nadu) or demand for advancing the Punjabi language and culture are instances of this. Some States also feel that there is a domination of the Hindi-speaking areas over the others. In fact, during the decade of 18 September 1949 1960s, there were During discussion on the national language in th Constituent Assembly, Nehru had to appeal to the Hindi |  | hat Hindi language. B friends fr of the coun ndi. |  |
-|  |  |  |  |
-|  |  |  |  |
-|  | R EAD A CARTOON 18 Septem | ber 1949 |  |
-|  | During discussion on the national langua Constituent Assembly, Nehru had to appeal to | ge in th the Hindi |  |
-| agitations in some States against the imposition of speaking provinces to show greater toleranc others. Don’t spare me Shan the Hindi language. | speaking provinces to show greater toleranc others. Don’t spare me Shan |  |  |
-|  |  |  |  |
-
-table ends
-
-Chapter 7: Federalism
-Shankar. Copyright: Children’s Book Trust.
-
-table starts|  |  | Role of Governors and President’s Rule
-R
-EAD A CARTOON The role of Governors has always been a
-controversial issue between the States and
-the central government. The Governor is not
-an elected office-holder. Many Governors |
-| --- | --- | --- |
-|  |  | R EAD A CARTOON |
-| have been retired military officers or civil servants or politicians. Besides, the Governor is appointed by the central government and therefore, actions of the Governor are often viewed as interference by the Central government in the functioning of the State government. When two different parties are in power at the centre and the State, the role of the Governor becomes even more controversial. The Sarkaria Commission that was appointed by the central government (1983; it submitted its report in 1988) to 27 April 1952 examine the issues relating to centre-State “When Nehru was appointing relations, recommended that appointments governors, some were reluctant to of Governors should be strictly non-partisan. quit ministerial chairs.” Powers and role of the Governor become Don’t spare me Shankar, p.89 controversial for one more reason. One of the most controversial articles in the Constitution is Article 356, which provides for President’s rule in any State. This provision is to be applied, when ‘a situation has arisen in which the Government of the State cannot be carried on in accordance with the provisions of this Constitution.’ It results in the takeover of the State government by the Union government. The President’s proclamation has to be ratified by Parliament. President’s rule can be extended till three years. The Governor has the power to recommend the dismissal of the State government and suspension or dissolution of State assembly. This has led to many conflicts. In some cases, State governments were dismissed even when they had a majority in the legislature, as had happened in Kerala in 1959 or without testing their majority, as 166 happened in several other States after 1967. Some cases went to the |  | 27 April 1952 |
-|  | “When govern quit m | Nehru was appointing ors, some were reluctant to inisterial chairs.” Don’t spare me Shankar, p.89 |
-|  |  |  |
-
-table ends
 
 
-table starts| n The Times of India. | R
-EAD A CARTOON |  |  |  |
-| --- | --- | --- | --- | --- |
-| centre. The centre has often i Laxman used this provision to dismiss State governments or has used K the office of the Governor to R prevent the majority party or coalition from assuming office. For instance, the central government removed elected governments in Andhra Pradesh and Jammu and Kashmir in the decade of 1980s. Demands for New States The other dimension of tension Toppling the State governments. in our federal system has been Everyone loves to play this game! the demand to create new States. The national movement R EAD A CARTOON not only created a pan-Indian national unity; it also generated distinct unity around a common language, region and culture. Our national movement was also a movement for democracy. Therefore, in the course of the national movement itself, it was decided that as far as possible, States would be created on the basis of common cultural and |  |  |  |  |
-|  | Toppling the State governments. Everyone loves to play this game! |  |  |  |
-|  |  |  |  |  |
-|  |  | R EAD A CARTOON |  |  |
-| linguistic identity. 26 July This ultimately led to the Flood of demands for creating new State demand for the creation of |  | 26 July |  |  |
-|  |  | Flood of demands for creating new State | s |  |
-|  |  |  |  |  |
-
-table ends
-
-Chapter 7: Federalism
-Shankar. Copyright: Children’s Book Trust.
-
-linguistic States after Independence. In December 1953,
+In December 1953,
 the States Reorganisation Commission was set up and it
 recommended the creation of linguistic States, at least for
 the major linguistic groups. In 1956, reorganisation of
@@ -471,18 +327,7 @@ continuing. Gujarat and Maharashtra were created in
 in 1966. Later, the North Eastern region was reorganised
 and new States like  Manipur, Tripura, Meghalaya,
 Mizoram and Arunachal Pradesh were created.
-Activity
-Make a list of the States of India and find
-out the year in which each of the States
-was created.
-In 2000, some of the larger States were further divided
-both to meet the demands for a separate State as well as
-to meet the need for greater administrative efficiency. Thus
-Madhya Pradesh, Uttar Pradesh and Bihar were divided
-to create three new States. They are: Chhattisgarh,
-Uttarakhand and Jharkhand respectively. In 2014, the
-State of Telangana was formed by dividing Andhra
-Pradesh. Some regions and linguistic groups are still
+Some regions and linguistic groups are still
 struggling for separate Statehood like Vidarbha in
 Maharashtra.
 Interstate Conflicts
@@ -501,7 +346,7 @@ Centre-State conflicts and now
 conflict among States. Can’t we
 live together peacefully?
 
-table starts| than one language. So, it is not easy to resolve this dispute
+So, it is not easy to resolve this dispute
 merely on the basis of linguistic majority. One of the long-
 standing border disputes is the dispute between
 Maharashtra and Karnataka over the city of Belgaum.
@@ -529,16 +374,8 @@ Maharashtra are battling over sharing the waters of
 Narmada river. Rivers are a major resource and therefore,
 disputes over river waters test the patience and cooperative
 spirit of the States.
-Activity Yes, conflict over Governo |  |  |
-| --- | --- | --- |
-|  |  |  |
-|  | er Governo |  |
-| Collect information about at least one over language, o dispute about river waters involving two over water… manage to live t or more States. |  |  |
-|  |  |  |
 
-table ends
 
-Chapter 7: Federalism
 
 SPECIAL PROVISIONS
 The most extra-ordinary feature of the federal arrangement
@@ -574,10 +411,8 @@ Why do States want more autonomy?
 ±
 What is the difference between autonomy
 and secession?
-I now understand what they
-meant by ‘intelligent and
-balanced design’ in the first
-chapter.
+
+
 
 Chapter 7: Federalism
 However, immediately after independence in October, 1947 Pakistan

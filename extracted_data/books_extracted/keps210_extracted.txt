@@ -1,72 +1,5 @@
-220
-INTRODUCTION
-In this book, so far we have studied some important provisions of our Constitution
-and the way in which these have worked in the last 69 years. We also studied
-the way in which the Constitution was made. But have you ever asked yourself
-why leaders of the national movement felt the need to adopt a constitution after
-achieving independence from British rule? Why did they choose to bind
-themselves and the future generations to a constitution? In this book, you have
-repeatedly visited the debates in the Constituent Assembly. But it should be
-asked why the study of the constitution must be accompanied by a deep
-examination of the debates in the Constituent Assembly?  This question will be
-addressed in this chapter. Secondly, it is important to ask what kind of a
-constitution we have given ourselves. What objectives did we hope to achieve
-by it? Do these objectives have a moral content? If so, what precisely is it? What
-are the strengths and limitations of this vision and, by implication, the achievements
-and weaknesses of the Constitution? In doing so, we try to understand what can
-be called the philosophy of the Constitution.
-After reading this chapter, you should be able to understand:
-± why it is important to study the philosophy of the Constitution;
-± what are the core features of the Indian Constitution;
-± what are the criticisms of this Constitution; and
-± what are the limitations of the Constitution?
+The Philosophy of the Constitution
 
-table starts| only a legalistic, not a political philosophy approach
-to the Constitution. It is true that all laws do not
-have a moral content, but many laws are closely
-connected to our deeply held values. For example, a
-law might prohibit discrimination of persons on
-grounds of language or religion. Such a law is
-connected to the idea of equality. Such a law exists
-because we value equality. Therefore, there is a
-connection between laws and moral values.
-We must therefore, look upon the constitution as a
-document that is based on a certain moral vision. We need
-to adopt a political philosophy approach to the
-constitution. What do we mean by a political philosophy
-approach to the constitution? We have three things in
-mind.
-± First, we need to understand the conceptual structure
-of the constitution. What does this mean? It means
-that we must ask questions like what are the possible
-meanings of terms used in the constitution such as
-‘rights’, ‘citizenship’, ‘minority’ or ‘democracy’?
-± Furthermore, we must attempt to work out a coherent
-vision of society and polity conditional upon an
-interpretation of the key concepts of the constitution.
-We must have a better grasp of the set of ideals
-embedded in the constitution.
-± Our final point is that the Indian Constitution must
-be read in conjunction with the Constituent Assembly
-Debates in order to refine and raise to a higher
-Does it mean that a
-theoretical plane, the justification of values embedded
-constitutions have
-in the Constitution. A philosophical treatment of a |  |  |
-| --- | --- | --- |
-|  | hat a ave |  |
-| philosophy? Or is it value is incomplete if a detailed justification for it is some constitution not provided. When the framers of the Constitution philosophy? |  |  |
-
-table ends
-
-Chapter 10: The Philosophy of the Constitution
-
-chose to guide Indian society
-and polity by a set of values,
-there must have been a
-corresponding set of reasons.
-Many of them, though, may not
-have been fully explained.
 A political philosophy approach
 to the constitution is needed not
 only to find out the moral content
@@ -144,17 +77,10 @@ context of making the
 constitution dominates the
 thinking of the constitution
 makers.
-Yes, of course, I do remember
-this issue of different
-interpretations 
-of 
-the
-Constitution. We discussed it
-in the last chapter, didn’t we?
 
-table starts| Constitution as Means of Democratic Transformation
-In the first chapter we have studied the meaning of the
-term constitution and the need to have a constitution. It is
+
+
+It is
 widely agreed that one reason for having constitutions is
 the need to restrict the exercise of power. Modern states
 are excessively powerful. They are believed to have a
@@ -177,22 +103,9 @@ for a Constituent Assembly, he claimed, represented a
 collective demand for full self-determination because; only
 a Constituent Assembly of elected representatives of the
 Indian people had the right to frame India’s constitution
-without external interference. Second, he argued, the So, can we say that memb
-Constituent Assembly is not just a body of people or a of the Constituent Assem
-gathering of able lawyers. Rather, it is a ‘nation on the move, were all eager to bring soc
-throwing away the shell of its past political and possibly transformation? But we a
-social structure, and fashioning for itself a new garment of keep saying that all view poi |  |  |
-| --- | --- | --- |
-|  | memb Assem ing soc t we a ew poi |  |
-| its own making.’ The Indian Constitution was designed to were represented break the shackles of traditional social hierarchies and to Assembly! usher in a new era of freedom, equality and justice. |  |  |
+without external interference. 
 
-table ends
 
-Chapter 10: The Philosophy of the Constitution
-of the ideal in the constitution has considerable authority
-it must be used to arbitrate in conflict of interpretation over
-values or ideals. Our Constitution can perform this job of
-arbitration.
 
 This approach had the potential of changing the theory of
 constitutional democracy altogether: according to this approach,
@@ -215,37 +128,9 @@ have changed so drastically.  In terms of our values, ideals and
 conception, we have not separated ourselves from the world of the
 Constituent Assembly.  A history of our Constitution is still very
 much a history of the present.
-Activity
-Read again the quotes from the Debates of
-the Constituent Assembly (CAD) given in
-the following chapters. Do you think that
-the arguments in those quotations have
-relevance for our present times? Why?
- i.
-Quotes in Chapter two
-ii.
-Quote in Chapter seven
-Furthermore, we may have forgotten the real point underlying
-several of our legal and political practices, simply because somewhere
-down the road we began to take them for granted.  These reasons
-have now slipped into the background, screened off from our
-consciousness even though they still provide the organizational
-principle to current practices. When the going is good, this forgetting
 
-table starts| no option but to go back in time to the Constituent |  | ldn’t they
-hat the
-nstitution
-y citizens
-ophy if it |
-| --- | --- | --- |
-| Assembly debates and perhaps even further back in time to the colonial era. Therefore, we need to remember and keep revisiting the political philosophy underlying our Constitution. W P P HAT IS THE OLITICAL HILOSOPHY OF OUR C ? ONSTITUTION This is tough. Why couldn’t t It is hard to describe this philosophy in one word. It resists plainly tell us what t any single label because it is liberal, democratic, philosophy of this Constitut egalitarian, secular, and federal, open to community is? How can ordinary citiz values, sensitive to the needs of religious and linguistic understand the philosophy i minorities as well as historically disadvantaged groups, is hidden like this? and committed to building a common national identity. Trust. R EAD A CARTOON Book Children’s Copyright: Shankar. |  | ldn’t t hat t nstitut y citiz ophy i |
-|  | R EAD A CARTOON |  |
-|  | 26 January 1950 |  |
-|  | While all ideas unfold on this playfield, democracy is the ‘Umpire’. |  |
 
-table ends
 
-Chapter 10: The Philosophy of the Constitution
 
 In short, it is committed to freedom, equality, social justice, and some
 form of national unity. But underneath all this, there is a clear
@@ -276,6 +161,8 @@ over forty years before the adoption of the Constitution, every single
 resolution, scheme, bill and report of the Indian National Congress
 mentioned individual rights, not just in passing but as a non-
 negotiable value.
+
+
 Social Justice
 When we say that the Indian Constitution is liberal, we do not mean
 that it is liberal only in the classical western sense. In the book on
@@ -283,7 +170,8 @@ Political Theory, you will learn more about the idea of liberalism.
 Classical liberalism always privileges rights of the individuals over
 demands of social justice and community values.
 
-Chapter 10: The Philosophy of the Constitution
+
+
 The liberalism of the Indian Constitution differs from this version
 in two ways. First, it was always linked to social justice. The best
 example of this is the provision for reservations for Scheduled Castes
@@ -297,20 +185,8 @@ measures to protect the interests of Scheduled Castes and Scheduled
 Tribes such as the reservation of seats in legislatures. The Constitution
 also made it possible for the government to reserve public sector
 jobs for these groups.
-Check your progress
-State which of the following rights are part of
-individual freedom:
-±
-Freedom of expression
-±
-Freedom of religion
-±
-Cultural and educational rights of minorities
-±
-Equal access to public places
-And while talking of social
-justice, let us not forget the
-directive principles.
+
+
 Indian liberalism has two streams. The
 first stream began with Rammohan Roy.
 He 
@@ -377,7 +253,7 @@ identity, I have ties with my
 parental town, and  of course, I
 am a student also.
 
-table starts| Though the term ‘secular’ was not initially mentioned, the
+Though the term ‘secular’ was not initially mentioned, the
 Indian Constitution has always been secular. The
 mainstream, western conception, of secularism means
 mutual exclusion of state and religion in order to protect
@@ -408,15 +284,9 @@ individuals, therefore, state must not help religious
 organisations. But at the same time, state should not tell
 religious organisations how to manage their affairs. That
 too can thwart religious freedom. The state must, therefore,
-not hinder religious organisations either. In short, states
-should neither help nor hinder religions. Instead, they should |  |  |
-| --- | --- | --- |
-|  | teachi heory | ng |
-|  |  |  |
+not hinder religious organisations either. 
 
-table ends
 
-Chapter 10: The Philosophy of the Constitution
 
 Conditions in India were different and to respond to the
 challenge they posed, the makers of the Constitution had
@@ -463,11 +333,8 @@ matters related to religion or not.
 Otherwise, there can be no
 religious reform.
 
-Chapter 10: The Philosophy of the Constitution
-principled distance, a rather complex idea that allows the state
-to be distant from all religions so that it can intervene or abstain
-from interference, depending upon which of these two would better
-promote liberty, equality and social justice.  
+
+
 We have hitherto mentioned three core features — these can also
 be seen as the achievements — of our Constitution.
 ±
@@ -505,27 +372,8 @@ the heart of nationalism. As early as the Constitution of India Bill
 (1895), the first non-official attempt at drafting a constitution for
 India, the author declared that every citizen, i.e., anyone born in
 
-table starts|  |  | abundant faith in the common
-man and the ultimate success of |
-| --- | --- | --- |
-| democratic rule and in the full belief that the introduction of democratic government on the basis of adult suffrage will… promote the well-being...” Alladi Krishnaswami Ayyar, CAD, Vol. XI, p. 835, 23 November 1949 India, had a right to take part in the affairs of the country It’s certainly a matter of pride that and be admitted to public office. The Motilal Nehru Report the principle of ‘one man one (1928) reaffirms this conception of citizenship, reiterating vote’ was accepted almost that every person of either sex who has attained the age of uncontested. Isn’t it true that twenty-one is entitled to vote for the House of women had to struggle for their Representatives or Parliament. Thus from very early on, right to vote in many other universal franchise was considered as the most important countries? and legitimate instrument by which the will of the nation was to be properly expressed. Federalism Second, by introducing the article concerning North-East (Art. 371), the Indian Constitution anticipates the very important concept of asymmetric federalism. We have seen in the chapter on federalism that the Constitution has created a strong central government. But despite this unitary bias of the Indian Constitution, there are important constitutionally embedded differences between the legal status and prerogatives of different sub-units within the same federation. Unlike the constitutional 232 symmetry of American federalism, Indian federalism has | It’s certai the princ vote’ w uncontest women ha right to countries? |  |
 
-table ends
-
-
-table starts|  | Who say
-based o
-‘borrowed
-our ow |  |
-| --- | --- | --- |
-| Article not only confers validity on pre-existing laws within Nagaland, but also protects local identity through restrictions on immigration. Many other States too, are beneficiaries of such special provisions. According to the Indian Constitution, then, there is nothing bad about this differential treatment. Although the Constitution did not originally envisage this, India is now a multi-lingual federation. Each major linguistic group is politically recognised and all are treated I am really impressed! Who as equals. Thus, the democratic and linguistic federalism our Constitution is based of India has managed to combine claims to unity with imitation?. In every ‘borro claims to cultural recognition. A fairly robust political aspect, we have put our arena exists that allows for the play of multiple identities distinct imprint. that complement one another. National identity Thus, the Constitution constantly reinforces a common national identity. In the chapter on federalism, you have studied how India strives to retain regional identities along with the national identity. It is clear from what is mentioned above that this common national identity was not incompatible with distinct religious or linguistic identities. The Indian Constitution tried to balance these various identities. Yet, preference was given to common identity under certain conditions. This is clarified in the debate over separate electorates based on religious identity which the Constitution rejects. Separate electorates were rejected not because they fostered difference between religious communities as such or because they | Who based ‘borro our |  |
-|  |  |  |
-
-table ends
-
-Chapter 10: The Philosophy of the Constitution
-
-they endangered a healthy national life. Rather than forced unity,
+Rather than forced unity,
 our Constitution sought to evolve true fraternity, a goal dear to the
 heart of Dr. Ambedkar. As Sardar Patel put it, the main objective
 was to evolve ‘one community’.
@@ -555,18 +403,9 @@ anything like majority or
 minority in this country
 and that in India there is
 only one community…”
-Sardar Patel, CAD, Vol. VIII, p. 272, 25 May 1949
 
-table starts| manner can hardly be objected to. We may lament
-that we could not have everything but to secure a bit
-of all things important cannot be morally blame-
-worthy. Besides, a commitment to the idea that
-decisions on the most important issues must be arrived
-at consensually rather than by majority vote is equally
-morally commendable.
-I understand compromises in
-C
-RITICISMS design of institutions, but how
+
+
 The Indian Constitution can be subjected to many conflicting principles
 criticisms of which three may be briefly mentioned: first, accommodated?
 that it is unwieldy; second, that it is unrepresentative and
@@ -587,21 +426,9 @@ instance, do not have provisions for election commission
 or the civil service commission in the document known as
 constitution. But in India, many such matters are
 attended to by the Constitutional document itself.
-A second criticism of the Constitution is that it is |  |  |
-| --- | --- | --- |
-|  | ises in ut how ples | th ca b |
-|  |  |  |
 
-table ends
 
-Chapter 10: The Philosophy of the Constitution
-
-not yet granted and most members came from the
-advanced sections of the society. Does this make our
-Constitution unrepresentative?
-Here we must distinguish two components of
-representation, one that might be called voice and the other
-opinion.  The voice component of representation is
+The voice component of representation is
 important.  People must be recognised in their own
 language or voice, not in the language of the masters.  If
 we look at the Indian Constitution from this dimension, it
@@ -640,9 +467,8 @@ should be a valid reason for every
 section of society to go along with
 the Constitution?
 
-Chapter 10: The Philosophy of the Constitution
-seen that it was never a blind borrowing. It was innovative borrowing.
-Besides, as we shall see, this does not make it entirely alien.
+
+
 First, many Indians have not only adopted modern ways of
 thinking, but have made these their own. For them westernisation
 became a form of protest against the filth in their own tradition.
@@ -665,6 +491,8 @@ a particular version of western modernity imposed on them. Thus,
 when we were drafting our Constitution, efforts were made to
 amalgamate western and traditional Indian values. It was a process
 of selective adaptation and not borrowing.
+
+
 Limitations
 All this is not to say that the Constitution of India is a perfect and
 flawless document. Given the social conditions within which the
@@ -673,8 +501,7 @@ have the music of an English band. That was because
 our constitution makers were educated that way.
 …That is exactly the kind of Constitution Mahatma
 Gandhi did not want and did not envisage.”
-K. Hanumanthaiya
-CAD, Vol. XI, pp.616-617, 17 November 1949
+
 
 Constitution was made, it was only natural that there may
 be many controversial matters, that there would be many
@@ -700,28 +527,9 @@ why this happened, or even to overcome them. But that is
 not our point. We are arguing that these limitations are
 not serious enough to jeopardise the philosophy of the
 Constitution.
-Conclusion
-In the previous chapter we described the
-Constitution as a living document. It is these core
-features of the Constitution that give it this stature
-of a living document. Legal provisions and
-institutional arrangements depend upon the needs
-of the society and the philosophy adopted by the
-society. The Constitution gives expression to this
-philosophy. The institutional arrangements that we
-studied throughout this book are based on a core
-and commonly agreed vision. That vision has
-historically emerged through our struggle for
-independence. The Constituent Assembly was the
-platform on which this vision was stated, refined
-and articulated in legal-institutional form. Thus, the
-No document can be perfect and
-no ideals can be fully achieved.
-But does that mean we should
-have no ideals? No vision? Am I
-right?
 
-Chapter 10: The Philosophy of the Constitution
+
+
 Constitution becomes the embodiment of this vision. Many
 people have said that the best summary of this vision or the
 philosophy of the Constitution is to be found in the preamble to

@@ -1,8 +1,4 @@
-176
-Chapter Eight
-LOCAL
-GOVERNMENTS
-INTRODUCTION
+LOCAL GOVERNMENTS
 In a democracy, it is not sufficient to have an elected government at the centre
 and at the State level. It is also necessary that even at the local level, there
 should be an elected government to look after local affairs. In this chapter, you
@@ -13,13 +9,8 @@ powers. After studying this chapter, you will know:
 ± the provisions made by the 73rd and 74th amendments; and
 ± functions and responsibilities of the local government bodies.
 
-table starts| seat. From a housewife, Geeta has grown into a leader displaying
-political farsightedness - she has harnessed the collective energy of
-her Panchayat to renovate water tanks, build a school building,
-construct village roads, fight against domestic violence and atrocities
-against women, create environmental awareness, and encourage
-afforestation and water management in her village. —Panchayati
-Raj Update, Vol. XI, No. 3, February 2004.
+
+
 There is another story of yet another woman achiever. She was
 the President (Sarpanch) of a Gram Panchayat of Vengaivasal village
 in Tamil Nadu. In 1997, the Tamil Nadu government allotted two
@@ -42,17 +33,11 @@ the Panchayats. — Panchayati Raj Update, Vol. XII,
 June 2005. But aren’t there cases of male mem
 of the village panchayat harass
 Both these stories are not isolated incidents. They are the woman Sarpanch in so
-places? Why are men not hap
-representative of a larger transformation that is taking |  |  |
-| --- | --- | --- |
-|  | male mem yat harass nch in so n not hap |  |
-| when women assum place across India especially after constitutional status responsibility? was accorded to local government institutions in 1993. |  |  |
+places? 
 
-table ends
 
-Chapter 8: Local Governments
+
 WHY LOCAL GOVERNMENTS?
-
 Local government is government at the village and
 district level. Local government is about government
 closest to the common people. Local government is about
@@ -98,8 +83,8 @@ national level? I think
 Mahatma Gandhi advocated
 some ideas along these lines.
 
-Chapter 8: Local Governments
-their day-to-day life. Thus, strengthening local
+
+Thus, strengthening local
 government is like strengthening democratic processes.
 Check your progress
 ±
@@ -109,6 +94,9 @@ democracy?
 In the example given above, what do you think
 the Government of Tamil Nadu should have
 done?
+
+
+
 GROWTH OF LOCAL GOVERNMENT IN INDIA
 Let us now discuss how local government has grown in
 India and what our Constitution says about it. It is
@@ -141,7 +129,9 @@ naturally be dominated by the
 village elders, the rich and men
 from upper strata.
 
-order to be successful.  Panchayats therefore were looked upon as
+
+
+Panchayats therefore were looked upon as
 instruments of decentralisation and participatory democracy.  Our
 national movement was concerned about the enormous
 concentration of powers in the hands of the Governor General sitting
@@ -173,18 +163,10 @@ Dr. B.R. Ambedkar which felt that the faction and caste-ridden nature
 of rural society would defeat the noble purpose of local government
 at the rural level.
 However, nobody denied the importance of people’s participation
-in development planning. Many members of the Constituent
-Assembly wanted Village Panchayats to be the basis of democracy
+in development planning. 
 
-table starts| democracy, the villages
-maybe trained in the art of
-self-government, even
-autonomy... We must be able
-to reform the villages and
-introduce democratic
-principles of government
-there…”
-Ananthasayanam Ayyangar, CAD, Vol. VII, p. 428, 17 November 1948
+
+
 Local Governments in Independent India
 Local governments got a fillip after the 73rd and 74th
 Constitution Amendment Acts. But even before that, some
@@ -202,20 +184,8 @@ local development. They were very much dependent on the
 State and central governments for financial assistance.
 Many States did not think it necessary to establish elected
 Why are people afraid
-local bodies. In many instances, local bodies were dissolved
-factionalism at the village le
-and the local government was handed over to government
-when all the political parties a
-officers. Many States had indirect elections to most local |  |  |
-| --- | --- | --- |
-|  | e afraid e village le al parties a |  |
-| organisations or e bodies. In many States, elections to the local bodies were has factions? Are postponed from time to time. factions always so |  |  |
+local bodies.
 
-table ends
-
-Chapter 8: Local Governments
-in India but they were concerned about factionalism and
-many other ills present in the villages.
 
 After 1987, a thorough review of the functioning of local
 government institutions was initiated. In 1989 the P.K.Thungon
@@ -223,19 +193,9 @@ Committee recommended constitutional recognition for the local
 government bodies. A constitutional amendment to provide for
 periodic elections to local government institutions, and enlistment of
 appropriate functions to them, along with funds, was recommended.
-Check your progress
-±
-Both Nehru and Dr. Ambedkar were not very
-enthusiastic about local government bodies.
-Did they have similar objections to local
-governments?
-±
-What was the constitutional provision about
-local governments before 1992?
-±
-Which were the States that had established
-local government during the 1960s and
-1970s ?
+
+
+
 73RD AND 74TH AMENDMENTS
 In 1989, the central government introduced two constitutional
 amendments. These amendments aimed at strengthening local
@@ -250,25 +210,7 @@ are prohibited from interfering in the affairs of the
 municipal councils. This provision protects the powers of
 the local government.
 Later in 1992, the 73rd and 74th constitutional amendments were
-passed by the Parliament.  The 73rd Amendment is about rural local
-governments (which are also known as Panchayati Raj Institutions
-
-table starts| subject‘. States are free to make their own laws on this | his correctly,
-rced local
-rms on the
-ny: you adopt
-through a
-! |  |
-| --- | --- | --- |
-| subject. But once the Constitution was amended, the States had to change their laws about local bodies in order to bring these in conformity with the amended Constitution. They were given one year’s time for making necessary changes in their respective State laws in the light of these amendments. If I understand this correct 73rd Amendment the centre forced lo Let us now examine the changes brought about by the government reforms on 73rd amendment in Panchayati Raj institutions. States. This is funny: you ad decentralisation through Three Tier Structure centralised process! All States now have a uniform three tier Panchayati Raj structure. At the base is the ‘Gram Panchayat‘. A Gram Panchayat covers a village or group of villages. The intermediary level is the Mandal (also referred to as Block or Taluka). These bodies are called Mandal or Taluka Panchayats. The intermediary level body need not be constituted in smaller States. At the apex is the Zilla Panchayat covering the entire rural area of the District. The amendment also made a provision for the mandatory creation of the Gram Sabha. The Gram Sabha would comprise all the adult members registered as voters in the Panchayat area. Its role and functions are decided by State legislation. Elections All the three levels of Panchayati Raj Does a Gram sabha mean the institutions are elected directly by the people. democratic forum of the entire The term of each Panchayat body is five years. | his correct rced lo rms on ny: you ad through ! |  |
-|  |  |  |
-
-table ends
-
-Chapter 8: Local Governments
-or PRIs) and the 74th amendment made the provisions relating to
-urban local government (Nagarpalikas).  The 73rd and 74th
-
+passed by the Parliament.   The 73rd and 74th
 fresh elections must be held within six months of such
 dissolution. This is an important provision that ensures
 the existence of elected local bodies. Before the 73rd
@@ -293,6 +235,8 @@ means that a seat may be reserved simultaneously for a
 woman candidate and one belonging to the Scheduled
 Castes or Scheduled Tribes. Thus, a Sarpanch would have
 to be a Dalit woman or an Adivasi woman.
+
+
 Transfer of Subjects
 Twenty-nine subjects, which were earlier in the State list
 of subjects, are identified and listed in the Eleventh
@@ -311,46 +255,7 @@ could not be passed. How come
 women’s reservations in local
 bodies were accepted so easily?
 
-table starts| matters listed in the Eleventh Schedul
-Some subjects listed in the eleventh schedule
-1. Agriculture, …
-3. Minor irrigation, water management and
-watershed development.
-….
-8. Small scale industries, including food
-processing industries.
-…..
-10. Rural housing.
-11. Drinking water.
-.....
-13. Roads, culverts,….
-14. Rural electrification,….
-.....
-16. Poverty alleviation programme.
-17. Education, including primary and
-secondary schools.
-18. Technical training and vocational
-education.
-19. Adult and non-formal education.
-20. Libraries.
-21. Cultural activities.
-22. Markets and fairs.
-23. Health and sanitation, including hospitals,
-primary health centres and dispensaries.
-24. Family welfare.
-25. Women and child development.
-26. Social welfare, …
-27. Welfare of the weaker sections, and in
-particular, of the Scheduled Castes and the | e.
-Why are subjects only fr
-State list to be transferred? W |  |
-| --- | --- | --- |
-|  |  | s only fr sferred? W |
-| Scheduled Tribes. 28. Public distribution system. ...… | can’t we transfer s from the Union L |  |
 
-table ends
-
-Chapter 8: Local Governments
 
 The provisions of the 73rd amendment were not made
 applicable to the areas inhabited by the Adivasi
@@ -391,13 +296,10 @@ urban local governments on the other. This innovation
 ensures that allocation of funds to the rural local
 governments will not be a political matter.
 State governments themselves
-are poor. In the last chapter we
-read that they ask for money
-from  the Central government.
-How can they give money to
-the local government?
+are poor. 
 
-table starts| 74th Amendment
+
+74th Amendment
 As we mentioned earlier, the 74th amendment dealt with
 urban local bodies or Nagarpalikas.
 What is an urban area? It is very easy to identify a big
@@ -420,38 +322,8 @@ to Nagarpalikas. The Constitution also mandated the
 transfer of a list of functions from the State government to
 the urban local bodies. These functions have been listed
 in the Twelfth Schedule of the Constitution.
-I 73RD 74TH A
-MPLEMENTATION OF AND MENDMENTS
-All States have now passed a legislation to implement the
-provisions of the 73rd and 74th amendments. During the
-ten years since these amendments came into force (1994- |  |  |
-| --- | --- | --- |
-|  | these urb o someth for the sl east prov | an ing um ide |
-|  |  |  |
-
-table ends
-
-Chapter 8: Local Governments
-Activity
-±
-Identify some of the powers that
-your State government has
-delegated to panchayats.
-
-table starts|  | R
-EAD AN IMAGE | Today there are more
-than 600 Zilla Panchayats,
-about 6,000 block or
-intermediary Panchayats, and
-2,40,000 Gram Panchayats in |
-| --- | --- | --- |
-| rural India and over 100 city Corporations, 1400 town Municipalities and over 2000 Nagar Panchayats in urban India. More than 32 lakh members are elected to these bodies every five years. Of these, at least 13 lakhs are women. In the State Assemblies and Parliament put together we have less than 5000 elected representatives. With local bodies, the number of elected representatives has increased significantly. This flag is a symbol of the expectations of The 73rd and 74th the people about local governments. People amendments have created don’t want only formal laws. They want uniformity in the structures of genuine implementation of those laws. Write Panchayati Raj and briefly what you think about this slogan — Nagarpalika institutions We are the government here in the village! across the country. The presence of these local institutions is by itself a significant achievement and would create an atmosphere and platform for people’s participation in government. The provision for reservation for women at the Panchayats and Nagarpalikas has ensured the presence of a significant number of women in local bodies. As this reservation is also applicable for the positions of Sarpanch and Adhyaksha, a large number of women 188 elected representatives have come to occupy these positions. There |  |  |
-|  | This flag is a symbol of the expectations of the people about local governments. People don’t want only formal laws. They want genuine implementation of those laws. Write briefly what you think about this slogan — We are the government here in the village! |  |
-
-table ends
 
 
-Chapter 8: Local Governments
 
 We also have more than 30 women Mayors in Corporations, over
 500 women Adhyakshas of Town Municipalities and nearly 650 Nagar
@@ -469,21 +341,7 @@ provision to reserve seats for Backward Castes. As the Indian
 population has 16.2 per cent Scheduled Castes and 8.2 per cent
 Scheduled Tribes, about 6.6 lakh elected members in the urban
 and local bodies hail from these two communities. This has
-READ AN IMAGE
-Look at this photograph. The local Sarkar is sitting out in the
-sun. Is there any other feature that strikes you?
 
-table starts| tensions. The dominant social groups which controlled
-the village earlier do not wish to give up their power. This | d but it is
-this what
-ween theory |  |
-| --- | --- | --- |
-| leads to intensification of struggle for power. But tension and struggle is not always bad. Whenever there is an attempt to make democracy more meaningful and give power to those who did not enjoy it earlier, there is bound to be some conflict and tension in society. The Constitutional amendments assigned as many as 29 subjects to the local governments. All these subjects are related to functions linked to local welfare and So, the law is good but it development needs. The experience with the functioning mostly on paper. Is this wha of local government in the past decade has shown that they call the gap between theor local governments in India enjoy limited autonomy to and practice? perform the functions assigned to them. Many States have not transferred most of the subjects to the local bodies. This means that the local bodies cannot really function in an effective manner. Therefore, the entire exercise of electing so many representatives becomes somewhat symbolic. Some people criticise the formation of the local bodies because this has not changed the way in which decisions are taken at the central and the State level. People at the local level do not enjoy much powers of choosing welfare programmes or allocation of resources. Bolivia is frequently cited as one of the most successful cases of democratic decentralisation in Latin America. In 1994, the Popular Participation Law decentralised power to the local level, allowing for the popular election of mayors, dividing the country into municipalities, and crafting a system of automatic fiscal transfers to the new municipalities. Bolivia is divided into 314 municipal governments. These governments in Bolivia are headed by popularly-elected mayors (presidente municipal) and | d but it this wha ween theor |  |
-|  |  |  |
-
-table ends
-
-Chapter 8: Local Governments
 
 Local bodies have very little funds of their own. The dependence of
 local bodies on the State and central governments for financial
@@ -514,5 +372,3 @@ While these municipalities may levy taxes on motor vehicles,
 urban property, and large agricultural properties, fiscal
 transfers provide the bulk of the operating budget for these
 units.
-
-Chapter 8: Local Governments

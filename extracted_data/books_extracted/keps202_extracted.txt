@@ -1,8 +1,5 @@
-26
-Chapter Two
 RIGHTS IN THE INDIAN
 CONSTITUTION
-INTRODUCTION
 A constitution is not only about the composition of the various organs of
 government and the relations among them. As we studied in the last chapter,
 the constitution is a document that sets limits on the powers of the government
@@ -60,7 +57,6 @@ contractor were engineers?
 Would their rights have been
 violated?
 
-table starts|  | exploitation ensured justice to these workers.
 Bill of Rights
 Both these examples show the importance of having rights
 and of the actual implementation of these rights. A
@@ -82,26 +78,8 @@ bound to protect the rights of the individual. On the other
 hand, the organs of the government (the legislature,
 executive, bureaucracy or even the judiciary), in the course
 of their functioning, may violate the rights of the person.
-I get it! The bill of rights is like
-F R I
-UNDAMENTAL IGHTS IN THE NDIAN
-a warrantee card that we get
-C
-ONSTITUTION
-when we purchase a TV or a
-During our freedom struggle, the leaders of the freedom
-fan. Isn’t it?
-movement had realised the importance of rights and
-demanded that the British rulers should respect rights of
-the people. The Motilal Nehru committee had demanded
-28
-a bill of rights as far back as in 1928. It was therefore, |
-| --- | --- |
 
-table ends
-
-
-Chapter 2: Rights in the Indian Constitution
+Rights in the Indian Constitution
 Bill of rights in the South African
 Constitution
 The South African Constitution was
@@ -189,12 +167,13 @@ in this chapter, judiciary has the
 powers and responsibility to
 protect the fundamental rights
 from violations by actions of the
-
 government. Executive as well as legislative actions can be declared
 illegal by the judiciary if these violate the fundamental rights or
 restrict them in an unreasonable manner. However, fundamental
 rights are not absolute or unlimited rights. Government can put
 reasonable restrictions on the exercise of our fundamental rights.
+
+
 RIGHT TO EQUALITY
 Consider the following two situations. These are imaginary situations.
 But similar things do happen and can happen. Do you think they
@@ -222,21 +201,21 @@ Available in South Africa but not in India
 Clearly granted in South Africa but implicit in the
 Indian Constitution
 
-Chapter 2: Rights in the Indian Constitution
-Right to Equality
-√Equality before law
+
+Equality before law
 – equal protection of laws
-√Prohibition of discrimination on
+Prohibition of discrimination on
 grounds of religion, race, caste, sex or
 place of birth
 – equal access to shops, hotels, wells,
 tanks, bathing ghats, roads etc.
-√Equality of opportunity in public
+
+Equality of opportunity in public
 employment
-√Abolition of Untouchability
-√Abolition of titles
+Abolition of Untouchability
+Abolition of titles
 Right to Freedom
-√Protection of Right to
+Protection of Right to
 – freedom of speech and expression;
 – assemble peacefully;
 – form associations/unions;
@@ -247,32 +226,32 @@ of India;
 on any occupation, trade or business.
 √Protection in respect of conviction for
 offences
-√Right to life and personal liberty
-√Right to education
-√Protection against arrest and detention
+Right to life and personal liberty
+Right to education
+Protection against arrest and detention
 in certain cases
 Right against Exploitation
-√Prohibition of traffic in human beings
+Prohibition of traffic in human beings
 and forced labour
-√Prohibition of employment of children
+Prohibition of employment of children
 in hazardous jobs
 Right to Freedom of Religion
-√Freedom of conscience and free
+Freedom of conscience and free
 profession, practice and propagation of
 religion
-√Freedom to manage religious affairs
-√Freedom to pay taxes for promotion of
+Freedom to manage religious affairs
+Freedom to pay taxes for promotion of
 any particular religion
-√Freedom to attend religious instruction
+Freedom to attend religious instruction
 or worship in certain educational
 institutions
 Cultural and Educational Rights
-√Protection of language, culture of
+Protection of language, culture of
 minorities
-√Right of minorities to establish
+Right of minorities to establish
 educational institutions
 Right to Constitutional Remedies
-√Right to move the courts to issue
+Right to move the courts to issue
 directions/orders/writs for enforcement
 of rights
 
@@ -313,7 +292,7 @@ Do such things really happen in
 our country? Or are these purely
 imaginary?
 
-table starts| improving the conditions of certain sections of society: children,
+Improving the conditions of certain sections of society: children,
 women, and the socially and educationally backward classes. You
 may have heard about ‘reservations’ in jobs, and in admissions. You
 would have wondered why there are reservations if we follow the
@@ -321,37 +300,13 @@ principle of equality. In fact Article 16(4) of the constitution explicitly
 clarifies that a policy like reservation will not be seen as a violation of
 right to equality. If you see the spirit of the Constitution, this is
 required for the fulfilment of the right to equality of opportunity.
-Y J
-OU ARE THE UDGE
-You have received a postcard from
-Hadibandhu, who identifies himself as a
-“member of the dalit community” in Puri
-district in Odisha. Men from this community
-refused to follow a custom that required
-them to wash the feet of the groom and
-guests of the ‘upper caste’ during marriage
-ceremonies. In revenge, four women from
-this community were beaten up and
-another was paraded naked. The postcard
-writer says “Our children are educated and
-they are not willing to do the customary job of washing the feet of
-upper caste men, clear the left-overs after the marriage feast and
-wash the utensils.”
-Assuming that the facts given above are correct, you have to decide:
-Does this case involve violation of Fundamental Rights?
-What would you order the government to do in this case? |  |  |
-| --- | --- | --- |
-|  | Y J OU ARE THE UDGE You have received a postcard from Hadibandhu, who identifies himself as a “member of the dalit community” in Puri district in Odisha. Men from this community refused to follow a custom that required them to wash the feet of the groom and guests of the ‘upper caste’ during marriage ceremonies. In revenge, four women from this community were beaten up and another was paraded naked. The postcard writer says “Our children are educated and they are not willing to do the customary job of washing the feet of upper caste men, clear the left-overs after the marriage feast and wash the utensils.” Assuming that the facts given above are correct, you have to decide: Does this case involve violation of Fundamental Rights? What would you order the government to do in this case? |  |
-|  |  |  |
-
-table ends
-
-Chapter 2: Rights in the Indian Constitution
 
 Does it mean that in some cases
 someone’s life can be taken away
 by law? That sounds strange.
 Can you think of an example?
+
+
 RIGHT TO FREEDOM
 Equality and freedom or liberty, are the two rights that
 are most essential to a democracy. It is not possible to
@@ -385,7 +340,6 @@ liberty—No person shall be deprived of his
 life or personal liberty except according
 to procedure established by law.
 
-Chapter 2: Rights in the Indian Constitution
 has ruled that this right also includes right to live with human dignity,
 free from exploitation. The court has held that right to shelter and
 livelihood is also included in the right to life because no person can
@@ -422,7 +376,7 @@ assembly of five or more persons as unlawful. Such powers can be
 easily misused by the administration. The genuine protest against
 an act or policy of government by the people may be denied
 
-table starts|  | “I feel that many of these fundamental
+“I feel that many of these fundamental
 rights have been framed from the point of
 view of a police constable… you will find that
 very minimum rights have been conceded
@@ -434,8 +388,8 @@ completely,...
 fundamental rights?...We want to
 incorporate every one of those rights which
 our people want to get.”
-Somnath Lahiri
-CAD, Vol. III, p. 404, 29 April 1947
+
+
 Rights of accused
 Our Constitution ensures that persons accused of various offences
 would also get sufficient protection. We often tend to believe that
@@ -445,13 +399,9 @@ also necessary that a person accused of any crime should get adequate
 opportunity to defend herself or himself. To ensure a fair trial in courts,
 the Constitution has provided three rights:
 ± no person would be punished for the same offence more than
-once,
-36 ± no law shall declare any action as illegal from a backdate, |
-| --- | --- |
+once
 
-table ends
-
-permission. However, if the people are aware and vigilant in regard
+However, if the people are aware and vigilant in regard
 to their rights and choose to protest against such acts of
 administration such misuse becomes rare.  In the Constituent
 Assembly itself, some members had expressed their dissatisfaction
@@ -460,7 +410,15 @@ about restrictions on rights.
 no person shall be asked to give evidence against himself or
 herself.
 
-table starts| communal riots in the city.
+RIGHT AGAINST EXPLOITATION
+In our country there are millions of
+people who are underprivileged and
+deprived. They may be subjected to
+exploitation by their fellow human beings. One such form of exploitation in our country has been forced labour without payment.
+Another closely related form of exploitation is buying and selling of human beings and using them as slaves. 
+Both of these are prohibited under the Constitution. Forced labour was imposed by landlords, moneylenders and other wealthy persons in the past.
+
+Communal riots in the city.
 b. Dalits are denied entry in a temple. A march is being
 organised to forcibly enter the temple.
 c. Hundreds of Adivasis blocked the road demanding
@@ -469,19 +427,6 @@ be returned.
 d. A caste panchayat is meeting to decide the
 punishment to a young couple for marrying outside
 their caste.
-R E
-IGHT AGAINST XPLOITATION
-In our country there are millions of
-people who are underprivileged and
-deprived. They may be subjected to
-exploitation by their fellow human |  |  |  |  |
-| --- | --- | --- | --- | --- |
-|  |  |  |  |  |
-| beings. One such form of exploitation in our country has been |  |  |  |  |
-| begar or forced labour without payment. Another closely related form of exploitation is buying and selling of human beings and using them as slaves. Both of these are prohibited under the Constitution. Forced labour was imposed by landlords, moneylenders and other wealthy persons in the past. Some form of bonded labour still continues in the country, specially |  |  |  |  |
-|  | Name the fundamental rig violation is depicted | hts whose in this |  |  |
-
-table ends
 
 Chapter 2: Rights in the Indian Constitution
 
@@ -490,6 +435,7 @@ age of 14 years in dangerous jobs like factories and mines. With
 child labour being made illegal and right to education becoming a
 fundamental right for children, this right against exploitation has
 become more meaningful.
+
 RIGHT TO FREEDOM OF RELIGION
 According to our Constitution, everyone enjoys the right to follow
 the religion of his or her choice.  This freedom is considered as a
@@ -522,8 +468,6 @@ religion.
 Freedom of religion becomes a matter of political controversy for
 yet another reason. The Constitution has guaranteed the right
 to propagate one’s religion. This includes persuading people to
-
-Chapter 2: Rights in the Indian Constitution
 convert from one religion to another. However, some people resent
 conversions on the ground that these are based on intimidation or
 inducement. The Constitution does not allow forcible conversions. It
@@ -542,13 +486,8 @@ employment. The institutions run by the state will not preach any
 religion or give religious education nor will they favour persons of
 any religion. The objective of these provisions is to sustain and
 nurture the principle of secularism.
-Activity
-Make a list of public religious activities that take
-place in your village or city.
-Which of these involve an exercise of right to religious
-freedom?
-Discuss what could have happened if this right was
-not available to people in your locality.
+
+
 CULTURAL AND EDUCATIONAL RIGHTS
 When we talk of the Indian society, the image of diversity comes before
 our minds. India is not made up of a monolithic society. We are a
@@ -559,7 +498,6 @@ the culture of the majority?
 Our Constitution believes that diversity is our strength. Therefore,
 one of the fundamental rights is the right of the minorities to
 maintain their culture. This minority status is not dependent only
-
 upon religion. Linguistic and cultural minorities are also included
 in this provision. Minorities are groups that have common language
 or religion and in a particular part of the country or in the country
@@ -572,6 +510,8 @@ their own culture. The government will not, while granting aid to
 educational institutions, discriminate against any educational
 institution on the basis that it is under the management of minority
 community.
+
+
 RIGHT TO CONSTITUTIONAL REMEDIES
 One would agree that our Constitution contains a very impressive
 list of Fundamental Rights. But merely writing down a list of rights
@@ -591,10 +531,8 @@ their fears. All demands for safeguards
 the minorities have in their minds, ...as
 regards their language, their script and
 also about the services.”
-Sardar Hukam Singh
-CAD, VIII, p. 322, 26 May 1949
 
-Chapter 2: Rights in the Indian Constitution
+
 Right to constitutional remedies is the means through
 which this is to be achieved. Dr. Ambedkar considered
 the right to constitutional remedies as ‘heart and soul of
@@ -633,20 +571,12 @@ matter pending before it to the higher authority or
 court.
 Apart from the judiciary, many other mechanisms
 have been created in later years for the protection of
-rights. You may have heard about the National
-Commission on Minorities, the National Commission on
-Women, the National Commission on Scheduled Castes,
-I am in minority in my locality
-but majority in the town,
-minority if you look at my
-language but majority if you go
-by my religion… Aren’t we all
-minorities?
-
-etc. These institutions protect the rights of women, minorities or
+rights. These institutions protect the rights of women, minorities or
 Dalits. Besides, the National Human Rights Commission has also
 been established by law to protect the fundamental and other kinds
 of rights.
+
+
 National Human Rights Commission (NHRC)
 The real test of the rights given by any constitution is in
 their actual implementation. The poor, illiterate and the
@@ -679,9 +609,8 @@ The Commission does not have the power of
 prosecution. It can merely make recommendations to the
 government or recommend to the courts to initiate
 proceedings based on the inquiry that it conducts.
-For more details, visit http://www.nhrc.nic.in
 
-Chapter 2: Rights in the Indian Constitution
+
 DIRECTIVE PRINCIPLES OF STATE POLICY
 The makers of our Constitution knew that independent India was
 going to face many challenges. Foremost among these was the
@@ -724,7 +653,7 @@ Directive Principles include the right to education, formation of
 panchayati raj institutions all over the country, partial right to work
 under employment guarantee programme and the mid-day meal
 scheme etc.
-Check your progress
+
 It is estimated that there are about three million urban homeless
 in India. Night shelters are not available for more than five per
 cent of this population. Hundreds of these old, sick homeless
@@ -760,13 +689,7 @@ conditional upon fulfilment of duties. In this sense, the
 inclusion of fundamental duties has not changed the
 status of our fundamental rights.
 
-table starts|  | D
-I |
-| --- | --- |
 
-table ends
-
-Chapter 2: Rights in the Indian Constitution
 RELATIONSHIP BETWEEN FUNDAMENTAL RIGHTS AND
 DIRECTIVE PRINCIPLES
 It is possible to see both Fundamental Rights and Directive Principles
@@ -842,7 +765,7 @@ legal right under article 300 A.
 What difference, do you think, this change of status makes
 to the right to property?
 
-Chapter 2: Rights in the Indian Constitution
+
 This generated another complicated debate. This related to the
 amendment of the Constitution. The government was saying that
 Parliament can amend any part of the Constitution. The court was
@@ -876,5 +799,3 @@ Why did the South African Constitution put these in the
 Bill of Rights?
 If you were writing the constitution for a new country,
 what would you suggest?
-
-Chapter 2: Rights in the Indian Constitution

@@ -1,20 +1,6 @@
-196
-Chapter Nine
-CONSTITUTION AS A
-LIVING DOCUMENT
-INTRODUCTION
-In this chapter, you will see how the Constitution has worked in the last
-69 years and how India has managed to be governed by the same Constitution.
-After studying this chapter you will find out that:
-± the Indian Constitution can be amended according to the needs of the time;
-± though many such amendments have already taken place, the Constitution
-has remained intact and its basic premises have not changed;
-± the judiciary has played an important role in protecting the Constitution and
-also in interpreting the Constitution; and
-± the Constitution is a document that keeps evolving and responding to changing
-situations.
+CONSTITUTION AS A LIVING DOCUMENT
 
-table starts| upheavals. The Soviet Union had four
+The Soviet Union had four
 underwent continuous
 constitutions in its life of 74 years (1918, experimentation about a
 1924, 1936 and 1977). In 1991, the rule constitution: The post-
@@ -53,15 +39,9 @@ framework of the Constitution is very
 much suited to our country. It is also true
 that the Constitution makers were very
 farsighted and provided for many
-solutions for future situations. But no
-constitution can provide for all It seems to me th |  |  |
-| --- | --- | --- |
-|  | e th |  |
-| eventualities. No document can be such constitutional change that it needs no change. closely linked to p developments. |  |  |
+solutions for future situations. 
 
-table ends
 
-Chapter 9: Constitution as a Living Document
 
 Then how does the same Constitution continue to
 serve the country? One of the answers to such questions
@@ -85,6 +65,8 @@ to respond to the challenges that may arise in the future.
 In this sense, the constitution will always have something
 that is contemporary and something that has a more
 durable importance.
+
+
 At the same time, a constitution is not a frozen and
 unalterable document. It is a document made by human
 beings and may need revisions, changes and re-
@@ -101,14 +83,10 @@ just like any other ordinary law?
 The makers of the Indian Constitution were aware of
 this problem and sought to strike a balance. They placed
 the Constitution above ordinary law and expected that
-I know that the Constitution of
-the US came into existence more
-than 200 years ago and so far it
-has been amended only 27 times!
-Isn’t that very interesting?
 
-Chapter 9: Constitution as a Living Document
-the future generations will respect this document. At the same time,
+
+
+At the same time,
 they recognised that in the future, this document may require
 modifications. Even at the time of writing the Constitution, they were
 aware that on many matters there were differences of opinion.
@@ -139,6 +117,8 @@ of the country. It can never be changed.
 The  Constitution is a sacred document.
 Therefore any talk of changing it is against
 democracy.
+
+
 HOW TO AMEND THE CONSTITUTION?
 Article 368:
 …Parliament may in exercise of
@@ -199,60 +179,20 @@ Legislatures of half
 the states: article
 368
 
-table starts| of the Constitution are very flexible. Read carefully the
-following text of some articles of the Constitution. In both
-these articles, the wording ‘by law’ indicates that these
-articles can be modified by the Parliament without
-recourse to the procedure laid down in Article 368. Many
-other articles of the Constitution can be modified by the
-Parliament in this simple manner.
-Article 2: Parliament
-may by law admit into
-the union …..new
-states….
-Article 3: Parliament
-may by law… b) increase
-the area of any state….
-For amending the remaining parts of the Constitution,
-provision has been made in Article 368 of the Constitution.
-In this article, there are two methods of amending the
-Constitution and they apply to two different sets of articles
-of the Constitution. One method is that amendment can
-be made by special majority of the two houses of the
-Parliament. The other method is more difficult: it requires
-special majority of the Parliament and consent of half of
-the State legislatures. Note that all amendments to the
-What happens if some St
-Constitution are initiated only in the Parliament. Besides
-want an amendment
-the special majority in the Parliament no outside agency—
-the Constitution? Can’t t
-—like a constitution commission or a separate body—is
-propose an amendment? I t
-required for amending the Constitution.
-this is another example |  |  |
-| --- | --- | --- |
-|  | some St ndment Can’t t ent? I t example |  |
-| Similarly, after the passage in the Parliament and in favouring the centr some cases, in State legislatures, no referendum is States! required for ratification of the amendment. An amendment |  |  |
 
-table ends
 
-Chapter 9: Constitution as a Living Document
-
-bill, like all other bills, goes to the President for his assent, but in this
-case, the President has no powers to send it back for reconsideration.
-These details show how rigid and complicated the amending process
-could have been. Our Constitution avoids these complications. This
+Our Constitution avoids these complications. This
 makes the amendment procedure relatively simple. But more
 importantly, this process underlines an important principle: only
 elected representatives of the people are empowered to consider and
 take final decisions on the question of amendments. Thus, sovereignty
 of elected representatives (parliamentary sovereignty) is the basis of
 the amendment procedure.
+
+
 Special Majority
 In the chapters on Election, Executive and Judiciary, we have come
-across provisions that require ‘special majority’. Let us repeat again
-what special majority means. Ordinarily, all business of the legislature
+across provisions that require ‘special majority’. Ordinarily, all business of the legislature
 requires that a motion or resolution or bill should get the support of
 a simple majority of the members voting at that time. Suppose that
 at the time of voting on a bill, 247 members were present in the
@@ -275,16 +215,7 @@ support of 273 out of them. But imagine that 400 members of Lok
 Sabha have voted on an amendment bill. How many members should
 support the bill to get the bill passed?
 In addition to this, both the Houses must pass the amendment
-bill (with special majorities) separately. This means that unless there
-
-table starts| case of constitution of US, it is two-thirds
-majority, while in South Africa and Russia, for
-some amendments, three-fourths majority is
-required.
-± The other principle that is popular among many
-modern constitutions is that of people’s
-participation in the process of amending the
-constitution. In Switzerland, people can even
+bill (with special majorities) separately. In Switzerland, people can even
 initiate an amendment. Other examples of
 countries where people initiate or approve
 amendment to the constitution are Russia and
@@ -303,20 +234,10 @@ dissatisfaction with the Constitution cannot be
 deemed to be shared by the general public.”
 Note that Dr. Ambedkar is talking here not only
 of parliamentary majority. He refers to ‘sharing
-(of the views) by the general public’. This
-indicates that behind the majority there is the
-principle of public opinion that governs decision- |  |  |
-| --- | --- | --- |
-|  | s business forces you ations all maths? | of to the |
-|  |  |  |
+(of the views) by the general public’.
 
-table ends
 
-Chapter 9: Constitution as a Living Document
-Dr. Ambedkar, CAD, Vol. XI, p. 976, 25 November 1949
 
-that it should be based on broad support among the political parties
-and parliamentarians.
 Ratification by States
 For some articles of the Constitution, special majority is not
 sufficient. When an amendment aims to modify an article related to
@@ -342,80 +263,9 @@ The founding fathers took care that Constitution would not be open
 to easy tampering. And yet, future generations were given the right
 to amend and modify according to the needs and requirements of
 the time.
-Check your progress
-For making the following amendments to the
-Constitution of India, what conditions need to
-be fulfilled?  Place a tick mark in the chart
-wherever applicable.
 
-Chapter 9: Constitution as a Living Document
-WHY
-HY
-HY
-HY
-HY 
-H
- 
-H
- 
-H
- 
-H
- 
-HAVE
-VE
-VE
-VE
-VE 
-T
- 
-T
- 
-T
- 
-T
- 
-THERE
-HERE
-HERE
-HERE
-HERE 
-B
- 
-B
- 
-B
- 
-B
- 
-BEEN
-EEN
-EEN
-EEN
-EEN 
-SO
-SO
-SO
-SO
-SO 
-M
- 
-M
- 
-M
- 
-M
- 
-MANY
-ANY
-ANY
-ANY
-ANY
-AMENDMENTS
-MENDMENTS
-MENDMENTS
-MENDMENTS
-MENDMENTS?
+
+
 On 26 January 2024, the Constitution of India completed
 74 years of its existence. In these years, it has been
 amended 106 times. Given the relatively difficult method
@@ -452,34 +302,9 @@ boundaries
 Provision regarding
 Election Commission
 
-table starts| majority in most State Assemblies). On the other hand,
-the period between 2001 and 2003 was a period marked by
-coalition politics. It was also a period when different parties
-were in power in different States. The bitter rivalry between
-the BJP and its opponents is another feature of this period. And
-yet, this period saw as many as ten amendments in just three
-years. So, the incidence of amendments is not dependent
-merely on the nature of majority of the ruling party alone.
-Graph 1
-Amendments per
-decade
-206 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| Graph 2 Years taken for every ten amendments |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-
-table ends
 
 
-table starts| suggest that amendments are not only due to political
-considerations. Barring the first decade after the
+Barring the first decade after the
 commencement of the Constitution, every decade has
 witnessed a steady stream of amendments. This means
 that irrespective of the nature of politics and the party in
@@ -505,15 +330,9 @@ castes and scheduled tribes. The original provision said
 that these reservations were for a period of ten years.
 However, in order to ensure fair representation of these
 sections, it was necessary to extend this period by ten
-years. Thus, after every ten years an amendment is made Yes, I think we should be look
-to extend the period by another ten years. This has led to at the changes rather than |  |  |
-| --- | --- | --- |
-|  | ld be look her than |  |
-| six amendments so far. But these amendments have not number of amendm what we should made any difference to the original provision. In this sense, students of politics. it is only a technical amendment. |  |  |
+years.
 
-table ends
 
-Chapter 9: Constitution as a Living Document
 
 Do you remember the discussion in chapter four about
 the role of the President? In the original Constitution, it
@@ -549,17 +368,10 @@ the scope of Parliament’s power to amend the Constitution.
 In the period 1970-1975, the Parliament repeatedly made
 amendments to overcome the adverse interpretations by
 the judiciary.
-It may be kept in mind that during this period (1970-
-75) many political events were unfolding and thus this
-history of our constitutional development can be fully
-I am still confused. If there is
-a written constitution, where
-is the scope for different
-interpretations? Or do people
-read in the constitution what
-they want to be there?
 
-table starts| Thirdly, there is another large group of amendments that
+
+
+Thirdly, there is another large group of amendments that
 have been made as a result of the consensus among the
 political parties. We may say that this consensus made it
 necessary that some changes had to be made in order to
@@ -584,69 +396,8 @@ in the country about these measures and therefore,
 amendments regarding these measures were passed
 without much difficulty (77th, 81st, and 82nd
 amendments).
-Controversial Amendments
-Our discussion so far, should not create an impression
-that there has never been any controversy over amending
-the Constitution. In fact, amendments during the period |  |  |
-| --- | --- | --- |
-|  | do agree nd yet t meaning d on! | on hey of |
-|  |  |  |
 
-table ends
 
-Chapter 9: Constitution as a Living Document
-understood only in the context of the politics of that period.
-You will know more about these issues in the next year
-when you study the political history of independent India.
-
-table starts|  |  | in the background of internal emergency declared in the |
-| --- | --- | --- |
-| country from June 1975. They sought to make basic changes in many crucial parts of the Constitution. The 42nd amendment was particularly seen as a wide- ranging amendment affecting large parts of the Constitution. It was also an attempt to override the ruling of the Supreme Court given in the Kesavananda case. Even the duration of the Lok Sabha was extended from five to So, it is all about politics! six years. In the chapter on Rights, you have read about Didn’t I say that this entire Fundamental Duties. They were included in the thing about constitutions and Constitution by this amendment act. The 42nd amendment amendments is linked to also put restrictions on the review powers of the Judiciary. politics rather than law? It was said at that time that this amendment was practically a rewriting of many parts of the original Constitution. Do you know that this amendment made changes to the Preamble, to the seventh schedule of the Constitution and to 53 articles of the Constitution? Many MPs belonging to the opposition parties were in jail when this amendment was passed in Parliament. In this backdrop, elections were held in 1977 and the ruling party (Congress) was defeated. The new government thought it necessary to reconsider these controversial amendments and through the 43rd and 44th amendments, cancelled most of the changes that were effected by the 38th, 39th and the 42nd amendments. The constitutional balance was restored by these amendments. Activity Find out the amendments about the 210 right to education (RTE) and the | So, it is all Didn’t I say thing about amendmen politics rath |  |
-
-table ends
-
-as attempts by the ruling party to subvert the
-Constitution. In particular, the 38th, 39th and 42nd
-
-table starts| the Judiciary advanced this theory in the famous case of
-Kesavananda Bharati. This ruling has contributed to the
-evolution of the Constitution in the following ways:
-± It has set specific limits to Parliament’s power to amend
-the Constitution. It says that no amendment can violate
-the basic structure of the Constitution;
-± It allows Parliament to amend any and all parts of the
-Constitution (within this limitation); and
-± It places the Judiciary as the final authority in deciding
-if an amendment violates basic structure and what
-constitutes the basic structure.
-The Supreme Court gave the Kesavananda ruling in
-1973. In the past four decades, this decision has governed
-all interpretations of the Constitution and all institutions
-in the country have accepted the theory of basic structure.
-Ah! So it is the judicia
-In fact, the theory of basic structure is itself an example of
-that has the final word!
-a living constitution. There is no mention of this theory in
-this also judicial activis
-the Constitution. It has emerged from judicial
-interpretation. Thus, the Judiciary and its interpretation
-have practically amended the Constitution without a
-formal amendment.
-All living documents evolve in this manner through
-debates, arguments, competition and practical politics.
-Since 1973, the Court has, in many cases, elaborated
-upon this theory of basic structure and given instances
-of what constitutes the basic structure of the Constitution
-of India. In a sense, the basic structure doctrine has
-further consolidated the balance between rigidity and
-flexibility: by saying that certain parts cannot be amended, |  |  |
-| --- | --- | --- |
-|  | judicia l word! activis | ry Is m? |
-|  |  |  |
-
-table ends
-
-Chapter 9: Constitution as a Living Document
 
 There are many other examples of how judicial
 interpretation changed our understanding of the
@@ -687,7 +438,8 @@ consensus and now we see
 that Judges change the whole
 meaning of the Constitution.
 
-Chapter 9: Constitution as a Living Document
+
+
 CONSTITUTION AS A LIVING DOCUMENT
 We have described our Constitution as a living document. What does
 that mean?
@@ -727,32 +479,9 @@ The Kesavananda Bharati ruling has set clear
 limits on Parliament’s power to amend the
 Constitution.
 
-table starts|  |  | Judiciary. At the same time, there is the text of the |
-| --- | --- | --- |
-| Constitution and it has given powers to other organs of the government. Therefore, the supremacy of the Parliament has to operate within this framework. Democracy is not only about votes and people’s representation. It is also about the principle of rule of law. Democracy is also about developing institutions and I get it! It’s like a see-saw. Or working through these institutions. All the political is it a game of tug of war? institutions must be responsible to the people and maintain a balance with each other. Contribution of the Judiciary During the controversy between the Judiciary and the Parliament, the Parliament thought that it had the power and responsibility to make laws (and amendments) for furthering the interests of the poor, backward and the needy. The Judiciary insisted that all this has to take place within the framework provided by the Constitution and pro-people measures should not bypass legal procedures, because, once you bypass laws even with good intentions, that can give an excuse to the power holders to use their power arbitrarily. And democracy is as much about checks on arbitrary use of power as it is about the well-being of the people. The success of the working of the Indian Constitution lies in resolving these tensions. The Judiciary, in its famous Kesavananda ruling found a way out of the existing complications by turning to the spirit of the Constitution rather than its letter. If you read the Constitution, you will not find any mention of the ‘basic 214 structure’ of the Constitution. Nowhere does the | I get it! It’s l is it a game |  |
-
-table ends
 
 
-table starts| The Court came to the conclusion that in reading a text | ere are no
-ctions, the
-t make much
-e is no well
-and rights
-Is this how
-e ‘spirit’ of |  |
-| --- | --- | --- |
-| or document, we must respect the intent behind that document. A mere text of the law is less important than the social circumstances and aspirations that have produced that law or document. The Court was looking at the basic structure as something without which the Constitution cannot be imagined at all. This is an instance of trying to balance the letter and the spirit of the Constitution. Of course, if there are Maturity of the Political Leadership rights and no elections, Our discussion of the role of Judiciary, in the paragraph Constitution won’t make m above, brings out one more fact. In the background of the sense. And if there is no w fierce controversy that raged between 1967 and 1973, being, elections and rig Parliament and the Executive also realised that a balanced won’t make sense. Is this h and long term view was necessary. After the Supreme Court we understand the ‘spirit’ gave the ruling in the Kesavananda case some attempts our Constitution? were made to ask the Court to reconsider its ruling. When these failed, the 42nd amendment was made and parliamentary supremacy was asserted. But the Court again repeated its earlier stand in the Minerva Mills case (1980). Therefore, even four decades after the ruling in the Kesavananda case, this ruling has dominated our interpretation of the Constitution. Political parties, political leaders, the government, and Parliament, accepted the idea of inviolable basic structure. Even when there was talk about ‘review’ of the Constitution, that exercise could not cross the limits set by the theory of the basic structure. When the Constitution was made, leaders and people of our country shared a common vision of India. In Nehru’s famous speech at the time of independence, this Let us not ignore that th | ere are ctions, t make m e is no w and rig Is this h e ‘spirit’ |  |
-|  |  |  |
-|  | e that th |  |
-| vision was described as a tryst with destiny. In the are many ins political immatu Constituent Assembly also, all the leaders mentioned this Does one have t vision: dignity and freedom of the individual, social and |  |  |
-
-table ends
-
-Chapter 9: Constitution as a Living Document
-
-economic equality, well-being of all people, unity based on national
-integrity. This vision has not disappeared. People and leaders alike
+People and leaders alike
 hold to the vision and hope to realize it. Therefore, the Constitution,
 based on this vision, has remained an object of respect and authority
 even after half a century. The basic values governing our public
@@ -782,10 +511,3 @@ to the Indian situation:
 no manifest relation to the fundamental spirit of India.
 …this Constitution …would not prove suitable and would
 break down soon after being brought into operation.”
-Lakshminarayan Sahu, CAD, Vol. XI, p. 613, 17 November 1949
-
-Chapter 9: Constitution as a Living Document
-the welfare of the people. But in the last instance, the final
-authority lies with the people. People, their freedoms and their
-well-being constitute the purpose of democracy and also the
-outcome of democratic politics.

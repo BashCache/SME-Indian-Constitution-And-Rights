@@ -1,7 +1,4 @@
-100
-Chapter Five
 LEGISLATURE
-INTRODUCTION
 You have already studied the importance of elections and the method of election
 adopted in India. Legislatures are elected by the people and work on behalf of
 the people. In this chapter you would study how elected legislatures function
@@ -20,7 +17,8 @@ how the Parliament controls the executive; and
 ±
 how the Parliament regulates itself.
 
-Chapter 5: Legislature
+
+
 WHY DO WE NEED A PARLIAMENT?
 Legislature is not merely a law making body. Lawmaking is but one
 of the functions of the legislature. It is the centre of all democratic
@@ -100,7 +98,8 @@ Congress Members voiced protest against
 atrocities on Harijans in Andhra Pradesh (The
 Hindu, 3 March 1985)
 
-Chapter 5: Legislature
+
+
 States having a bicameral legislature are given below:
 (i)
 Andhra Pradesh
@@ -144,11 +143,9 @@ count but not its votes... ...,those
 who could not enter into the rough
 and tumble of active politics
 could...advise the Lower House.”
-Purnima Banerji
-CAD, Vol. IX, p. 33, 30 July 1949
 
-Chapter 5: Legislature
-population. This second method means
+
+This second method means
 that regions or parts having larger
 population 
 would 
@@ -240,8 +237,7 @@ regulations must be passed by
 it. It can also veto such
 legislation.
 
-complete their term and elections are held for those one
-third seats only. Thus, the Rajya Sabha is never fully
+Thus, the Rajya Sabha is never fully
 dissolved. Therefore, it is called the permanent House of
 the Parliament. The advantage of this arrangement is that
 even when the Lok Sabha is dissolved and elections are
@@ -257,6 +253,8 @@ Find out the number of representatives elected from
 different States. Prepare a chart showing number of
 representatives and the population of the State
 according to the 2011 census.
+
+
 Lok Sabha
 The Lok Sabha and the State Legislative Assemblies are
 directly elected by the people. For the purpose of election,
@@ -274,15 +272,8 @@ Sabha can be dissolved if no party or coalition can form
 the government or if the Prime Minister advises the
 President to dissolve the Lok Sabha and hold fresh
 elections.
-I don’t understand why there
-is a provision for nominating
-these sportspersons and artists
-and scientists. Whom do they
-represent? And, do they really
-contribute much to the
-proceedings of the Rajya Sabha?
 
-Chapter 5: Legislature
+
 WHAT DOES THE PARLIAMENT DO?
 What is the function of the legislature? Do both Houses of the
 Parliament have similar functions? Is there a difference in the powers
@@ -347,10 +338,7 @@ democratic decision making.
 The Parliament is the boss and the ministers are looking very
 humble here. That is the effect of the Parliament’s power to
 sanction money to different ministries.
-Shankar. Copyright: Children’s Book Trust.
-3 April 1955
 
-table starts| functions. It elects the President and Vice President of India.
 ± Judicial functions: The judicial functions of the Parliament
 include considering the proposals for removal of President,
 Vice-President and Judges of High Courts and Supreme Court.
@@ -386,24 +374,15 @@ Judges of Supreme Court
 and High Court.It can
 emergency.
 alone initiate the
-± Elects the President and Vice
-procedure for removal of
-President and removes
-Vice President.
-Judges of Supreme Court and
-High Court. ± Can give the Union |  |  |  |
-| --- | --- | --- | --- |
-|  | Powers of the Lok Sabha ± Makes Laws on matters included in Union List and Concurrent List. Can introduce and enact money and non money bills. ± Approves proposals for taxation, budgets and annual financial statements. ± Controls the executive by asking questions, supplementary questions, resolutions and motions and through no confidence motion. ± Amends the Constitution. ± Approves the Proclamation of emergency. ± Elects the President and Vice President and removes Judges of Supreme Court and High Court. | Powers of Rajya Sabha ± Considers and approves non money bills and suggests amendments to money bills. ± Approves constitutional amendments. ± Exercises control over executive by asking questions, introducing motions and resolutions. ± Participates in the election and removal of the President, Vice President, Judges of Supreme Court and High Court.It can alone initiate the procedure for removal of Vice President. ± Can give the Union |  |
-|  | ± Establishes committees and commissions and considers their reports. | parliament power to make laws on matters included in the State list. |  |
 
-table ends
 
-Chapter 5: Legislature
+
 ±
 Constituent Function: The Parliament has the power of discussing
 and enacting changes to the Constitution. The constituent powers
 of both the houses are similar. All constitutional amendments
 have to be approved by a special majority of both Houses.
+
 
 Special Powers of Rajya Sabha
 As you know, the Rajya Sabha is an institutional
@@ -445,11 +424,8 @@ So, the Lok Sabha controls the
 purse! Then it must be the more
 powerful House.
 
-Chapter 5: Legislature
-mentioned in the Constitution, while some have evolved from
-conventions. Follow a bill through the legislative process  and
-you will clearly see that the law making process is technical and
-even tedious.
+
+
 Peoples' inputs
 Committee
 gives
@@ -458,39 +434,8 @@ Bill Sent to
 Committee or
 discussed in
 the House itself.
-Bill
-House may
-or may not
-accept the
-report
-Introduction
-in either
-House in
-case of
-non-money
-bill
-Detailed
-discussion
-of bill in
-House
-Bill is accepted
-or rejected
-Sent to the
-Other House
-Other House
-approves or gives
-recommendations
-Joint Session of
-Parliament
-(if required)
-President
-approves or
-sends
-back for
-reconsideration
-Bill
-becomes
-Law
+
+
 
 A bill is a draft of the proposed law. There can be different types of
 bills. When a non-minister proposes a bill, it is called private member’s
@@ -517,7 +462,8 @@ Private Member’s
 Bill
 Money Bill
 
-table starts| Once the Cabinet approves the policy behind the legislation, the
+
+Once the Cabinet approves the policy behind the legislation, the
 task of drafting the legislation begins. The draft of any bill is prepared
 by the concerned ministry. For instance a bill raising the marriageable
 age of girls from 18 to 21 will be prepared by the law ministry. The
@@ -546,16 +492,8 @@ the Lok Sabha.
 If it is a money bill, the Rajya Sabha can either
 approve the bill or suggest changes but cannot reject
 it. If it takes no action within 14 days the bill is
-deemed to have been passed. Amendments to the |  |  |  |
-| --- | --- | --- | --- |
-|  |  |  |  |
-|  | R C EAD A ARTO | ON |  |
-|  |  |  |  |
-| bill, suggested by Rajya Sabha, may or may not be Is this how they fo accepted by the Lok Sabha. the ‘rules of the gam | Is this how they fo the ‘rules of the gam |  |  |
+deemed to have been passed.
 
-table ends
-
-Chapter 5: Legislature
 
 When a bill is passed by both Houses, it is sent to the President for
 his assent. The assent of the President results in the enactment of a
@@ -585,9 +523,10 @@ is active and vigilant, can it keep regular and effective check on the
 executive. There are many ways in which the Parliament can control
 the executive. But basic to them all is the power and freedom of the
 legislators as people’s representatives to work effectively and
-fearlessly. For instance, no action can be taken against a member for
+fearlessly. 
 
-table starts| members of the legislature to represent the people and
+
+Members of the legislature to represent the people and
 exercise effective control over the executive. How does the
 Parliament exercise such control? What are the means
 available at its disposal? Is parliamentary control
@@ -615,28 +554,10 @@ free to raise any matter that they think is important
 (though the ministers are not bound to reply),
 half-an-hour discussion on matters of public importance,
 adjournment motion, etc., are some instruments of
-exercising control. |  |  |
-| --- | --- | --- |
-|  |  |  |
-| Perhaps the question hour is the most effective method With so many sting o are MPs still free of keeping vigil on the executive and the administrative anything anywhere? agencies of the government. Members of Parliament have |  |  |
-
-table ends
-
-Chapter 5: Legislature
-
-table starts|  | shown great interest in question hour and maximum
-attendance is recorded during this time. Most of the
-questions aim at eliciting information from the government
-on issues of public interest such as, price rise, availability
-of food grains, atrocities on weaker sections of the society, |
-| --- | --- |
-| It must minister. examinat |  |
-
-table ends
+exercising control.
 
 
-Chapter 5: Legislature
-over the purse strings of the government. The legislature may refuse
+The legislature may refuse
 to grant resources to the government. This seldom happens because
 the government ordinarily enjoys support of the majority in the
 parliamentary system. Nevertheless, before granting money the Lok
@@ -667,27 +588,9 @@ and time spent on debates. Moreover, the Houses of the Parliament
 have been plagued by absence of quorum, boycott of sessions by
 members of opposition which deprive the house the power to control
 the executive through discussion.
-Activity
-Watch the Dooradarshan telecast of Parliament
-sessions for three continuous days. Or collect the
-newspaper reports for three continuous days and
-make a wallpaper. Take care to observe the issues
 
-table starts|  |  |
-| --- | --- |
-|  | R C EAD A ARTOON |
-| Walk adop oppo prot gover an o | out is a frequently ted measure by the sition to register their est against the nment. Has there been veruse of that weapon? |
-|  |  |
 
-table ends
-
-being discussed, the role of the speaker, questions
-being asked, the political parties of the
-representatives, representatives from your region,
-nature of the issues of discussion – whether they
-were all of national or regional in character.
-
-table starts| committees. The Parliament has merely approved the work
+The Parliament has merely approved the work
 done in the committees with few occasional alterations.
 Of course legally speaking, no bill can become law, and
 no budget will be sanctioned unless approved by the
@@ -697,42 +600,17 @@ suggestions made by the committees.
 legislature is such that
 there are restrictions
 only so far as procedure
-is concerned. But in
-substance there is no
-restriction, no limitation
-on the sovereignty of the
-legislature or
-Parliament…”
-N.V. Gadgil, CAD, Vol. XI, p.659, 18 November 1949
-H P R I ?
-OW DOES THE ARLIAMENT EGULATE TSELF
+is concerned.
+
+
 Parliament as mentioned earlier is a debating forum. It is
 through debates that the parliament performs all its vital
 functions. Such discussions must be meaningful and
 orderly so that the functions of the Parliament are carried
-out smoothly and its dignity is intact. The Constitution
-itself has made certain provisions to ensure smooth |  |  |
-| --- | --- | --- |
-|  |  |  |
-| conduct of business. The presiding officer of the legislature So, the lawmakers is the final authority in matters of regulating the business subject to some laws! of the legislature. |  |  |
-
-table ends
-
-Chapter 5: Legislature
-
-table starts| Irfan | R C
-EAD A ARTOON |
-| --- | --- |
-| “We are not walking out, we have been ordered out,” said the MPs. Why do you think such situations occur? There is one more way in which the presiding officers control the behaviour of the members. You may have heard about the anti-defection law. Most of the members of the legislatures are elected on the ticket of some political party. What would happen if they decide to leave the party after getting elected? For many years after independence, this issue was unresolved. Finally there was an agreement I don’t understand why they among the parties that a legislator who is elected on one change parties. Do they even party’s ticket must be restricted from ‘defecting’ to another come back to the party they once party. An amendment to the Constitution was made (52nd left? amendment act) in 1985. This is known as anti-defection amendment. It has also been subsequently modified by 120 the 91st amendment. The presiding officer of the House is |  |
-|  | “We are not walking out, we have been ordered out,” said the MPs. Why do you think such situations occur? |
-
-table ends
+out smoothly and its dignity is intact.
 
 
-Chapter 5: Legislature
-member loses the membership of the House. Besides, such a
-person is also disqualified from holding any political office like
-ministership, etc.
+
 What is defection? If a member remains absent in the House when
 asked by the party leadership to remain present or votes against the
 instructions of the party or voluntarily leaves the membership of the
