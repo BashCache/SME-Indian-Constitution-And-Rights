@@ -4,17 +4,26 @@ import os
 from dotenv import load_dotenv
 from pinecone import Pinecone, ServerlessSpec
 from sentence_transformers import SentenceTransformer
-from langchain_text_splitters import CharacterTextSplitter
+from langchain_text_splitters import CharacterTextSplitter, RecursiveCharacterTextSplitter
 import google.generativeai as genai
 from google.generativeai.types import GenerationConfig
 import time
-import json 
+import json
+import re
+from langchain_openai import OpenAIEmbeddings
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
 
 load_dotenv()
 
 if not os.getenv("PINECONE_API_KEY"):
     raise ValueError("PINECONE_API_KEY environment variable not set.")
 
+if not os.getenv("OPENAI_API_KEY"):
+    raise ValueError("OPENAI_API_KEY environment variable not set.")
+
+openai_api_key = os.getenv("OPENAI_API_KEY")
 pinecone_api_key = os.getenv("PINECONE_API_KEY")
 pc = Pinecone(api_key=pinecone_api_key)
 
@@ -128,17 +137,7 @@ def get_summary_and_label_metadata(text, system_prompt=SYSTEM_PROMPT, response_s
 
 PINECONE_BATCH_SIZE = 100  # Number of vectors to upsert in each batch
 
-def perform_character_split(chunk_size=1000, chunk_overlap=200):
-    text_splitter = CharacterTextSplitter(
-        chunk_size=chunk_size,
-        chunk_overlap=chunk_overlap,
-        separator='',
-        strip_whitespace=False
-    )
-    text_splitter
-
-
-def chunk_file_text(filepath, chunk_size=500, chunk_overlap=150):
+def chunk_file_text_by_character_splitting(filepath, chunk_size=500, chunk_overlap=150):
     """Reads a text file and chunks it using CharacterTextSplitter."""
     print(f"Reading and chunking file: {filepath}")
     try:
@@ -153,16 +152,194 @@ def chunk_file_text(filepath, chunk_size=500, chunk_overlap=150):
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
             length_function=len,
+            separators=["\n\n", "\n", ". ", "? ", "! ", ",", " ", ""],
             strip_whitespace=False
         )
-        chunks = text_splitter.split_text(text)
+        chunks = text_splitter.create_documents(text)
 
-        chunks = [chunk.strip() for chunk in chunks if chunk.strip()]
-        print(f"Created {len(chunks)} chunks.")
-        return chunks
+        docs = text_splitter.create_documents([text])
+        print(docs[0])
+        # Extract the text content from each Document object
+        # No need to strip again if strip_whitespace=True in splitter
+        cleaned_chunks = [doc.page_content for doc in docs if doc.page_content]
+        print(f"Created {len(cleaned_chunks)} chunks.")
+        return cleaned_chunks
     except Exception as e:
         print(f"*** ERROR reading/chunking file {os.path.basename(filepath)}: {e} ***")
         return []
+
+def chunk_file_text_by_recursive_character_splitting(filepath, chunk_size=500, chunk_overlap=150):
+    """Reads a text file and chunks it using RecursiveCharacterTextSplitter."""
+    print(f"Reading and chunking file: {filepath}")
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            text = f.read()
+
+        if not text.strip():
+            print("Skipping empty file content.")
+            return []
+
+        text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=chunk_size,
+            chunk_overlap=chunk_overlap,
+            strip_whitespace=False
+        )
+
+        docs = text_splitter.create_documents([text])
+        print(docs[0])
+        cleaned_chunks = [doc.page_content for doc in docs if doc.page_content] # Check if page_content is non-empty
+        print(f"Created {len(cleaned_chunks)} chunks.")
+        return cleaned_chunks
+    except Exception as e:
+        print(f"*** ERROR reading/chunking file {os.path.basename(filepath)}: {e} ***")
+        return []
+
+def combine_sentences(sentences, buffer_size=1):
+    for i in range(len(sentences)):
+
+        combined_sentence = ''
+
+        for j in range(i - buffer_size, i):
+            if j >= 0:
+                combined_sentence += sentences[j]['sentence'] + ' '
+
+        combined_sentence += sentences[i]['sentence']
+
+        for j in range(i + 1, i + 1 + buffer_size):
+            if j < len(sentences):
+                combined_sentence += ' ' + sentences[j]['sentence']
+
+        sentences[i]['combined_sentence'] = combined_sentence
+
+    return sentences
+
+def calculate_cosine_distances(sentences):
+    distances = []
+    for i in range(len(sentences) - 1):
+        embedding_current = sentences[i]['combined_sentence_embedding']
+        embedding_next = sentences[i + 1]['combined_sentence_embedding']
+        
+        similarity = cosine_similarity([embedding_current], [embedding_next])[0][0]
+        
+        distance = 1 - similarity
+        distances.append(distance)
+
+        sentences[i]['distance_to_next'] = distance
+
+    return distances, sentences
+
+def chunk_file_text_by_semantic_splitting(filepath, chunk_size=500, chunk_overlap=150):
+    print(f"Reading and chunking file: {filepath}")
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            text = f.read()
+
+        if not text.strip():
+            print("Skipping empty file content.")
+            return []
+        
+        # Splitting the essay on '.', '?', and '!'
+        single_sentences_list = re.split(r'(?<=[.?!])\s+', text)
+        print (f"{len(single_sentences_list)} senteneces were found")
+
+        sentences = [{'sentence': x, 'index' : i} for i, x in enumerate(single_sentences_list)]
+        print(sentences[0:3])  # Print first 3 sentences for verification
+
+        sentences = combine_sentences(sentences[0:5])
+        print(f"Combined sentences sample: {sentences[0]['combined_sentence']}")
+
+        # oaiembeds = OpenAIEmbeddings()
+        embeddings_model = OpenAIEmbeddings(openai_api_key=openai_api_key)
+        embeddings = embeddings_model.embed_documents([x['combined_sentence'] for x in sentences])
+
+        client = genai.Client()
+
+        embeddings = client.models.embed_content(
+        model="gemini-embedding-001",
+        content=[x['combined_sentence'] for x in sentences]
+        )
+
+        for i, sentence in enumerate(sentences):
+            sentence['combined_sentence_embedding'] = embeddings[i]
+
+        distances, sentences = calculate_cosine_distances(sentences)
+        print(f"Calculated {len(distances)} cosine distances between sentences.")
+
+        plt.plot(distances)
+
+        y_upper_bound = .2
+        plt.ylim(0, y_upper_bound)
+        plt.xlim(0, len(distances))
+
+        # We need to get the distance threshold that we'll consider an outlier
+        # We'll use numpy .percentile() for this
+        breakpoint_percentile_threshold = 95
+        breakpoint_distance_threshold = np.percentile(distances, breakpoint_percentile_threshold) # If you want more chunks, lower the percentile cutoff
+        plt.axhline(y=breakpoint_distance_threshold, color='r', linestyle='-');
+
+        # Then we'll see how many distances are actually above this one
+        num_distances_above_theshold = len([x for x in distances if x > breakpoint_distance_threshold]) # The amount of distances above your threshold
+        plt.text(x=(len(distances)*.01), y=y_upper_bound/50, s=f"{num_distances_above_theshold + 1} Chunks");
+
+        # Then we'll get the index of the distances that are above the threshold. This will tell us where we should split our text
+        indices_above_thresh = [i for i, x in enumerate(distances) if x > breakpoint_distance_threshold] # The indices of those breakpoints on your list
+
+        # Start of the shading and text
+        colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k']
+        for i, breakpoint_index in enumerate(indices_above_thresh):
+            start_index = 0 if i == 0 else indices_above_thresh[i - 1]
+            end_index = breakpoint_index if i < len(indices_above_thresh) - 1 else len(distances)
+
+            plt.axvspan(start_index, end_index, facecolor=colors[i % len(colors)], alpha=0.25)
+            plt.text(x=np.average([start_index, end_index]),
+                    y=breakpoint_distance_threshold + (y_upper_bound)/ 20,
+                    s=f"Chunk #{i}", horizontalalignment='center',
+                    rotation='vertical')
+
+        # # Additional step to shade from the last breakpoint to the end of the dataset
+        if indices_above_thresh:
+            last_breakpoint = indices_above_thresh[-1]
+            if last_breakpoint < len(distances):
+                plt.axvspan(last_breakpoint, len(distances), facecolor=colors[len(indices_above_thresh) % len(colors)], alpha=0.25)
+                plt.text(x=np.average([last_breakpoint, len(distances)]),
+                        y=breakpoint_distance_threshold + (y_upper_bound)/ 20,
+                        s=f"Chunk #{i+1}",
+                        rotation='vertical')
+
+        plt.title("NCERT Chapter 1 Chunks Based On Embedding Breakpoints")
+        plt.xlabel("Index of sentences in book (Sentence Position)")
+        plt.ylabel("Cosine distance between sequential sentences")
+        plt.show()
+
+        start_index = 0
+        chunks = []
+
+        # Iterate through the breakpoints to slice the sentences
+        for index in indices_above_thresh:
+            end_index = index
+            group = sentences[start_index:end_index + 1]
+            combined_text = ' '.join([d['sentence'] for d in group])
+            chunks.append(combined_text)
+            start_index = index + 1
+
+        if start_index < len(sentences):
+            combined_text = ' '.join([d['sentence'] for d in sentences[start_index:]])
+            chunks.append(combined_text)
+
+
+        for i, chunk in enumerate(chunks[:2]):
+            buffer = 200
+            
+            print (f"Chunk #{i}")
+            print (chunk[:buffer].strip())
+            print ("...")
+            print (chunk[-buffer:].strip())
+            print ("\n")
+        
+    except Exception as e:
+        print(f"*** ERROR reading/chunking file {os.path.basename(filepath)}: {e} ***")
+        return []
+
 
 def upsert_batch_to_pinecone(pinecone_index, batch, context_msg=""):
     """Upserts a batch of vectors to Pinecone and handles errors"""
@@ -179,12 +356,6 @@ def upsert_batch_to_pinecone(pinecone_index, batch, context_msg=""):
         print(f"*** ERROR during Pinecone upsert: {upsert_err} ***")
         return 0
 
-# {
-#     "filename": "example.txt",
-#     "summary": "A short summary of the document",
-#     "labels": ["legal", "constitution", "rights"],
-#     "source": "extracted_data/pdf_extracted/example.txt"
-# }
 
 def embed_and_upsert_chunks(chunks, embed_model, pinecone_index, filename, root_dir, data_dir_base):
     """Generates embeddings for chunks and upserts them to Pinecone."""
@@ -234,7 +405,7 @@ def embed_and_upsert_chunks(chunks, embed_model, pinecone_index, filename, root_
         return 0
 
 
-def process_directory_and_index(data_dir, pinecone_index, embed_model):
+def process_directory_and_index(data_dir, pinecone_index, embed_model, chunking_mode="character"):
     """Walks directory, chunks files, embeds, and upserts to Pinecone."""
     files_processed = 0
     total_vectors_upserted_all_files = 0
@@ -248,7 +419,12 @@ def process_directory_and_index(data_dir, pinecone_index, embed_model):
                 files_processed += 1
 
                 # Step 1: Chunk the file
-                chunks = chunk_file_text(filepath)
+                if chunking_mode == "character":
+                    chunks = chunk_file_text_by_character_splitting(filepath)
+                elif chunking_mode == "recursive_character":
+                    chunks = chunk_file_text_by_recursive_character_splitting(filepath)
+                elif chunking_mode == "semantic":
+                    chunks = chunk_file_text_by_semantic_splitting(filepath)
 
                 # Step 2: Embed and Upsert the chunks
                 vectors_upserted = embed_and_upsert_chunks(
@@ -266,7 +442,6 @@ def process_directory_and_index(data_dir, pinecone_index, embed_model):
     print(f"Total vectors upserted across all files: {total_vectors_upserted_all_files}")
 
 
-
 if __name__ == "__main__":
     index = init_pinecone()
     model = load_embedding_model("sentence-transformers/all-mpnet-base-v2")
@@ -276,7 +451,18 @@ if __name__ == "__main__":
     # perform_character_split()
 
     process_directory_and_index(
-        data_dir="cleaned_data",
+        data_dir="cleaned_data\\books_extracted",
         pinecone_index=index,
-        embed_model=model
+        embed_model=model,
+        chunking_mode="recursive_character"
     )
+
+    print("--- Testing CharacterTextSplitter (using create_documents) ---")
+    char_chunks = process_directory_and_index(data_dir="cleaned_data\\books_extracted\\keps101_extracted.txt", pinecone_index=index, embed_model=model, chunking_mode="character")
+    print(f"Length of char_chunks: {len(char_chunks)}")
+
+    print("\n--- Testing RecursiveCharacterTextSplitter (using create_documents) ---")
+    rec_chunks = process_directory_and_index(data_dir="cleaned_data\\books_extracted\\keps101_extracted.txt", pinecone_index=index, embed_model=model, chunking_mode="recursive_character")
+    print(f"Length of rec_chunks: {len(rec_chunks)}")
+
+    semantic_chunks = process_directory_and_index(data_dir="cleaned_data", pinecone_index=index, embed_model=model, chunking_mode="semantic")
