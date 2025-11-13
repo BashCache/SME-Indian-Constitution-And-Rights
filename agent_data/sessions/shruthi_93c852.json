@@ -1,0 +1,16 @@
+{
+  "session_id": "shruthi_93c852",
+  "username": "shruthi",
+  "title": "New Delhi",
+  "created_at": "2025-11-13T19:52:31.692320",
+  "messages": [
+    {
+      "role": "user",
+      "content": "What is Indiann Constituion"
+    },
+    {
+      "role": "assistant",
+      "content": "From **External KB**: Article 14 of the Indian Constitution guarantees the right to equality.\n\n---\n*Actions taken: Retrieved information using external_kb.*"
+    }
+  ]
+}
