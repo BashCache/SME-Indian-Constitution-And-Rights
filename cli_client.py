@@ -54,7 +54,6 @@ def create_session(username):
         print("❌ Error creating session:", r.text)
         sys.exit(1)
         
-# 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
 def chat_loop(session_id):
     print("\n=== Start Chatting ===")
     print("(Type 'exit' to return to main menu)")
