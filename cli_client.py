@@ -7,19 +7,28 @@ BASE_URL = "http://127.0.0.1:8000"
 
 def login():
     print("=== Login ===")
-    username = input("Username: ").strip()
-    password = getpass("Password: ").strip()
+    
+    MAX_RETRIES = 3
+    attempts = 0
 
-    resp = requests.post(f"{BASE_URL}/auth/login", json={
-        "username": username, "password": password
-    })
+    while attempts < MAX_RETRIES:
+        username = input("Username: ").strip()
+        password = getpass("Password: ").strip()
 
-    if resp.status_code == 200:
-        print(resp.json()["message"])
-        return username
-    else:
-        print("❌ Invalid credentials.")
-        sys.exit(1)
+        resp = requests.post(f"{BASE_URL}/auth/login", json={
+            "username": username, "password": password
+        })
+
+        if resp.status_code == 200:
+            print(resp.json()["message"])
+            return username
+        else:
+            attempts += 1
+            print(f"❌ Invalid credentials. Attempts left: {MAX_RETRIES - attempts}")
+
+        if attempts == MAX_RETRIES:
+            print("🚫 Too many failed attempts. Exiting.")
+            sys.exit(1)
 
 def list_sessions(username):
     r = requests.get(f"{BASE_URL}/sessions/{username}")
@@ -44,6 +53,7 @@ def create_session(username):
     else:
         print("❌ Error creating session:", r.text)
         sys.exit(1)
+        
 # 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
 def chat_loop(session_id):
     print("\n=== Start Chatting ===")

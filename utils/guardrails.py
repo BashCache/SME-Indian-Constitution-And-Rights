@@ -54,7 +54,7 @@
 
 
 # utils/guardrails.py
-from langchain.schema.runnable import Runnable
+from langchain_core.runnables import Runnable
 from typing import Dict, Any
 import re
 import json
@@ -167,7 +167,6 @@ class GuardrailRunnable(Runnable):
         # Convert to json and extract the input from it
         input_data_json = json.loads(input_data_) 
         query = input_data_json.get("input", "")
-        history = input_data_json.get("history", [])
 
         print(f"Query in guardrail: {query}")
 

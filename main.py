@@ -4,7 +4,8 @@ from typing import Any, Dict
 from fastapi import FastAPI, HTTPException, File, UploadFile, Form
 from utils.auth import router as auth_router
 from utils.sessions import router as sessions_router
-# from utils.orchestrator_langgraph import get_orchestrator
+from utils.sessions import get_session_details_and_messages, upload_file_to_db, add_conversation_details_to_db
+from utils.guardrails import GuardrailRunnable
 from utils.orchestrator import get_orchestrator, get_unified_plan, ToolPlan
 from utils.models import ChatRequest
 from utils.agent_tools import get_rag_answer, document_tool, email_tool
@@ -18,6 +19,8 @@ app = FastAPI(title="Subject Matter Expert - Indian Constituion and Rights")
 
 app.include_router(auth_router)
 app.include_router(sessions_router)
+
+guardrail = GuardrailRunnable()
 
 TOOL_EXECUTOR_MAP = {
     "document_tool": document_tool,
@@ -80,14 +83,16 @@ async def chat(request: ChatRequest): # <-- This stays async
     if request.filepath:
         filepath = request.filepath
     
-    # Validate session
-    session = get_session(session_id)
-    print(f"Session ID: {session_id}, Session: {session}")
-    if session_id not in session["session_id"]:
+    # session = get_session(session_id)
+    session_details = get_session_details_and_messages(session_id)
+
+    print(f"Session ID: {session_id}, Session: {session_details}")
+    if session_id not in session_details["session_id"]:
         raise HTTPException(status_code=404, detail="Session not found")
     
-    username = session['username']
-    history = session["messages"]
+    username = session_details['username']
+    history = session_details["messages"]
+    history = session_details["messages"]
     
     # Get orchestrator (this is still fast, just inits the class)
     orchestrator = get_orchestrator()
@@ -95,8 +100,25 @@ async def chat(request: ChatRequest): # <-- This stays async
     try:
         print(f"\n{'='*70}")
         print(f"📨 Incoming chat request")
-        # ... (rest of your prints) ...
         print(f"{'='*70}\n")
+
+        try:
+            guardrail_payload = json.dumps({
+                "input": user_message
+            })
+
+            # guardrail.invoke() is synchronous → run safely in thread
+            await asyncio.to_thread(
+                guardrail.invoke,
+                {"input": guardrail_payload}
+            )
+
+        except Exception as e:
+            # Reject unsafe input before planner, RAG, tools
+            raise HTTPException(status_code=400, detail=str(e))
+    
+        user_query_details = {"role": "user", "content": user_message}
+        await add_conversation_details_to_db(session_id, user_query_details)
         
         # 1. Call your synchronous Tool Planner
         print("Step 1: Calling Tool Planner...")
@@ -196,16 +218,18 @@ async def chat(request: ChatRequest): # <-- This stays async
         print(f"\n💬 Response generated: {response[:200]}...")
         
         # 6. Store the user message + AI response
-        session["messages"].append({"role": "user", "content": user_message})
-        session["messages"].append({"role": "assistant", "content": final_response})
+        ai_answer = {"role": "assistant", "content": final_response}
+        session_details["messages"].append(user_query_details)
+        session_details["messages"].append(ai_answer)
 
         # Save updated session
-        save_session(session)
+        save_session(session_details)
+        await add_conversation_details_to_db(session_id, ai_answer)
         
         return {
             "response": response,
             "session_id": session_id,
-            "message_count": len(session["messages"])
+            "message_count": len(session_details["messages"])
         }
         
     except Exception as e:
@@ -214,25 +238,25 @@ async def chat(request: ChatRequest): # <-- This stays async
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"Error processing message: {str(e)}")
     
-@app.delete("/sessions/{session_id}")
-def delete_session(session_id: str):
-    try:
-        # If you're using file storage
-        directory_path = "agent_data/sessions/"
-        filename = f"{session_id}.json"
-        filepath = os.path.join(directory_path, filename)
-        print(filepath)
+# @app.delete("/sessions/{session_id}")
+# def delete_session(session_id: str):
+#     try:
+#         directory_path = "agent_data/sessions/"
+#         filename = f"{session_id}.json"
+#         filepath = os.path.join(directory_path, filename)
+#         print(filepath)
 
-        if not os.path.exists(filepath):
-            raise HTTPException(status_code=404, detail="Session file not found.")
+#         if not os.path.exists(filepath):
+#             raise HTTPException(status_code=404, detail="Session file not found.")
 
-        os.remove(filepath)
-        return {"message": f"Session '{session_id}' deleted successfully for user."}
+#         os.remove(filepath)
 
-    except HTTPException:
-        raise
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+#         return {"message": f"Session '{session_id}' deleted successfully for user."}
+
+    # except HTTPException:
+    #     raise
+    # except Exception as e:
+    #     raise HTTPException(status_code=500, detail=str(e))
     
 UPLOAD_DIR = "agent_data/uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
@@ -250,6 +274,8 @@ async def upload_file(username: str = Form(...), session_id: str = Form(...), fi
     try:
         with open(save_path, "wb") as buffer:
             shutil.copyfileobj(file.file, buffer)
+        file.file.seek(0)
+        await upload_file_to_db(username, session_id, file)
         return {"message": "File uploaded successfully.", "file_path": save_path}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to save file: {str(e)}")
