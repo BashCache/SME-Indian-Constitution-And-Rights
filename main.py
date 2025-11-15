@@ -1,17 +1,19 @@
 from pathlib import Path
-import re
-from typing import Any, Dict
-from fastapi import FastAPI, HTTPException, File, UploadFile, Form
-from utils.auth import router as auth_router
-from utils.sessions import router as sessions_router
-from utils.sessions import get_session_details_and_messages, upload_file_to_db, add_conversation_details_to_db
+from fastapi import FastAPI, HTTPException, File, UploadFile, Form, Depends
+from sqlalchemy.orm import Session
+from utils.route_helper import auth_router
+from utils.route_helper import router as sessions_router
+from utils.route_helper import get_session_details_and_messages, upload_file_to_db, add_conversation_details_to_db
+from db_models.crud_operations import get_db
 from utils.guardrails import GuardrailRunnable
-from utils.orchestrator import get_orchestrator, get_unified_plan, ToolPlan
 from utils.models import ChatRequest
-from utils.agent_tools import get_rag_answer, document_tool, email_tool
-from utils.file_store import get_session
+# from utils.agent_tools import get_rag_answer, document_tool, email_tool
+from utils.gemini_chain import GeminiChatChain
+# from utils.quiz_generator import quiz_generation_tool, quiz_questions_tool, quiz_answers_tool
+from langchain_tools.document_exporter.enhanced_document_generator import enhanced_document_tool, quiz_document_tool
+# from utils.prod_lanchain import process_with_production_langchain
+from utils.langchain_orchestrator import orchestrate_langchain_request
 import os
-import asyncio
 import shutil
 import json
 
@@ -21,37 +23,7 @@ app.include_router(auth_router)
 app.include_router(sessions_router)
 
 guardrail = GuardrailRunnable()
-
-TOOL_EXECUTOR_MAP = {
-    "document_tool": document_tool,
-    "email_tool": email_tool,
-}
-
-# ============================================
-# HELPER: PLACEHOLDER SUBSTITUTION
-# ============================================
-# (This function is synchronous and fast, no async needed)
-def substitute_placeholders(args: Dict[str, Any], rag_result: str, last_answer: str, step_outputs: Dict[int, Any]) -> Dict[str, Any]:
-    # ... (function content is correct, no changes needed)
-    substituted_args = {}
-    for key, value in args.items():
-        if isinstance(value, str):
-            if value == "[[RAG_RESULT]]":
-                substituted_args[key] = rag_result
-            elif value == "[[LAST_ANSWER]]":
-                substituted_args[key] = last_answer
-            else:
-                match = re.match(r"\[\[STEP_(\d+)_RESULT\]\]", value)
-                if match:
-                    step_num = int(match.group(1))
-                    substituted_args[key] = step_outputs.get(step_num, None)
-                else:
-                    substituted_args[key] = value
-        elif isinstance(value, dict):
-            substituted_args[key] = substitute_placeholders(value, rag_result, last_answer, step_outputs)
-        else:
-            substituted_args[key] = value
-    return substituted_args
+gemini_chain = GeminiChatChain()
 
 def get_session(session_id: str) -> dict:
     SESSION_DIR = 'agent_data/sessions'
@@ -72,197 +44,270 @@ def save_session(session_data: dict):
 async def init_data_dirs():
     os.makedirs("agent_data/sessions", exist_ok=True)
 
-@app.post("/chat")
-async def chat(request: ChatRequest): # <-- This stays async
+# @app.post("/chat")
+# async def chat(request: ChatRequest, db: Session = Depends(get_db)): # <-- This stays async
+#     """
+#     Main chat endpoint - processes message with LangChain agent or Gemini chain
+#     """
+#     session_id = request.session_id
+#     user_message = request.message
+#     filepath=None
+#     if request.filepath:
+#         filepath = request.filepath
+
+#     session_details = get_session_details_and_messages(session_id, db)
+
+#     print(f"Session ID: {session_id}, Session: {session_details}")
+#     if session_id not in session_details["session_id"]:
+#         raise HTTPException(status_code=404, detail="Session not found")
+    
+#     username = session_details['username']
+#     history = session_details["messages"]
+    
+#     # Check if user wants to use LangChain orchestration
+#     use_langchain = "use langchain" in user_message.lower() or "orchestrate" in user_message.lower()
+        
+#     try:
+#         print(f"\n{'='*70}")
+#         print(f"📨 Incoming chat request (LangChain: {use_langchain})")
+#         print(f"{'='*70}\n")
+
+#         try:
+#             guardrail_payload = json.dumps({
+#                 "input": user_message
+#             })
+
+#             # guardrail.invoke() is synchronous → run safely in thread
+#             await asyncio.to_thread(
+#                 guardrail.invoke,
+#                 {"input": guardrail_payload}
+#             )
+
+#         except Exception as e:
+#             # Reject unsafe input before planner, RAG, tools
+#             raise HTTPException(status_code=400, detail=str(e))
+    
+#         user_query_details = {"role": "user", "content": user_message}
+#         await add_conversation_details_to_db(session_id, user_query_details, db)
+        
+#         # Step 1: Get RAG context if needed
+#         rag_context = None
+        
+#         # Step 2: Choose processing method
+#         if use_langchain:
+#             # Use LangChain orchestration with tool calling
+#             try:
+#                 print("🔗 Using LangChain orchestration with tool calling...")
+#                 result = await process_with_production_langchain(user_message, history)
+                
+#                 if result["success"]:
+#                     final_response = result["response"]
+#                     if result["agent_used"]:
+#                         tools_used = result.get("tools_executed", [])
+#                         if tools_used:
+#                             final_response += f"\n\n*Processed using LangChain agent with tools: {', '.join(tools_used)}*"
+#                         else:
+#                             final_response += "\n\n*Processed using LangChain agent orchestration*"
+#                     else:
+#                         final_response += "\n\n*Processed using LangChain fallback mode*"
+#                 else:
+#                     final_response = result["response"]
+                
+#             except Exception as e:
+#                 print(f"❌ LangChain orchestration failed: {e}")
+#                 final_response = "I apologize, but I encountered an error with the orchestration system. Please try again."
+        
+#         else:
+#             # Use existing Gemini chain (default behavior)
+#             try:
+#                 result = await gemini_chain.get_response(
+#                     user_message=user_message,
+#                     history=history,
+#                     rag_context=rag_context
+#                 )
+                
+#                 if not result["success"]:
+#                     raise Exception(result["response"])
+                
+#                 final_response = result["response"]
+#                 intent = result["intent"]
+#                 quiz_params = result.get("quiz_params")
+                
+#                 # If quiz is detected, process the quiz generation
+#                 if intent == "quiz_generation" and quiz_params:
+#                     print(f"🎯 Quiz generation detected! Parameters: {quiz_params}")
+                    
+#                     try:
+#                         # Use the quiz generation tool directly (not through ainvoke which might have issues)
+#                         from utils.quiz_generator import QuizGenerator
+#                         quiz_generator = QuizGenerator()
+                        
+#                         # Process the quiz request
+#                         quiz_result = await quiz_generator.process_quiz_request(
+#                             quiz_params=quiz_params,
+#                             rag_context=rag_context or ""
+#                         )
+                        
+#                         if quiz_result["success"]:
+#                             if quiz_result.get("exported"):
+#                                 # If documents were generated, provide a summary response
+#                                 questions_doc = quiz_result.get("questions_document", {})
+#                                 answers_doc = quiz_result.get("answers_document", {})
+                                
+#                                 final_response = f"""📝 **Quiz Generated Successfully!**
+
+# 🎯 **Quiz Details:**
+# • **Topic:** {quiz_params.get('topic', 'General')}
+# • **Questions:** {quiz_params.get('num_questions', 5)}
+# • **Difficulty:** {quiz_params.get('difficulty', 'medium').title()}
+# • **Type:** {quiz_params.get('question_type', 'mcq')}
+
+# 📄 **Documents Created:**
+# • **Questions Document:** {questions_doc.get('filename', 'Quiz questions file')}
+# • **Answer Key:** {answers_doc.get('filename', 'Quiz answers file')}
+
+# 💡 **What's included:**
+# - Complete quiz with instructions at the top
+# - Separate answer key with explanations
+# - Ready for classroom use or self-assessment
+
+# ✅ **Your quiz files are ready for use!**
+
+# {quiz_result.get('questions_only', '')[:800]}...
+
+# *Note: Full content has been exported to PDF documents.*"""
+#                             else:
+#                                 # For inline quiz, provide a more structured response
+#                                 questions_content = quiz_result.get('questions_only', '')
+                                
+#                                 # Truncate if too long for UI but keep structure
+#                                 if len(questions_content) > 2000:
+#                                     lines = questions_content.split('\n')
+#                                     truncated_lines = lines[:30]  # Keep first 30 lines
+#                                     truncated_content = '\n'.join(truncated_lines)
+                                    
+#                                     final_response = f"""📝 **Quiz Generated Successfully!**
+
+# {truncated_content}
+
+# *[Quiz continues... Total content is longer than displayed here]*
+
+# 💡 **Tip:** To get the complete quiz as separate PDF documents, ask me to "export this quiz as PDF" or include "export" in your request!"""
+#                                 else:
+#                                     final_response = f"""📝 **Quiz Generated Successfully!**
+
+# {questions_content}
+
+# 💡 **Tip:** To get this quiz as separate PDF documents, ask me to "export this quiz as PDF"!"""
+                            
+#                             print(f"📝 Quiz generated successfully - Response length: {len(final_response)}")
+#                         else:
+#                             final_response = f"❌ Failed to generate quiz: {quiz_result.get('error', 'Unknown error')}"
+                        
+#                     except Exception as quiz_error:
+#                         print(f"❌ Quiz generation failed: {quiz_error}")
+#                         import traceback
+#                         traceback.print_exc()
+#                         final_response = f"❌ I encountered an error while generating the quiz: {str(quiz_error)}. Please try again with simpler parameters."
+                
+#             except Exception as e:
+#                 print(f"Error with Gemini chain: {e}")
+#                 final_response = "I apologize, but I'm having trouble processing your request right now. Please try again."
+        
+#         print(f"Final response length: {len(final_response)} characters")
+#         print(f"Final response preview: {final_response[:200]}...")
+                
+#         # 6. Store the user message + AI response
+#         ai_answer = {"role": "assistant", "content": final_response}
+#         session_details["messages"].append(user_query_details)
+#         session_details["messages"].append(ai_answer)
+
+#         # Save updated session
+#         save_session(session_details)
+#         await add_conversation_details_to_db(session_id, ai_answer, db)
+        
+#         return {
+#             "response": final_response,
+#             "session_id": session_id,
+#             "message_count": len(session_details["messages"])
+#         }
+        
+#     except Exception as e:
+#         print(f"\n❌ Error processing chat: {e}")
+#         import traceback
+#         traceback.print_exc()
+#         raise HTTPException(status_code=500, detail=f"Error processing message: {str(e)}")
+
+@app.post("/chat/langchain")
+async def chat_langchain(request: ChatRequest, db: Session = Depends(get_db)):
     """
-    Main chat endpoint - processes message with LangChain agent
+    Dedicated endpoint for LangChain agent orchestration
     """
     session_id = request.session_id
     user_message = request.message
-    filepath=None
-    if request.filepath:
-        filepath = request.filepath
     
-    # session = get_session(session_id)
-    session_details = get_session_details_and_messages(session_id)
-
-    print(f"Session ID: {session_id}, Session: {session_details}")
+    session_details = get_session_details_and_messages(session_id, db)
+    
     if session_id not in session_details["session_id"]:
         raise HTTPException(status_code=404, detail="Session not found")
     
-    username = session_details['username']
     history = session_details["messages"]
-    history = session_details["messages"]
-    
-    # Get orchestrator (this is still fast, just inits the class)
-    orchestrator = get_orchestrator()
     
     try:
-        print(f"\n{'='*70}")
-        print(f"📨 Incoming chat request")
-        print(f"{'='*70}\n")
-
-        try:
-            guardrail_payload = json.dumps({
-                "input": user_message
-            })
-
-            # guardrail.invoke() is synchronous → run safely in thread
-            await asyncio.to_thread(
-                guardrail.invoke,
-                {"input": guardrail_payload}
-            )
-
-        except Exception as e:
-            # Reject unsafe input before planner, RAG, tools
-            raise HTTPException(status_code=400, detail=str(e))
-    
+        print(f"\n🔗 LangChain Orchestration Request")
+        print(f"Message: {user_message}")
+        
+        # Store user message
         user_query_details = {"role": "user", "content": user_message}
-        await add_conversation_details_to_db(session_id, user_query_details)
+        await add_conversation_details_to_db(session_id, user_query_details, db)
         
-        # 1. Call your synchronous Tool Planner
-        print("Step 1: Calling Tool Planner...")
-        plan: ToolPlan = await asyncio.to_thread(
-            get_unified_plan,
-            query=user_message,
-            history=history
-        )
-
-        # 2. Check for simple chat
-        rag_answer = ""
-        action_log = []
-        if plan.chat_response:
-            print(f"Step 2: Simple chat response: {plan.chat_response}")
-            final_response = plan.chat_response
-            rag_answer = final_response
-        else:            
-            # 3. Execute RAG
-            print(f"Step 2: Executing RAG (Source: {plan.rag_source})")
-            if plan.rag_source and plan.rag_source != "none":
-                rag_answer = await asyncio.to_thread(
-                    get_rag_answer,
-                    query=user_message,
-                    source=plan.rag_source,
-                    username=username,
-                    session_id=session_id,
-                    history=history,
-                    filepath=filepath
-                )
-                if rag_answer:
-                    action_log.append(f"Retrieved information using {plan.rag_source}.")
-
-        # 4. Execute Action Plan
-        print(f"Step 3: Executing Action Plan ({len(plan.execution_plan or [])} steps)")
-        step_outputs: Dict[int, Any] = {}
+        # Process with LangChain orchestration
+        # result = await process_with_production_langchain(user_message, history)
+        result = await orchestrate_langchain_request(user_message, session_id, history)
         
-        if plan.execution_plan:
-            last_answer = history[-1]['content'] if history else ""
+        if result["success"]:
+            final_response = result["response"]
             
-            for i, step in enumerate(plan.execution_plan, 1):
-                tool_name = step.name
-                tool_args = step.args
-                
-                print(f"  -> Executing Step {i}: {tool_name}")
-                
-                if tool_name not in TOOL_EXECUTOR_MAP:
-                    print(f"  ❌ Error: Unknown tool '{tool_name}'")
-                    action_log.append(f"Error: Unknown tool '{tool_name}'")
-                    continue
-                
-                print(f"Tool args: {tool_args}")
-                # (This substitution is fast and synchronous)
-                # substituted_args = substitute_placeholders(tool_args, rag_answer, last_answer, step_outputs)
-                
-                executor_func = TOOL_EXECUTOR_MAP[tool_name]
-                # print(substituted_args)
-                # # <--- ASYNC REQUIRED HERE
-                # # We run the blocking tool (e.g., file I/O) in a thread
-                # result = await asyncio.to_thread(
-                #     executor_func.invoke,
-                #     substituted_args
-                # )
-
-                if tool_name == "document_tool":
-                    input_args = {
-                        'content': rag_answer,
-                        'document_type': tool_args['document_type'],
-                        'title': tool_args['title']
-                    }
-                    result = await asyncio.to_thread(
-                        executor_func.invoke,
-                        input_args
-                    )
-                # TODO: To fix the filename properly and not based on step_outputs
-                elif tool_name == "email_tool":
-                    input_args = {
-                        'filename': step_outputs[i-1],
-                        'recipient': tool_args['recipient']
-                    }
-                    result = await asyncio.to_thread(
-                        executor_func.invoke,
-                        input_args
-                    )
-                print(f"  ✅ Step {i} result: {result}")
-                action_log.append(str(result))
-                step_outputs[i] = result
-        
-        # 5. Formulate final response
-        if rag_answer and not action_log:
-            final_response = rag_answer # RAG only
+            # Add metadata about processing
+            processing_info = "\n\n---\n**Processing Details:**\n"
+            if result["agent_used"]:
+                tools_used = result.get("tools_executed", [])
+                if tools_used:
+                    processing_info += f"✅ **LangChain Agent:** Successfully executed tools: {', '.join(tools_used)}\n"
+                else:
+                    processing_info += "✅ **LangChain Agent:** Successfully processed request\n"
+            else:
+                processing_info += "⚠️ **Fallback Mode:** Used fallback processing\n"
+            
+            final_response += processing_info
         else:
-            final_response = f"{rag_answer}\n\n---\n*Actions taken: {', '.join(action_log)}*"
-
-        print(f"Fnal response: {final_response}")
-        response = "abc"
+            final_response = f"❌ {result['response']}"
         
-        print(f"\n💬 Response generated: {response[:200]}...")
-        
-        # 6. Store the user message + AI response
+        # Store AI response
         ai_answer = {"role": "assistant", "content": final_response}
         session_details["messages"].append(user_query_details)
         session_details["messages"].append(ai_answer)
-
-        # Save updated session
+        
         save_session(session_details)
-        await add_conversation_details_to_db(session_id, ai_answer)
+        await add_conversation_details_to_db(session_id, ai_answer, db)
         
         return {
-            "response": response,
+            "response": final_response,
             "session_id": session_id,
+            "orchestration_used": True,
+            "agent_used": result.get("agent_used", False),
             "message_count": len(session_details["messages"])
         }
         
     except Exception as e:
-        print(f"\n❌ Error processing chat: {e}")
-        import traceback
-        traceback.print_exc()
-        raise HTTPException(status_code=500, detail=f"Error processing message: {str(e)}")
-    
-# @app.delete("/sessions/{session_id}")
-# def delete_session(session_id: str):
-#     try:
-#         directory_path = "agent_data/sessions/"
-#         filename = f"{session_id}.json"
-#         filepath = os.path.join(directory_path, filename)
-#         print(filepath)
+        print(f"❌ Error in LangChain orchestration: {e}")
+        raise HTTPException(status_code=500, detail=f"Orchestration error: {str(e)}")
 
-#         if not os.path.exists(filepath):
-#             raise HTTPException(status_code=404, detail="Session file not found.")
-
-#         os.remove(filepath)
-
-#         return {"message": f"Session '{session_id}' deleted successfully for user."}
-
-    # except HTTPException:
-    #     raise
-    # except Exception as e:
-    #     raise HTTPException(status_code=500, detail=str(e))
-    
 UPLOAD_DIR = "agent_data/uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 @app.post("/upload")
-async def upload_file(username: str = Form(...), session_id: str = Form(...), file: UploadFile = File(...)):
+async def upload_file(username: str = Form(...), session_id: str = Form(...), file: UploadFile = File(...), db: Session = Depends(get_db)):
     """
     Upload and store a file for a user's session.
     """
@@ -275,7 +320,7 @@ async def upload_file(username: str = Form(...), session_id: str = Form(...), fi
         with open(save_path, "wb") as buffer:
             shutil.copyfileobj(file.file, buffer)
         file.file.seek(0)
-        await upload_file_to_db(username, session_id, file)
+        await upload_file_to_db(username, session_id, file, db)
         return {"message": "File uploaded successfully.", "file_path": save_path}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to save file: {str(e)}")

@@ -6,10 +6,10 @@ from typing import Dict, Any
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import HumanMessage, AIMessage
-from final_tools.document_exporter.document_export_tool import document_export_tool
-from final_tools.content_generator.plain_content_tool import normal_content_tool
-from final_tools.content_generator.web_search_tool import web_search_tool
-from final_tools.email_agent.email_tool import send_email_tool
+from langchain_tools.document_exporter.document_export_tool import document_export_tool
+from langchain_tools.content_generator.plain_content_tool import normal_content_tool
+from langchain_tools.content_generator.web_search_tool import web_search_tool
+from langchain_tools.email_agent.email_tool import send_email_tool
 
 # your memory
 from utils.memory_store import get_memory, append_to_memory
