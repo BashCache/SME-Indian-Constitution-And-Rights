@@ -1,0 +1,58 @@
+/* Constitutional AI Assistant Styles */
+
+.main-header {
+    text-align: center;
+    padding: 2rem 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+}
+
+.chat-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.user-message {
+    background-color: #f0f2f6;
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 0.5rem 0;
+    margin-left: 2rem;
+}
+
+.assistant-message {
+    background-color: #e8f4fd;
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 0.5rem 0;
+    margin-right: 2rem;
+    border-left: 4px solid #4285f4;
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 5rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.upload-area {
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    margin: 1rem 0;
+    background-color: #fafafa;
+}
+
+.session-sidebar {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}

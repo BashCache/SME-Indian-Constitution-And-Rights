@@ -1,14 +1,7 @@
-# from langchain.tools import tool
-import json
-import google.generativeai as genai
-from typing import Any
-from tools.document_generation_tool import DocumentGenerationTool
 from langchain_core.tools import tool
-from utils.doc_writer import DocumentWriter
-from utils.email_impl import send_email
+from langchain_tools.document_exporter.doc_writer import DocumentWriter
+from langchain_tools.email_agent.email_impl import send_email
 from utils.extractor.file_extractor import FileExtractor
-
-_doc_tool = DocumentGenerationTool(output_directory="generated_documents")
 
 def get_rag_answer(query: str, source: str, username: str, session_id: str, history: str, filepath) -> str:
     """

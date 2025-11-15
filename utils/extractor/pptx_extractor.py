@@ -6,11 +6,12 @@ from PIL import Image
 from utils.extractor.base_extractor import BaseExtractor
 from utils.extractor.extraction_result import ExtractionResult
 from utils.extractor.gemini_summarizer import summarize_visual_content
+import asyncio
 
 class PPTXExtractor(BaseExtractor):
     """Extractor for PPTX files — includes Gemini-powered image/table summaries."""
 
-    def extract(self, file_path: str) -> ExtractionResult:
+    async def extract(self, file_path: str) -> ExtractionResult:
         slides_data, all_text = [], []
 
         try:
@@ -31,16 +32,17 @@ class PPTXExtractor(BaseExtractor):
                         table = shape.table
                         table_md = self._table_to_markdown(table)
                         # Optionally use Gemini for better summary
-                        summary = summarize_visual_content(
+                        summary = await asyncio.run(summarize_visual_content(
                             image_path=self._table_to_image(shape, idx),
                             prompt=f"Summarize the table from slide {idx}."
-                        )
+                        ))
                         table_summaries.append(f"Table Data:\n{table_md}\nGemini Summary:\n{summary}")
 
                     # --- 3️⃣ Images ---
                     if shape.shape_type == MSO_SHAPE_TYPE.PICTURE:
                         image_path = self._extract_image(shape, idx)
-                        summary = summarize_visual_content(image_path, prompt=f"Describe image from slide {idx}.")
+                        summary = await asyncio.run(summarize_visual_content(image_path,
+                                    prompt=f"Describe image from slide {idx}."))
                         image_summaries.append(f"Image Summary:\n{summary}")
 
                 combined_slide_text = "\n".join([

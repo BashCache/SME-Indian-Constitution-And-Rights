@@ -6,7 +6,7 @@ from PIL import Image
 from utils.extractor.base_extractor import BaseExtractor
 from utils.extractor.extraction_result import ExtractionResult
 from utils.extractor.gemini_summarizer import summarize_visual_content
-
+import asyncio
 
 class PDFExtractor(BaseExtractor):
     """
@@ -15,7 +15,7 @@ class PDFExtractor(BaseExtractor):
     Uses Gemini API for image/table summarization.
     """
 
-    def extract(self, file_path: str) -> ExtractionResult:
+    async def extract(self, file_path: str) -> ExtractionResult:
         pages_data, all_text = [], []
 
         try:
@@ -33,10 +33,10 @@ class PDFExtractor(BaseExtractor):
                         table_md = self._table_to_markdown(table)
                         if table_md.strip():
                             table_img_path = self._save_table_as_image(table, page_num)
-                            summary = summarize_visual_content(
+                            summary = await asyncio.run(summarize_visual_content(
                                 image_path=table_img_path,
                                 prompt=f"Summarize this table from page {page_num}."
-                            )
+                            ))
                             table_summaries.append(
                                 f"Table:\n{table_md}\nGemini Summary:\n{summary}"
                             )
@@ -44,10 +44,10 @@ class PDFExtractor(BaseExtractor):
                     # --- 2️⃣ Image summaries ---
                     image_summaries = []
                     for img_path in image_paths:
-                        summary = summarize_visual_content(
+                        summary = await asyncio.run(summarize_visual_content(
                             image_path=img_path,
                             prompt=f"Describe this image from page {page_num}."
-                        )
+                        ))
                         image_summaries.append(f"Image Summary:\n{summary}")
 
                     # --- 3️⃣ Combine all content ---

@@ -9,8 +9,7 @@ This module provides a comprehensive document generation system that:
 5. Is refactored into reusable classes
 """
 
-import os
-from typing import Dict, Any, Optional, Union
+from typing import Dict, Any, Optional
 from pathlib import Path
 from datetime import datetime
 from langchain_core.tools import tool
@@ -18,7 +17,7 @@ from pydantic import BaseModel, Field
 import json
 
 # Import your existing document writer
-from final_tools.document_exporter.doc_writer import DocumentWriter
+from langchain_tools.document_exporter.doc_writer import DocumentWriter
 
 
 class DocumentConfig(BaseModel):

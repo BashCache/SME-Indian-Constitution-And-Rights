@@ -14,8 +14,8 @@ from pathlib import Path
 from datetime import datetime
 from langchain_core.tools import tool
 from pydantic import BaseModel, Field
-from final_tools.document_exporter.enhanced_document_generator import document_generator, DocumentConfig
-from final_tools.document_exporter.doc_writer import DocumentWriter
+from langchain_tools.document_exporter.enhanced_document_generator import document_generator, DocumentConfig
+from langchain_tools.document_exporter.doc_writer import DocumentWriter
 
 # Additional imports for PPTX and AI integration
 try:
