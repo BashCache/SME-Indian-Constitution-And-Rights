@@ -7,8 +7,8 @@ from utils.route_helper import get_session_details_and_messages, upload_file_to_
 from db_models.crud_operations import get_db
 from utils.guardrails import GuardrailRunnable
 from utils.models import ChatRequest
-from utils.agent_tools import get_rag_answer, document_tool, email_tool, web_search_tool
-from utils.file_store import get_session
+from utils.gemini_chain import GeminiChatChain
+from utils.langchain_orchestrator import orchestrate_langchain_request
 import os
 import shutil
 import json
@@ -19,39 +19,7 @@ app.include_router(auth_router)
 app.include_router(sessions_router)
 
 guardrail = GuardrailRunnable()
-
-TOOL_EXECUTOR_MAP = {
-    "document_tool": document_tool,
-    "email_tool": email_tool,
-    "web_search_tool": web_search_tool,
-}
-
-# ============================================
-# HELPER: PLACEHOLDER SUBSTITUTION
-# ============================================
-# (This function is synchronous and fast, no async needed)
-def substitute_placeholders(args: Dict[str, Any], rag_result: str, last_answer: str, step_outputs: Dict[int, Any]) -> Dict[str, Any]:
-    # ... (function content is correct, no changes needed)
-    substituted_args = {}
-    for key, value in args.items():
-        if isinstance(value, str):
-            if value == "[[RAG_RESULT]]":
-                substituted_args[key] = rag_result
-            elif value == "[[LAST_ANSWER]]":
-                substituted_args[key] = last_answer
-            else:
-                match = re.match(r"\[\[STEP_(\d+)_RESULT\]\]", value)
-                if match:
-                    step_num = int(match.group(1))
-                    substituted_args[key] = step_outputs.get(step_num, None)
-                else:
-                    substituted_args[key] = value
-        elif isinstance(value, dict):
-            substituted_args[key] = substitute_placeholders(value, rag_result, last_answer, step_outputs)
-        else:
-            substituted_args[key] = value
-    return substituted_args
-
+gemini_chain = GeminiChatChain()
 def get_session(session_id: str) -> dict:
     SESSION_DIR = 'agent_data/sessions'
     path = Path(SESSION_DIR) / f"{session_id}.json"

@@ -182,14 +182,19 @@ async def orchestrate_langchain_request(
 
     print(f"Final response: {final_response}")
     print(f"Type : {type(final_response)}")
-    print(f"text alone: {final_response[0]['text']}")
+    final_answer = final_response
+    if type(final_response) == str:
+        final_answer = final_response
+    elif type(final_response) == list:
+        final_answer = final_response[0]['text']
+    print(f"final answer: {final_answer}")
     # ---- Save memory ----
     append_to_memory(session_id, "user", user_message)
     append_to_memory(session_id, "assistant", final_response)
 
     return {
         "success": True,
-        "response": final_response[0]['text'],
+        "response": final_answer,
         "agent_used": True,
         "processing_time": time.time() - start,
         "iterations": iteration

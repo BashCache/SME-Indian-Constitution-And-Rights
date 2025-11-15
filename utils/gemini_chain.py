@@ -7,9 +7,8 @@ from langchain_core.output_parsers import StrOutputParser
 from dotenv import load_dotenv
 import json
 import re
-import sys
 from pathlib import Path
-from final_tools.email_agent.email_tool import send_email_tool
+from langchain_tools.email_agent.email_tool import send_email_tool
 
 # Add the tools directory to the path for email tool import
 # tools_path = Path(__file__).parent.parent / "tools"

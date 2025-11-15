@@ -7,9 +7,9 @@ from typing import List, Union
 
 def send_email(filepaths: Union[str, List[str]], recipient_email: str, subject: str = "Report"):
     body = "Please find the attached document(s). Thanks!"
-    sender_email = "lmaproject123@gmail.com"
+    sender_email = os.getenv("SMTP_SENDER_EMAIL")
     recipient_email = recipient_email
-    sender_password = "bsqldcrekusmaxqg"
+    sender_password = os.getenv("SMTP_PASSWORD")
     smtp_server = 'smtp.gmail.com'
     smtp_port = 465
     
