@@ -7,12 +7,8 @@ from utils.route_helper import get_session_details_and_messages, upload_file_to_
 from db_models.crud_operations import get_db
 from utils.guardrails import GuardrailRunnable
 from utils.models import ChatRequest
-# from utils.agent_tools import get_rag_answer, document_tool, email_tool
-from utils.gemini_chain import GeminiChatChain
-# from utils.quiz_generator import quiz_generation_tool, quiz_questions_tool, quiz_answers_tool
-from langchain_tools.document_exporter.enhanced_document_generator import enhanced_document_tool, quiz_document_tool
-# from utils.prod_lanchain import process_with_production_langchain
-from utils.langchain_orchestrator import orchestrate_langchain_request
+from utils.agent_tools import get_rag_answer, document_tool, email_tool, web_search_tool
+from utils.file_store import get_session
 import os
 import shutil
 import json
@@ -23,7 +19,38 @@ app.include_router(auth_router)
 app.include_router(sessions_router)
 
 guardrail = GuardrailRunnable()
-gemini_chain = GeminiChatChain()
+
+TOOL_EXECUTOR_MAP = {
+    "document_tool": document_tool,
+    "email_tool": email_tool,
+    "web_search_tool": web_search_tool,
+}
+
+# ============================================
+# HELPER: PLACEHOLDER SUBSTITUTION
+# ============================================
+# (This function is synchronous and fast, no async needed)
+def substitute_placeholders(args: Dict[str, Any], rag_result: str, last_answer: str, step_outputs: Dict[int, Any]) -> Dict[str, Any]:
+    # ... (function content is correct, no changes needed)
+    substituted_args = {}
+    for key, value in args.items():
+        if isinstance(value, str):
+            if value == "[[RAG_RESULT]]":
+                substituted_args[key] = rag_result
+            elif value == "[[LAST_ANSWER]]":
+                substituted_args[key] = last_answer
+            else:
+                match = re.match(r"\[\[STEP_(\d+)_RESULT\]\]", value)
+                if match:
+                    step_num = int(match.group(1))
+                    substituted_args[key] = step_outputs.get(step_num, None)
+                else:
+                    substituted_args[key] = value
+        elif isinstance(value, dict):
+            substituted_args[key] = substitute_placeholders(value, rag_result, last_answer, step_outputs)
+        else:
+            substituted_args[key] = value
+    return substituted_args
 
 def get_session(session_id: str) -> dict:
     SESSION_DIR = 'agent_data/sessions'
