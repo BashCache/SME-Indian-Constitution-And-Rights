@@ -16,14 +16,79 @@ from langchain_tools.interactive_quiz.interactive_quiz_tool import interactive_q
 
 # your memory
 from utils.memory_store import get_memory, append_to_memory
+from mock_rag import RAGTool
+
+def extract_rag_context(user_message: str, top_k: int = 3) -> str:
+    try:
+        rag_tool = RAGTool(model_key="mpnet")
+        search_results = rag_tool.search(user_message, top_k=top_k)
+        if not search_results:
+            return "No relevant context found in knowledge base."
+        
+        context_parts = []
+        for i, result in enumerate(search_results, 1):
+            context_parts.append(
+                f"Document {i} (Score: {result['score']:.3f}):\n"
+                f"Source: {result['source']}\n"
+                f"Content: {result['text']}\n"
+                f"Labels: {', '.join(result['labels'])}\n"
+            )
+        
+        return "\n" + "="*50 + "\n".join(context_parts)
+        
+    except Exception as e:
+        print(f"❌ Error extracting RAG context: {e}")
+        return f"Error retrieving context from knowledge base: {str(e)}"
 
 
 # =============================================================
 # PROMPT TEMPLATE (supports memory + scratchpad)
 # =============================================================
 
-ORCHESTRATION_PROMPT = ChatPromptTemplate.from_messages([
-    ("system", """
+new_prompt = """
+You are an intelligent ORCHESTRATOR that decides when and how to call tools to satisfy user queries. Follow these instructions carefully:
+
+TOOLS AVAILABLE:
+1. normal_content_tool: Answer general questions using internal knowledge (RAG-based). This tool receives rag_context automatically. If not, then use web search tool
+2. web_search_tool: Answer questions using Internet search results for up-to-date information.
+3. document_export_tool: Export content as PDF, DOCX, or PPTX documents.
+4. send_email_tool: Send emails with content or documents.
+5. video_generation_tool: Create educational videos (2–2.5 minutes) on constitutional topics.
+6. flashcard_generation_tool: Create interactive flashcards for studying topics.
+7. interactive_quiz_tool: Create quizzes with multiple question types, scoring, and immediate feedback.
+
+REASONING RULES:
+1. Think step-by-step using a scratchpad before deciding which tool(s) to call.
+2. Use chat_history to remember prior conversation context.
+3. Use ReAct-style tool calls when generating content.
+4. After all tool calls, provide a clear FINAL_ANSWER in natural language.
+5. Tool selection guidelines:
+   - General answers/explanations with available context → normal_content_tool
+   - Up-to-date/external info beyond knowledge base or information from rag context is not available→ web_search_tool
+   - Study/revision material → flashcard_generation_tool
+   - Knowledge testing/quizzes → interactive_quiz_tool
+   - Video content → video_generation_tool
+   - Content in a file → document_export_tool
+   - Content emailed → send_email_tool
+6. For multi-step requests:
+   - First generate content (normal content, flashcards, quizzes, or video)
+   - Then optionally export to a file using document_export_tool
+   - Then optionally send via email using send_email_tool
+7. Always clarify missing parameters (topic, number of questions, file type, email address) before calling a tool.
+
+EXAMPLE WORKFLOW:
+- User: "I want flashcards on the Constitution and emailed to me as a PDF."
+- Orchestrator:
+   1. Recognizes request is for study material → call flashcard_generation_tool (receives rag_context automatically).
+   2. Recognizes request for export → call document_export_tool with PDF format.
+   3. Recognizes request for email → call send_email_tool with the exported PDF.
+   4. Returns FINAL_ANSWER confirming flashcards creation, export, and email delivery.
+
+Always follow these rules to decide which tool(s) to call, handle multi-step requests, and produce a clear final response.
+
+"""
+
+old_prompt = """
 You are an intelligent orchestrator that decides when to call tools.
 
 Tools available:
@@ -43,8 +108,9 @@ Use the following reasoning rules:
 5. For video requests, use video_generation_tool to create 2-2.5 minute educational videos.
 6. For flashcard requests, use flashcard_generation_tool to create interactive Q&A study cards.
 7. For quiz/test requests, use interactive_quiz_tool to create quizzes with multiple question types.
-
-"""),
+"""
+ORCHESTRATION_PROMPT = ChatPromptTemplate.from_messages([
+    ("system", new_prompt),
 
     MessagesPlaceholder("chat_history"),
     ("human", "{input}"),
@@ -110,17 +176,32 @@ async def orchestrate_langchain_request(
         else:
             chat_history_lcel.append(AIMessage(content=msg["content"]))
 
+    # ---- Extract RAG Context ----
+    print(f"🔍 Extracting RAG context for: {user_message}")
+    rag_context = extract_rag_context(user_message, top_k=3)
+    print(f"✅ RAG context extracted (length: {len(rag_context)} chars)")
+    if verbose:
+        print(f"📄 RAG Context Preview: {rag_context[:200]}...")
+
     # ---- Build agent ----
     agent, tools_dict = create_orchestration_agent()
 
-    # ---- Agent Input ----
+    # ---- Agent Input (now includes RAG context) ----
+    # Enhance user message with RAG context for better tool decision making
+    enhanced_input = f"""User Query: {user_message}
+
+Available Context from Knowledge Base:
+{rag_context}
+
+Based on this context and the user's query, determine the appropriate tool(s) to use."""
+
     agent_input = {
-        "input": user_message,
+        "input": enhanced_input,
         "chat_history": chat_history_lcel,
         "scratchpad": []
     }
 
-    print(f"Agent input: {agent_input}")
+    print(f"Agent input prepared with RAG context integration")
     
     # ---- Run agent with tool execution loop ----
     max_iterations = 3
@@ -146,11 +227,30 @@ async def orchestrate_langchain_request(
                 
                 if tool_name in tools_dict:
                     try:
-                        # Execute the tool - handle both dict args and direct args
-                        if isinstance(tool_args, dict):
-                            tool_result = tools_dict[tool_name].invoke(tool_args)
-                        else:
-                            tool_result = tools_dict[tool_name].invoke({"args": tool_args})
+                        # Inject RAG context for tools that need it
+                        if tool_name in ["normal_content_tool", "flashcard_generation_tool", "interactive_quiz_tool"]:
+                            # These tools benefit from RAG context
+                            if isinstance(tool_args, dict):
+                                tool_args["rag_context"] = rag_context
+                                print(f"🔍 Injected RAG context into {tool_name} (length: {len(rag_context)} chars)")
+                            else:
+                                tool_args = {
+                                    "user_query": str(tool_args) if tool_args else user_message,
+                                    "rag_context": rag_context
+                                }
+                                print(f"🔍 Created structured args with RAG context for {tool_name}")
+                        
+                        # Special handling for normal_content_tool which expects user_query + rag_context
+                        if tool_name == "normal_content_tool":
+                            if not isinstance(tool_args, dict) or "user_query" not in tool_args:
+                                tool_args = {
+                                    "user_query": user_message,
+                                    "rag_context": rag_context
+                                }
+                                print(f"🔍 Structured normal_content_tool with proper parameters")
+                        
+                        # Execute the tool
+                        tool_result = tools_dict[tool_name].invoke(tool_args)
                         
                         tool_results.append(f"Tool {tool_name} executed successfully: {tool_result}")
                         print(f"✅ Tool {tool_name} result: {tool_result}")
