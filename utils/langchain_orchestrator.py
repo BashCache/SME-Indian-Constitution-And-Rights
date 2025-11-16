@@ -11,6 +11,8 @@ from langchain_tools.content_generator.plain_content_tool import normal_content_
 from langchain_tools.content_generator.web_search_tool import web_search_tool
 from langchain_tools.email_agent.email_tool import send_email_tool
 from langchain_tools.video_generator.video_generation_tool import video_generation_tool
+from langchain_tools.flashcard_generator.flashcard_generation_tool import flashcard_generation_tool
+from langchain_tools.interactive_quiz.interactive_quiz_tool import interactive_quiz_tool
 
 # your memory
 from utils.memory_store import get_memory, append_to_memory
@@ -30,6 +32,8 @@ Tools available:
 - document_export_tool (To export content as PDF, DOCX, or PPTX documents)
 - send_email_tool (To send emails with content or documents)
 - video_generation_tool (To create educational videos about constitutional topics)
+- flashcard_generation_tool (To create interactive flashcards for studying constitutional topics)
+- interactive_quiz_tool (To create interactive quizzes with immediate feedback and scoring)
 
 Use the following reasoning rules:
 1. Think step-by-step using your scratchpad.
@@ -37,6 +41,8 @@ Use the following reasoning rules:
 3. Output ReAct-style tool calls when needed.
 4. After tool calls, give a FINAL_ANSWER.
 5. For video requests, use video_generation_tool to create 2-2.5 minute educational videos.
+6. For flashcard requests, use flashcard_generation_tool to create interactive Q&A study cards.
+7. For quiz/test requests, use interactive_quiz_tool to create quizzes with multiple question types.
 
 """),
 
@@ -62,7 +68,9 @@ def create_orchestration_agent():
         document_export_tool,
         send_email_tool,
         web_search_tool,
-        video_generation_tool
+        video_generation_tool,
+        flashcard_generation_tool,
+        interactive_quiz_tool
     ]
 
     # Create tools dictionary for easy lookup

@@ -9,6 +9,8 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if ROOT_DIR not in sys.path:
     sys.path.append(ROOT_DIR)
 from db_models.crud_operations import fetch_conversation_messages
+from frontend.flashcard_component import display_flashcards, parse_flashcard_data_from_response, reset_flashcard_session
+from frontend.quiz_component import display_interactive_quiz, parse_quiz_data_from_response
 import uuid
 
 # Configure page
@@ -72,6 +74,10 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 if "uploaded_files" not in st.session_state:
     st.session_state.uploaded_files = []
+if "current_flashcard_data" not in st.session_state:
+    st.session_state.current_flashcard_data = None
+if "current_quiz_data" not in st.session_state:
+    st.session_state.current_quiz_data = None
 
 def authenticate_user(username: str, password: str) -> bool:
     """Authenticate user with existing auth endpoint"""
@@ -148,20 +154,39 @@ def send_message(message: str, history: List[Dict], uploaded_files: List = None)
             "filepath": None  # Add filepath if available from uploaded files
         }
         
-        # Detect if this might be a video generation request (longer processing)
+        # Detect if this might be a special generation request (longer processing)
         video_keywords = ['video', 'create video', 'make video', 'generate video', 'video explanation', 'visual explanation']
         quiz_keywords = ['quiz', 'test', 'questions', 'mcq', 'generate', 'create quiz', 'export', 'pdf']
+        flashcard_keywords = ['flashcard', 'flashcards', 'flash card', 'study cards', 'create flashcards', 'make flashcards']
         
         is_video_request = any(keyword in message.lower() for keyword in video_keywords)
         is_quiz_request = any(keyword in message.lower() for keyword in quiz_keywords)
+        is_flashcard_request = any(keyword in message.lower() for keyword in flashcard_keywords)
         
-        # Use longer timeout for video/quiz generation requests
-        timeout = 180 if is_video_request else (90 if is_quiz_request else 30)
+        # Use longer timeout for generation requests
+        timeout = 180 if is_video_request else (90 if (is_quiz_request or is_flashcard_request) else 30)
         
         response = requests.post(f"{BACKEND_URL}/chat/langchain", json=payload, timeout=timeout)
         if response.status_code == 200:
             data = response.json()
-            return data.get("response", data.get("message", "No response received"))
+            response_text = data.get("response", data.get("message", "No response received"))
+            
+            # Check if this is a flashcard response
+            if is_flashcard_request and '🎴' in response_text:
+                # Store flashcard data in session state for interactive display
+                flashcard_data = parse_flashcard_data_from_response(response_text)
+                if flashcard_data:
+                    st.session_state.current_flashcard_data = flashcard_data
+                    reset_flashcard_session()  # Reset any previous flashcard session
+            
+            # Check if this is an interactive quiz response
+            if is_quiz_request and '🎯' in response_text:
+                # Store quiz data in session state for interactive display
+                quiz_data = parse_quiz_data_from_response(response_text)
+                if quiz_data:
+                    st.session_state.current_quiz_data = quiz_data
+            
+            return response_text
         else:
             return f"❌ Error: {response.status_code} - {response.text}"
     except requests.exceptions.Timeout:
@@ -169,6 +194,8 @@ def send_message(message: str, history: List[Dict], uploaded_files: List = None)
             return "⏰ Video generation is taking longer than expected. Your video may still be processing in the background. Please check the generated_videos folder for the completed video."
         elif is_quiz_request:
             return "⏰ Quiz generation is taking longer than expected. The quiz may still be processing in the background. Please check your documents folder for exported files."
+        elif is_flashcard_request:
+            return "⏰ Flashcard generation is taking longer than expected. Please try again in a moment."
         else:
             return "⏰ Request timed out. Please try again."
     except requests.exceptions.RequestException as e:
@@ -322,13 +349,18 @@ def chat_page():
     with col2:
         st.markdown("### 🏛️ Constitutional AI Assistant")
     with col3:
-        if st.button("🚪 Logout"):
+        if st.button("🚀 Logout"):
             # Clear session state
             st.session_state.authenticated = False
             st.session_state.username = ""
             st.session_state.session_id = ""
             st.session_state.messages = []
             st.session_state.uploaded_files = []
+            if 'current_flashcard_data' in st.session_state:
+                del st.session_state.current_flashcard_data
+            if 'current_quiz_data' in st.session_state:
+                del st.session_state.current_quiz_data
+            reset_flashcard_session()
             st.rerun()
     
     st.markdown("---")
@@ -407,15 +439,27 @@ def chat_page():
         - Quiz generation
         - Document export (PDF/DOCX)
         
+        **🎴 Interactive Learning:**
+        - Flashcard generation
+        - Study sessions with Q&A cards
+        - Progress tracking
+        
+        **🎯 Interactive Quiz:**
+        - Take quizzes with immediate feedback
+        - Multiple question types (MCQ, T/F, Fill-blank)
+        - Automatic scoring & explanations
+        
         **🎥 Video Generation:**
         - Educational videos (2-2.5 min)
         - Constitutional topic explanations
         - Automatic narration & slides
         
         **💡 Example requests:**
-        - "Create a video about Article 21"
-        - "Generate a quiz on fundamental rights"
-        - "Explain the right to education"
+        - "Create flashcards for Article 21"
+        - "Take a quiz on fundamental rights"
+        - "Quiz me about constitutional amendments"
+        - "Generate a quiz on constitutional amendments"
+        - "Create a video about the right to education"
         """)
         
         if uploaded_file is not None:
@@ -460,7 +504,46 @@ def chat_page():
         
         if st.button("🗑️ Clear Chat"):
             st.session_state.messages = []
+            # Clear interactive components when clearing chat
+            if 'current_flashcard_data' in st.session_state:
+                del st.session_state.current_flashcard_data
+            if 'current_quiz_data' in st.session_state:
+                del st.session_state.current_quiz_data
             st.rerun()
+        
+        # Display active flashcard set info if available
+        if 'current_flashcard_data' in st.session_state and st.session_state.current_flashcard_data:
+            st.markdown("---")
+            st.markdown("### 🎴 Active Flashcard Set")
+            flashcard_data = st.session_state.current_flashcard_data
+            st.markdown(f"**Topic:** {flashcard_data.get('topic', 'Unknown')}")
+            
+            cards = flashcard_data.get('flashcards', [])
+            if cards:
+                st.markdown(f"**Cards:** {len(cards)}")
+                if 'current_flashcard_index' in st.session_state:
+                    current_idx = st.session_state.current_flashcard_index
+                    st.markdown(f"**Current:** {current_idx + 1}/{len(cards)}")
+        
+        # Display active quiz info if available
+        if 'current_quiz_data' in st.session_state and st.session_state.current_quiz_data:
+            st.markdown("---")
+            st.markdown("### 🎯 Active Quiz")
+            quiz_data = st.session_state.current_quiz_data
+            st.markdown(f"**Topic:** {quiz_data.get('topic', 'Unknown')}")
+            
+            questions = quiz_data.get('questions', [])
+            if questions:
+                st.markdown(f"**Questions:** {len(questions)}")
+                
+                # Show quiz progress if started
+                if 'quiz_started' in st.session_state and st.session_state.quiz_started:
+                    answered = len(st.session_state.get('quiz_answers', {}))
+                    st.markdown(f"**Progress:** {answered}/{len(questions)} answered")
+                    
+                    if 'current_question_index' in st.session_state:
+                        current_q = st.session_state.current_question_index + 1
+                        st.markdown(f"**Current:** Question {current_q}")
         
         # Session deletion
         st.markdown("---")
@@ -560,6 +643,17 @@ def chat_page():
             st.markdown(f'<div class="assistant-message">🤖 <strong>Assistant:</strong><br>{message["content"]}</div>', unsafe_allow_html=True)
     
     st.markdown('</div>', unsafe_allow_html=True)
+    
+    # Display interactive components
+    # Interactive flashcard display
+    if 'current_flashcard_data' in st.session_state and st.session_state.current_flashcard_data:
+        st.markdown("---")
+        display_flashcards(st.session_state.current_flashcard_data)
+    
+    # Interactive quiz display
+    if 'current_quiz_data' in st.session_state and st.session_state.current_quiz_data:
+        st.markdown("---")
+        display_interactive_quiz(st.session_state.current_quiz_data)
     
     # Chat input
     st.markdown("---")

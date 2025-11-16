@@ -45,11 +45,13 @@ You have deep knowledge of constitutional law, fundamental rights, directive pri
 
 Your role is to:
 1. Answer questions about Indian Constitution and Rights accurately
-2. Identify when a user is asking for quiz generation vs. video generation vs. regular chat
+2. Identify when a user is asking for quiz generation vs. video generation vs. flashcard generation vs. interactive quiz vs. regular chat
 3. Provide helpful, educational responses about constitutional matters
 
 For quiz generation requests, respond with: "QUIZ_REQUEST_DETECTED" followed by the quiz details.
 For video generation requests, respond with: "VIDEO_REQUEST_DETECTED" followed by the video topic and requirements.
+For flashcard generation requests, respond with: "FLASHCARD_REQUEST_DETECTED" followed by the flashcard topic and requirements.
+For interactive quiz requests, respond with: "INTERACTIVE_QUIZ_REQUEST_DETECTED" followed by the quiz topic and requirements.
 For regular chat, provide informative answers about constitutional topics.
 
 Be professional, accurate, and educational in your responses."""
@@ -66,13 +68,19 @@ Be professional, accurate, and educational in your responses."""
     
     def detect_intent(self, user_message: str) -> str:
         """
-        Detect if the user wants quiz generation, video generation, or regular chat
+        Detect if the user wants quiz generation, video generation, flashcard generation, interactive quiz, or regular chat
         """
-        quiz_keywords = [
-            'quiz', 'test', 'questions', 'mcq', 'multiple choice', 
-            'fill in the blank', 'descriptive questions', 'exam',
-            'assessment', 'generate questions', 'create quiz', 'make quiz',
-            'quiz me', 'test me', 'practice questions'
+        # Interactive quiz keywords (more specific, check first)
+        interactive_quiz_keywords = [
+            'take a quiz', 'interactive quiz', 'quiz me', 'test me',
+            'take test', 'start quiz', 'quiz session', 'practice quiz',
+            'quiz with answers', 'quiz with feedback'
+        ]
+        
+        # Regular quiz generation keywords (for document export)
+        quiz_generation_keywords = [
+            'create quiz', 'generate quiz', 'make quiz', 'quiz questions',
+            'export quiz', 'download quiz', 'quiz pdf', 'quiz document'
         ]
         
         video_keywords = [
@@ -82,14 +90,29 @@ Be professional, accurate, and educational in your responses."""
             'show me a video', 'video about', 'record', 'film'
         ]
         
+        flashcard_keywords = [
+            'flashcard', 'flashcards', 'flash card', 'flash cards',
+            'study cards', 'create flashcards', 'make flashcards',
+            'generate flashcards', 'flashcard set', 'memory cards',
+            'study aid', 'revision cards', 'practice cards'
+        ]
+        
         message_lower = user_message.lower()
         
-        # Check for video-related keywords first (more specific)
+        # Check for interactive quiz keywords first (more specific)
+        if any(keyword in message_lower for keyword in interactive_quiz_keywords):
+            return "interactive_quiz"
+        
+        # Check for flashcard-related keywords
+        if any(keyword in message_lower for keyword in flashcard_keywords):
+            return "flashcard_generation"
+        
+        # Check for video-related keywords 
         if any(keyword in message_lower for keyword in video_keywords):
             return "video_generation"
         
-        # Check for quiz-related keywords
-        if any(keyword in message_lower for keyword in quiz_keywords):
+        # Check for quiz generation keywords (document-based)
+        if any(keyword in message_lower for keyword in quiz_generation_keywords):
             return "quiz_generation"
         
         return "chat"
@@ -164,6 +187,12 @@ Be professional, accurate, and educational in your responses."""
                     quiz_params.setdefault("export_info", {})["recipient_email"] = extracted_email
                     quiz_params["export_info"]["should_email"] = True
             
+            # Extract interactive quiz parameters
+            interactive_quiz_params = None
+            if intent == "interactive_quiz":
+                interactive_quiz_params = await self.extract_interactive_quiz_parameters(user_message)
+                print(f"🎯 Extracted interactive quiz parameters: {interactive_quiz_params}")
+            
             # Prepare input with RAG context if available
             input_text = user_message
             if rag_context:
@@ -186,6 +215,18 @@ Original user request: {input_text}
 """
                 input_text = enhanced_input
             
+            elif intent == "interactive_quiz":
+                enhanced_input = f"""
+Interactive Quiz Request Detected.
+Parameters: {interactive_quiz_params}
+
+Please acknowledge this is an interactive quiz request and confirm the parameters.
+Respond with: "INTERACTIVE_QUIZ_REQUEST_DETECTED" followed by a summary of what interactive quiz will be created.
+
+Original user request: {input_text}
+"""
+                input_text = enhanced_input
+            
             # Get response from the chain
             response = await self.chain.ainvoke({
                 "input": input_text,
@@ -196,6 +237,7 @@ Original user request: {input_text}
                 "response": response,
                 "intent": intent,
                 "quiz_params": quiz_params,
+                "interactive_quiz_params": interactive_quiz_params,
                 "extracted_email": extracted_email,
                 "email_available": self.is_email_available(),
                 "success": True
@@ -476,6 +518,86 @@ Respond with ONLY the JSON object, no explanations.
                 return match.group(1) if match.groups() else match.group(0)
         
         return None
+    
+    async def extract_interactive_quiz_parameters(self, user_message: str) -> Dict[str, Any]:
+        """
+        Extract interactive quiz parameters from user message using LLM for intelligent parsing
+        """
+        try:
+            # Create a specialized prompt for interactive quiz parameter extraction
+            extraction_prompt = f"""
+You are a parameter extraction specialist. Analyze the following user message and extract interactive quiz parameters.
+
+User Message: "{user_message}"
+
+Extract the following parameters and respond ONLY with a valid JSON object:
+
+{{
+    "topic": "<any topic mentioned by user or extract from context>",
+    "num_questions": <number of questions (default: 10)>,
+    "difficulty": "<easy|medium|hard> (default: medium)",
+    "question_types": "<mcq|true_false|fill_blank|mixed> (default: mixed)"
+}}
+
+Guidelines:
+- topic: Extract any constitutional topic mentioned (e.g., "fundamental rights", "Article 21", "constitutional amendments")
+- num_questions: Look for numbers mentioned (5-20 range, default 10)
+- difficulty: Look for words like "easy", "basic", "simple" -> easy; "hard", "advanced", "complex" -> hard; otherwise medium
+- question_types: "mcq" for multiple choice only, "true_false" for T/F only, "fill_blank" for fill-in-blanks only, "mixed" for combination
+
+Examples:
+"Take a quiz on fundamental rights" -> {{"topic": "fundamental rights", "num_questions": 10, "difficulty": "medium", "question_types": "mixed"}}
+"Quiz me about Article 21 with 5 easy questions" -> {{"topic": "Article 21", "num_questions": 5, "difficulty": "easy", "question_types": "mixed"}}
+"Hard quiz on constitutional amendments with MCQs" -> {{"topic": "constitutional amendments", "num_questions": 10, "difficulty": "hard", "question_types": "mcq"}}
+
+Respond with ONLY the JSON object, no additional text.
+"""
+            
+            response = await self.llm.ainvoke(extraction_prompt)
+            response_text = response.content if hasattr(response, 'content') else str(response)
+            
+            # Clean and parse JSON
+            response_text = response_text.strip()
+            if response_text.startswith('```json'):
+                response_text = response_text[7:-3].strip()
+            elif response_text.startswith('```'):
+                response_text = response_text[3:-3].strip()
+            
+            # Parse the JSON response
+            import json
+            params = json.loads(response_text)
+            
+            # Apply defaults
+            defaults = {
+                "topic": "Constitutional Law",
+                "num_questions": 10,
+                "difficulty": "medium", 
+                "question_types": "mixed"
+            }
+            
+            # Merge with defaults
+            for key, default_value in defaults.items():
+                if key not in params or not params[key]:
+                    params[key] = default_value
+            
+            # Validate num_questions range
+            if params["num_questions"] < 5:
+                params["num_questions"] = 5
+            elif params["num_questions"] > 20:
+                params["num_questions"] = 20
+            
+            print(f"✅ Interactive quiz parameters extracted: {params}")
+            return params
+            
+        except Exception as e:
+            print(f"Error in interactive quiz parameter extraction: {e}")
+            # Fallback to simple defaults
+            return {
+                "topic": "Constitutional Law",
+                "num_questions": 10,
+                "difficulty": "medium",
+                "question_types": "mixed"
+            }
     
     def send_quiz_email(self, 
                        file_path: str,

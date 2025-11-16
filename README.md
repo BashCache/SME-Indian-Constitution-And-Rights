@@ -14,7 +14,19 @@ An intelligent constitutional law assistant with AI-powered content generation, 
 - **Document Export**: Generate PDF, DOCX, and PPTX documents
 - **Email Integration**: Send generated content via email
 
-### 🎬 **NEW: Video Generation**
+### 🎴 **NEW: Interactive Flashcards**
+- **Study Cards**: Create Q&A flashcards for constitutional topics
+- **Interactive Learning**: Click to flip cards and reveal answers
+- **Progress Tracking**: Mark cards as "Got it!" and track study progress
+- **Constitutional Focus**: Specialized cards for articles, rights, and case law
+
+### 🎴 **NEW: Interactive Flashcards**
+- **Study Cards**: Create Q&A flashcards for constitutional topics
+- **Interactive Learning**: Click to flip cards and reveal answers
+- **Progress Tracking**: Mark cards as "Got it!" and track study progress
+- **Constitutional Focus**: Specialized cards for articles, rights, and case law
+
+### 🎬 **Video Generation**
 - **Educational Videos**: Create 2-2.5 minute videos on constitutional topics
 - **Automatic Narration**: Text-to-speech using Sarvam API
 - **Professional Slides**: Constitutional-themed templates
@@ -89,6 +101,32 @@ python cli_client.py
 **Option 3: Direct API**
 Access the API documentation at: `http://localhost:8000/docs`
 
+## 🎴 Flashcard Usage
+
+### Through Web Interface
+1. Open Streamlit app (`http://localhost:8501`)
+2. Type requests like:
+   - "Create flashcards for Article 21"
+   - "Make study cards for fundamental rights"
+   - "Generate flashcards about constitutional amendments"
+3. Interactive flashcard session will appear below the chat
+4. Click cards to flip between questions and answers
+5. Use navigation buttons to move between cards
+6. Mark cards as "Got it!" to track progress
+
+### Through CLI
+```bash
+# In the CLI client, type:
+"Create flashcards for directive principles"
+```
+
+### Flashcard Features
+- **Interactive Flipping**: Click to reveal answers
+- **Navigation**: First, Previous, Next, Last buttons
+- **Progress Tracking**: "Got it!" button to mark completed cards
+- **Study Sessions**: Complete sets with progress percentage
+- **Constitutional Themes**: Styled with legal document aesthetics
+
 ## 🎥 Video Generation Usage
 
 ### Through Web Interface
@@ -129,6 +167,7 @@ curl -X POST "http://localhost:8000/generate-video" \
 │
 ├── frontend/
 │   ├── streamlit_app.py   # Streamlit web interface
+│   ├── flashcard_component.py # 🎴 Interactive flashcard display
 │   └── styles.css         # UI styling
 │
 ├── db_models/
@@ -142,7 +181,10 @@ curl -X POST "http://localhost:8000/generate-video" \
 │   └── memory_store.py    # Session memory management
 │
 ├── langchain_tools/
-│   ├── video_generator/   # 🎬 NEW: Video generation tools
+│   ├── flashcard_generator/ # 🎴 NEW: Interactive flashcard tools
+│   │   ├── flashcard_generation_tool.py # Main tool integration
+│   │   └── __init__.py                   # Package initialization
+│   ├── video_generator/   # 🎬 Video generation tools
 │   │   ├── video_generation_tool.py # Main tool integration
 │   │   ├── tts_handler.py           # Sarvam TTS integration
 │   │   ├── slide_template_manager.py # Slide creation
@@ -204,6 +246,11 @@ Video templates are located in `langchain_tools/video_generator/templates/`:
 ### Quiz Generation
 - "Create a quiz on fundamental rights with 10 MCQs"
 - "Generate 5 descriptive questions about constitutional amendments"
+
+### 🎴 Flashcard Generation
+- "Create flashcards for fundamental rights"
+- "Make study cards about Article 14-18"
+- "Generate flashcards on constitutional remedies"
 
 ### 🎬 Video Generation
 - "Create a video about the right to privacy"
