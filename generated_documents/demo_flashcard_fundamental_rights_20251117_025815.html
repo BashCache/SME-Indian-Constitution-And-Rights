@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Flashcard - Fundamental Rights</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .flashcard-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        .topic-header {
+            color: #4a5568;
+            font-size: 28px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        .flashcard {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .flashcard:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        .question {
+            font-size: 20px;
+            color: #2d3748;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .answer {
+            font-size: 16px;
+            color: #4a5568;
+            line-height: 1.6;
+            display: none;
+        }
+        .answer.show {
+            display: block;
+        }
+        .flip-instruction {
+            font-size: 14px;
+            color: #718096;
+            margin-top: 15px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="flashcard-container">
+        <h1 class="topic-header">📚 Fundamental Rights</h1>
+        
+        <div id="flashcard-display">
+            <div class="flashcard" onclick="flipCard(0)">
+                <div class="question" id="question-0">What does Article 21 of the Indian Constitution guarantee?</div>
+                <div class="answer" id="answer-0">Article 21 guarantees the right to life and personal liberty. It states that no person shall be deprived of his life or personal liberty except according to procedure established by law.</div>
+                <div class="flip-instruction">Click to flip</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function flipCard(cardIndex) {
+            const question = document.getElementById('question-' + cardIndex);
+            const answer = document.getElementById('answer-' + cardIndex);
+            
+            if (answer.classList.contains('show')) {
+                question.style.display = 'block';
+                answer.classList.remove('show');
+            } else {
+                question.style.display = 'none';
+                answer.classList.add('show');
+            }
+        }
+    </script>
+</body>
+</html>

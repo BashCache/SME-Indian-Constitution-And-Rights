@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards - article 21</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .flashcard-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        .topic-header {
+            color: #4a5568;
+            font-size: 28px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        .flashcard {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .flashcard:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        .flashcard.flipped {
+            background: #edf2f7;
+            border-color: #cbd5e0;
+        }
+        .question {
+            font-size: 20px;
+            color: #2d3748;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .answer {
+            font-size: 16px;
+            color: #4a5568;
+            line-height: 1.6;
+            display: none;
+        }
+        .answer.show {
+            display: block;
+        }
+        .flip-instruction {
+            font-size: 14px;
+            color: #718096;
+            margin-top: 15px;
+            font-style: italic;
+        }
+        .card-meta {
+            background: #e6fffa;
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 15px;
+            font-size: 12px;
+            color: #234e52;
+        }
+        .controls {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-primary {
+            background: #4299e1;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #3182ce;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+        .btn-secondary:hover {
+            background: #cbd5e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="flashcard-container">
+        <h1 class="topic-header">📚 article 21</h1>
+        
+        <div id="flashcard-display">
+
+            <div class="flashcard" id="card-0" onclick="flipCard(0)">
+                <div class="question" id="question-0">How did the Supreme Court's interpretation of 'procedure established by law' in Article 21 evolve from the A.K. Gopalan case to the Maneka Gandhi case?</div>
+                <div class="answer" id="answer-0">In A.K. Gopalan v. State of Madras (1950), the Supreme Court took a narrow view, stating 'procedure established by law' meant any procedure laid down by a validly enacted law. However, in Maneka Gandhi v. Union of India (1978), the Court overruled this, holding that the procedure must be 'right, just, and fair' and not arbitrary. This landmark judgment effectively introduced the American principle of 'substantive due process' into Article 21.</div>
+                <div class="flip-instruction">Click to flip</div>
+                <div class="card-meta">
+                    <strong>Category:</strong> Cases | 
+                    <strong>Reference:</strong> Article 21
+                </div>
+            </div>
+
+            <div class="flashcard" id="card-1" onclick="flipCard(1)">
+                <div class="question" id="question-1">The 'Right to Life' under Article 21 is not merely animal existence. Name three unenumerated rights that have been judicially recognized as part of it, citing one relevant case.</div>
+                <div class="answer" id="answer-1">The Supreme Court has expanded the scope of Article 21 to include several unenumerated rights essential for a life with human dignity. Three such rights are: 1. Right to Privacy, established as a fundamental right in K.S. Puttaswamy v. Union of India (2017). 2. Right to a Clean Environment. 3. Right to Livelihood, as affirmed in Olga Tellis v. Bombay Municipal Corporation (1985).</div>
+                <div class="flip-instruction">Click to flip</div>
+                <div class="card-meta">
+                    <strong>Category:</strong> Fundamental Rights | 
+                    <strong>Reference:</strong> Article 21
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="controls">
+            <button class="btn btn-secondary" onclick="resetCards()">Reset All</button>
+            <button class="btn btn-primary" onclick="flipAllCards()">Show All Answers</button>
+        </div>
+    </div>
+
+    <script>
+        let flippedCards = new Set();
+        
+        function flipCard(cardIndex) {
+            const card = document.getElementById('card-' + cardIndex);
+            const question = document.getElementById('question-' + cardIndex);
+            const answer = document.getElementById('answer-' + cardIndex);
+            
+            if (flippedCards.has(cardIndex)) {
+                // Show question, hide answer
+                question.style.display = 'block';
+                answer.classList.remove('show');
+                card.classList.remove('flipped');
+                flippedCards.delete(cardIndex);
+            } else {
+                // Show answer, hide question
+                question.style.display = 'none';
+                answer.classList.add('show');
+                card.classList.add('flipped');
+                flippedCards.add(cardIndex);
+            }
+        }
+        
+        function resetCards() {
+            flippedCards.clear();
+            const cards = document.querySelectorAll('.flashcard');
+            cards.forEach((card, index) => {
+                const question = document.getElementById('question-' + index);
+                const answer = document.getElementById('answer-' + index);
+                
+                question.style.display = 'block';
+                answer.classList.remove('show');
+                card.classList.remove('flipped');
+            });
+        }
+        
+        function flipAllCards() {
+            const cards = document.querySelectorAll('.flashcard');
+            cards.forEach((card, index) => {
+                if (!flippedCards.has(index)) {
+                    flipCard(index);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

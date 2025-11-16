@@ -299,6 +299,24 @@ Based on this context and the user's query, determine the appropriate tool(s) to
         final_answer = final_response
     elif type(final_response) == list:
         final_answer = final_response[0]['text']
+    
+    # If final_answer is empty, try to get response from scratchpad
+    if not final_answer or final_answer.strip() == "":
+        print("⚠️ Final answer is empty, checking scratchpad for content...")
+        if agent_input.get("scratchpad"):
+            for msg in reversed(agent_input["scratchpad"]):
+                if hasattr(msg, "content") and msg.content and msg.content.strip():
+                    # Skip tool result messages, look for actual responses
+                    if not msg.content.startswith("Tool results:"):
+                        final_answer = msg.content.strip()
+                        print(f"📋 Using content from scratchpad: {final_answer[:100]}...")
+                        break
+        
+        # Last resort fallback
+        if not final_answer or final_answer.strip() == "":
+            final_answer = "I apologize, but I was unable to generate a proper response. Please try rephrasing your question."
+            print("🔄 Using fallback response")
+    
     print(f"final answer: {final_answer}")
     # ---- Save memory ----
     append_to_memory(session_id, "user", user_message)
