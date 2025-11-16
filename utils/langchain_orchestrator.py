@@ -10,6 +10,7 @@ from langchain_tools.document_exporter.document_export_tool import document_expo
 from langchain_tools.content_generator.plain_content_tool import normal_content_tool
 from langchain_tools.content_generator.web_search_tool import web_search_tool
 from langchain_tools.email_agent.email_tool import send_email_tool
+from langchain_tools.video_generator.video_generation_tool import video_generation_tool
 
 # your memory
 from utils.memory_store import get_memory, append_to_memory
@@ -26,14 +27,16 @@ You are an intelligent orchestrator that decides when to call tools.
 Tools available:
 - normal_content_tool (To answer the user query based out of rag)
 - web_search_tool (To answer user query based out of Internet Search)
-- document_export_tool
-- send_email_tool
+- document_export_tool (To export content as PDF, DOCX, or PPTX documents)
+- send_email_tool (To send emails with content or documents)
+- video_generation_tool (To create educational videos about constitutional topics)
 
 Use the following reasoning rules:
 1. Think step-by-step using your scratchpad.
 2. Use chat_history to remember past conversation.
 3. Output ReAct-style tool calls when needed.
 4. After tool calls, give a FINAL_ANSWER.
+5. For video requests, use video_generation_tool to create 2-2.5 minute educational videos.
 
 """),
 
@@ -58,7 +61,8 @@ def create_orchestration_agent():
         normal_content_tool,
         document_export_tool,
         send_email_tool,
-        web_search_tool
+        web_search_tool,
+        video_generation_tool
     ]
 
     # Create tools dictionary for easy lookup

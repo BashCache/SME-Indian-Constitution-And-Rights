@@ -298,6 +298,46 @@ async def chat_langchain(request: ChatRequest, db: Session = Depends(get_db)):
         print(f"❌ Error in LangChain orchestration: {e}")
         raise HTTPException(status_code=500, detail=f"Orchestration error: {str(e)}")
 
+@app.post("/generate-video")
+async def generate_video(
+    topic: str = Form(...),
+    duration: float = Form(default=150.0),
+    style: str = Form(default="educational"),
+    include_examples: bool = Form(default=True),
+    session_id: str = Form(...),
+    db: Session = Depends(get_db)
+):
+    """
+    Generate educational video about constitutional topics
+    """
+    try:
+        print(f"🎬 Video generation request: {topic}")
+        
+        # Import video tool
+        from langchain_tools.video_generator.video_generation_tool import video_tool_instance
+        
+        # Generate video
+        result = video_tool_instance.generate_video(
+            topic=topic,
+            duration=duration,
+            style=style,
+            include_examples=include_examples
+        )
+        
+        # Store generation record in session
+        if result['success']:
+            generation_record = {
+                "role": "system",
+                "content": f"Video generated: {topic} ({result.get('video_info', {}).get('duration_seconds', duration)}s)"
+            }
+            await add_conversation_details_to_db(session_id, generation_record, db)
+        
+        return result
+        
+    except Exception as e:
+        print(f"❌ Error in video generation endpoint: {e}")
+        raise HTTPException(status_code=500, detail=f"Video generation error: {str(e)}")
+
 UPLOAD_DIR = "agent_data/uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 

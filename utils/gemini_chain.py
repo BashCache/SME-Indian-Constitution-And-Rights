@@ -45,10 +45,11 @@ You have deep knowledge of constitutional law, fundamental rights, directive pri
 
 Your role is to:
 1. Answer questions about Indian Constitution and Rights accurately
-2. Identify when a user is asking for quiz generation vs. regular chat
+2. Identify when a user is asking for quiz generation vs. video generation vs. regular chat
 3. Provide helpful, educational responses about constitutional matters
 
 For quiz generation requests, respond with: "QUIZ_REQUEST_DETECTED" followed by the quiz details.
+For video generation requests, respond with: "VIDEO_REQUEST_DETECTED" followed by the video topic and requirements.
 For regular chat, provide informative answers about constitutional topics.
 
 Be professional, accurate, and educational in your responses."""
@@ -65,7 +66,7 @@ Be professional, accurate, and educational in your responses."""
     
     def detect_intent(self, user_message: str) -> str:
         """
-        Detect if the user wants quiz generation or regular chat
+        Detect if the user wants quiz generation, video generation, or regular chat
         """
         quiz_keywords = [
             'quiz', 'test', 'questions', 'mcq', 'multiple choice', 
@@ -74,7 +75,18 @@ Be professional, accurate, and educational in your responses."""
             'quiz me', 'test me', 'practice questions'
         ]
         
+        video_keywords = [
+            'video', 'create video', 'make video', 'generate video',
+            'video explanation', 'visual explanation', 'animated',
+            'presentation video', 'educational video', 'explain with video',
+            'show me a video', 'video about', 'record', 'film'
+        ]
+        
         message_lower = user_message.lower()
+        
+        # Check for video-related keywords first (more specific)
+        if any(keyword in message_lower for keyword in video_keywords):
+            return "video_generation"
         
         # Check for quiz-related keywords
         if any(keyword in message_lower for keyword in quiz_keywords):

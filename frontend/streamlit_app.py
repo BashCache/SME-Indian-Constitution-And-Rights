@@ -148,12 +148,15 @@ def send_message(message: str, history: List[Dict], uploaded_files: List = None)
             "filepath": None  # Add filepath if available from uploaded files
         }
         
-        # Detect if this might be a quiz generation request (longer processing)
+        # Detect if this might be a video generation request (longer processing)
+        video_keywords = ['video', 'create video', 'make video', 'generate video', 'video explanation', 'visual explanation']
         quiz_keywords = ['quiz', 'test', 'questions', 'mcq', 'generate', 'create quiz', 'export', 'pdf']
+        
+        is_video_request = any(keyword in message.lower() for keyword in video_keywords)
         is_quiz_request = any(keyword in message.lower() for keyword in quiz_keywords)
         
-        # Use longer timeout for quiz generation requests
-        timeout = 90 if is_quiz_request else 30
+        # Use longer timeout for video/quiz generation requests
+        timeout = 180 if is_video_request else (90 if is_quiz_request else 30)
         
         response = requests.post(f"{BACKEND_URL}/chat/langchain", json=payload, timeout=timeout)
         if response.status_code == 200:
@@ -162,7 +165,9 @@ def send_message(message: str, history: List[Dict], uploaded_files: List = None)
         else:
             return f"❌ Error: {response.status_code} - {response.text}"
     except requests.exceptions.Timeout:
-        if is_quiz_request:
+        if is_video_request:
+            return "⏰ Video generation is taking longer than expected. Your video may still be processing in the background. Please check the generated_videos folder for the completed video."
+        elif is_quiz_request:
             return "⏰ Quiz generation is taking longer than expected. The quiz may still be processing in the background. Please check your documents folder for exported files."
         else:
             return "⏰ Request timed out. Please try again."
@@ -393,6 +398,25 @@ def chat_page():
             type=['pdf', 'docx', 'pptx', 'txt'],
             help="Upload constitutional documents, legal texts, case studies, etc."
         )
+        
+        st.markdown("---")
+        st.markdown("### 🎬 Features Available")
+        st.markdown("""
+        **📝 Content Generation:**
+        - Constitutional Q&A
+        - Quiz generation
+        - Document export (PDF/DOCX)
+        
+        **🎥 Video Generation:**
+        - Educational videos (2-2.5 min)
+        - Constitutional topic explanations
+        - Automatic narration & slides
+        
+        **💡 Example requests:**
+        - "Create a video about Article 21"
+        - "Generate a quiz on fundamental rights"
+        - "Explain the right to education"
+        """)
         
         if uploaded_file is not None:
             if st.button("📤 Process Upload"):
