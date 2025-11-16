@@ -44,62 +44,139 @@ def display_flashcards(flashcard_data: Dict[str, Any]):
     # Progress indicator
     progress = (st.session_state.current_card_index + 1) / total_cards
     st.progress(progress)
-    st.markdown(f"**Card {st.session_state.current_card_index + 1} of {total_cards}**")
-    
-    # Card difficulty and category
-    col1, col2 = st.columns(2)
-    with col1:
-        st.caption(f"📊 Difficulty: {flashcard_data.get('difficulty', 'medium').title()}")
-    with col2:
-        st.caption(f"📝 Category: {current_card.get('category', 'general').title()}")
+    st.markdown(f"**Progress: {st.session_state.current_card_index + 1} of {total_cards}**")
     
     # Main card display
-    st.markdown("---")
+    st.markdown("")
     
     # Create card container with styling
     with st.container():
-        # Apply custom CSS for card styling
+        # Apply custom CSS for enhanced card styling
         st.markdown("""
         <style>
+        .flashcard-main-container {
+            perspective: 1000px;
+            margin: 30px auto;
+            max-width: 600px;
+        }
         .flashcard-container {
-            background-color: #f8f9fa;
-            border: 2px solid #dee2e6;
-            border-radius: 15px;
-            padding: 30px;
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+            border: none;
+            border-radius: 20px;
+            padding: 40px;
             margin: 20px 0;
             text-align: center;
-            min-height: 250px;
+            min-height: 320px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.15),
+                0 6px 20px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateZ(0);
+            position: relative;
+            overflow: hidden;
+        }
+        .flashcard-container:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px 20px 0 0;
+        }
+        .flashcard-container:hover {
+            transform: translateY(-5px) translateZ(0);
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.2),
+                0 10px 25px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
         }
         .flashcard-question {
-            font-size: 1.4em;
-            font-weight: bold;
-            color: #495057;
-            margin-bottom: 20px;
+            font-size: 1.6em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            line-height: 1.4;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
         .flashcard-answer {
-            font-size: 1.1em;
-            color: #6c757d;
-            line-height: 1.6;
+            font-size: 1.2em;
+            color: #34495e;
+            line-height: 1.7;
+            text-align: justify;
+            margin-bottom: 20px;
         }
         .flashcard-reference {
             font-style: italic;
-            color: #28a745;
-            margin-top: 15px;
+            font-weight: 500;
+            color: #27ae60;
+            margin-top: 20px;
+            padding: 8px 16px;
+            background: rgba(39, 174, 96, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(39, 174, 96, 0.2);
         }
-        </style>
+        .flashcard-hint {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-top: 25px;
+            opacity: 0.8;
+        }
+        .flashcard-card-indicator {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+        .flashcard-difficulty-badge {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .difficulty-easy {
+            background: rgba(46, 204, 113, 0.1);
+            color: #2ecc71;
+            border: 1px solid rgba(46, 204, 113, 0.2);
+        }
+        .difficulty-medium {
+            background: rgba(241, 196, 15, 0.1);
+            color: #f1c40f;
+            border: 1px solid rgba(241, 196, 15, 0.2);
+        }
+        .difficulty-hard {\n            background: rgba(231, 76, 60, 0.1);\n            color: #e74c3c;\n            border: 1px solid rgba(231, 76, 60, 0.2);\n        }\n        \n        /* Enhanced button styling */\n        .stButton > button {\n            border-radius: 12px;\n            border: none;\n            font-weight: 500;\n            transition: all 0.3s ease;\n            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n        }\n        .stButton > button:hover {\n            transform: translateY(-2px);\n            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);\n        }\n        </style>
         """, unsafe_allow_html=True)
         
         # Question side
         if not st.session_state.show_answer:
+            difficulty = flashcard_data.get('difficulty', 'medium').lower()
             st.markdown(f"""
-            <div class="flashcard-container">
-                <div>
+            <div class="flashcard-main-container">
+                <div class="flashcard-container">
+                    <div class="flashcard-difficulty-badge difficulty-{difficulty}">
+                        {flashcard_data.get('difficulty', 'medium').title()}
+                    </div>
+                    <div class="flashcard-card-indicator">
+                        Card {st.session_state.current_card_index + 1} of {total_cards}
+                    </div>
                     <div class="flashcard-question">{current_card.get('question', 'Sample question')}</div>
-                    <p style="color: #6c757d; margin-top: 20px;">🤔 Think about your answer, then click "Show Answer" below</p>
+                    <div class="flashcard-hint">🤔 Think about your answer, then click "Show Answer" below</div>
                 </div>
             </div>
             """, unsafe_allow_html=True)
@@ -107,17 +184,24 @@ def display_flashcards(flashcard_data: Dict[str, Any]):
         # Answer side
         else:
             reference = current_card.get('article_reference', 'Reference')
+            difficulty = flashcard_data.get('difficulty', 'medium').lower()
             st.markdown(f"""
-            <div class="flashcard-container">
-                <div>
+            <div class="flashcard-main-container">
+                <div class="flashcard-container">
+                    <div class="flashcard-difficulty-badge difficulty-{difficulty}">
+                        {flashcard_data.get('difficulty', 'medium').title()}
+                    </div>
+                    <div class="flashcard-card-indicator">
+                        Card {st.session_state.current_card_index + 1} of {total_cards}
+                    </div>
                     <div class="flashcard-answer">{current_card.get('answer', 'Sample answer')}</div>
-                    <div class="flashcard-reference">📖 Reference: {reference}</div>
+                    <div class="flashcard-reference">📖 {reference}</div>
                 </div>
             </div>
             """, unsafe_allow_html=True)
     
     # Card interaction buttons
-    st.markdown("---")
+    st.markdown("")
     
     # Center the flip button
     col1, col2, col3 = st.columns([1, 2, 1])
