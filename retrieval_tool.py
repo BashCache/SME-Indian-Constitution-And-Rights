@@ -1,13 +1,3 @@
-"""
-(Task 2.2 - FINAL VERSION - Corrected)
-This is your "read-only" RAG tool.
-Give this file to Person 3.
-
-CHANGES:
-1.  Fixed the typo in `MODEL_CONFIG`. It now points to the
-    correct 'nlpaueb/legal-bert-base-uncased' model.
-2.  Loads the reranker model locally.
-"""
 
 import os
 import requests
