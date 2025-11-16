@@ -12,7 +12,7 @@ from datetime import datetime
 try:
     from moviepy.editor import (
         ImageClip, AudioFileClip, CompositeVideoClip, 
-        concatenate_videoclips, ColorClip, TextClip
+        concatenate_videoclips, ColorClip, TextClip, VideoFileClip
     )
     MOVIEPY_AVAILABLE = True
 except ImportError:
@@ -291,7 +291,7 @@ class VideoComposer:
             
             return {
                 'file_path': video_path,
-                'file_size_mb': round(file_size / (1024 * 1024), 2),
+                # 'file_size_mb': round(file_size / (1024 * 1024), 2),
                 'duration_seconds': round(duration, 2),
                 'fps': fps,
                 'resolution': f"{resolution[0]}x{resolution[1]}" if resolution else "1920x1080",

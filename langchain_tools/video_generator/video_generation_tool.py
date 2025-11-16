@@ -26,6 +26,7 @@ class VideoGenerationInput(BaseModel):
     duration: Optional[float] = Field(default=150.0, description="Target video duration in seconds (default: 2.5 minutes)")
     style: Optional[str] = Field(default="educational", description="Video style: educational, formal, or casual")
     include_examples: Optional[bool] = Field(default=True, description="Whether to include real-world examples")
+    audio_format: Optional[str] = Field(default="mp3", description="Audio format for generated files: mp3, wav, aac, m4a")
 
 class VideoGenerationTool:
     """
@@ -33,18 +34,19 @@ class VideoGenerationTool:
     
     Features:
     - Script generation using LLM
-    - Text-to-speech conversion
+    - Text-to-speech conversion with configurable audio formats
     - Slide creation with constitutional templates
     - Video composition and assembly
     """
     
-    def __init__(self):
+    def __init__(self, audio_format: str = "mp3"):
         self.gemini_api_key = os.getenv("GEMINI_API_KEY")
         self.output_dir = Path("generated_videos")
         self.output_dir.mkdir(exist_ok=True)
+        self.audio_format = audio_format
         
         # Initialize components
-        self.tts_handler = SarvamTTSHandler()
+        self.tts_handler = SarvamTTSHandler(audio_format=audio_format)
         self.slide_manager = SlideTemplateManager()
         self.video_composer = VideoComposer()
         
@@ -59,7 +61,7 @@ class VideoGenerationTool:
             self.llm = None
             print("Warning: GEMINI_API_KEY not found. Script generation will be limited.")
     
-    def generate_video(self, topic: str, duration: float = 150.0, style: str = "educational", include_examples: bool = True) -> Dict[str, Any]:
+    def generate_video(self, topic: str, duration: float = 150.0, style: str = "educational", include_examples: bool = True, audio_format: str = "mp3") -> Dict[str, Any]:
         """
         Main method to generate a complete video
         
@@ -68,13 +70,21 @@ class VideoGenerationTool:
             duration: Target duration in seconds
             style: Video style
             include_examples: Whether to include examples
+            audio_format: Audio format for generated files (mp3, wav, aac, m4a)
         
         Returns:
             Dictionary with generation results
         """
         try:
             print(f"🎬 Starting video generation for: {topic}")
+            print(f"📊 Settings: Duration={duration}s, Style={style}, Audio={audio_format}")
             start_time = datetime.now()
+            
+            # Update TTS handler audio format if different
+            if audio_format != self.audio_format:
+                self.audio_format = audio_format
+                self.tts_handler = SarvamTTSHandler(audio_format=audio_format)
+                print(f"🎵 Using {audio_format.upper()} audio format")
             
             # Step 1: Generate script
             print("📝 Generating script...")
@@ -90,6 +100,8 @@ class VideoGenerationTool:
             # Step 2: Create slides
             print("🖼️ Creating slides...")
             temp_dir = Path(tempfile.mkdtemp(prefix="video_gen_"))
+            print(f"Temp dir: {temp_dir}")
+
             slides_dir = temp_dir / "slides"
             audio_dir = temp_dir / "audio"
             
@@ -98,10 +110,12 @@ class VideoGenerationTool:
             )
             
             # Step 3: Generate audio
-            print("🎤 Generating audio...")
+            print(f"🎤 Generating audio in {audio_format.upper()} format...")
             audio_files = self.tts_handler.generate_script_audio(
                 script_data['segments'], str(audio_dir)
             )
+            
+            print(f"🎵 Generated {len(audio_files)} audio files")
             
             # Step 4: Compose video
             print("🎞️ Composing video...")
@@ -328,11 +342,11 @@ Respond with ONLY the JSON object, no additional text."""
         safe_name = re.sub(r'\s+', '_', safe_name.strip())
         return safe_name[:50]  # Limit length
 
-# Create the LangChain tool instance
-video_tool_instance = VideoGenerationTool()
+# Create the LangChain tool instance with MP3 as default
+video_tool_instance = VideoGenerationTool(audio_format="mp3")
 
 @tool("video_generation_tool", args_schema=VideoGenerationInput, return_direct=True)
-def video_generation_tool(topic: str, duration: float = 150.0, style: str = "educational", include_examples: bool = True) -> str:
+def video_generation_tool(topic: str, duration: float = 150.0, style: str = "educational", include_examples: bool = True, audio_format: str = "mp3") -> str:
     """
     Generate an educational video about constitutional topics.
     
@@ -344,6 +358,7 @@ def video_generation_tool(topic: str, duration: float = 150.0, style: str = "edu
         duration: Target video duration in seconds (default: 2.5 minutes)
         style: Video style - educational, formal, or casual
         include_examples: Whether to include real-world examples
+        audio_format: Audio format for generated files (mp3, wav, aac, m4a)
     
     Returns:
         JSON string with video generation results
@@ -352,7 +367,8 @@ def video_generation_tool(topic: str, duration: float = 150.0, style: str = "edu
         topic=topic,
         duration=duration,
         style=style,
-        include_examples=include_examples
+        include_examples=include_examples,
+        audio_format=audio_format
     )
     
     # Format response for user
@@ -365,6 +381,7 @@ def video_generation_tool(topic: str, duration: float = 150.0, style: str = "edu
 • **Duration:** {video_info.get('duration_seconds', duration)} seconds
 • **File Size:** {video_info.get('file_size_mb', 'Unknown')} MB
 • **Resolution:** {video_info.get('resolution', '1920x1080')}
+• **Audio Format:** {audio_format.upper()}
 • **File Path:** {result['video_path']}
 
 ⏱️ **Processing Time:** {result.get('processing_time', 0):.1f} seconds
@@ -382,6 +399,7 @@ def video_generation_tool(topic: str, duration: float = 150.0, style: str = "edu
             response += f"\n... and {len(script_data.get('segments', [])) - 3} more segments"
         
         response += f"\n\n✅ **Your educational video about '{result['topic']}' is ready for use!**"
+        response += f"\n🎵 **Audio generated in {audio_format.upper()} format for better compatibility.**"
         
     else:
         response = f"❌ **Video Generation Failed**\n\n**Topic:** {result['topic']}\n**Error:** {result.get('error', 'Unknown error')}\n\nPlease try again or check the logs for more details."
