@@ -139,7 +139,7 @@ def save_message_to_session(session_id: str, user_message: str, ai_response: str
             "user_message": user_message,
             "ai_response": ai_response
         }
-        response = requests.post(f"{BACKEND_URL}/sessions/messages", json=payload, timeout=3)
+        response = requests.post(f"{BACKEND_URL}/sessions/messages", json=payload, timeout=30)
         return response.status_code == 200
     except requests.exceptions.RequestException:
         # In demo mode, we'll rely on local session state
@@ -164,7 +164,7 @@ def send_message(message: str, history: List[Dict], uploaded_files: List = None)
         is_flashcard_request = any(keyword in message.lower() for keyword in flashcard_keywords)
         
         # Use longer timeout for generation requests
-        timeout = 180 if is_video_request else (90 if (is_quiz_request or is_flashcard_request) else 30)
+        timeout = 180 if is_video_request else (180 if (is_quiz_request or is_flashcard_request) else 180)
         
         response = requests.post(f"{BACKEND_URL}/chat/langchain", json=payload, timeout=timeout)
         if response.status_code == 200:
@@ -669,13 +669,15 @@ def chat_page():
         is_quiz_request = any(keyword in message_to_process.lower() for keyword in quiz_keywords)
         
         # Show appropriate processing state
-        if is_quiz_request:
-            with st.spinner("🎯 Generating quiz... This may take a minute for document exports."):
-                ai_response = send_message(message_to_process, st.session_state.messages, st.session_state.uploaded_files)
-        else:
-            with st.spinner("🤔 Thinking..."):
-                ai_response = send_message(message_to_process, st.session_state.messages, st.session_state.uploaded_files)
-        
+        # if is_quiz_request:
+        #     with st.spinner("🎯 Generating quiz... This may take a minute for document exports."):
+        #         ai_response = send_message(message_to_process, st.session_state.messages, st.session_state.uploaded_files)
+        # else:
+        #     with st.spinner("🤔 Thinking..."):
+        #         ai_response = send_message(message_to_process, st.session_state.messages, st.session_state.uploaded_files)
+        with st.spinner("🤔 Thinking..."):
+            ai_response = send_message(message_to_process, st.session_state.messages, st.session_state.uploaded_files)
+
         # Add AI response to session state
         st.session_state.messages.append({"role": "assistant", "content": ai_response})
         

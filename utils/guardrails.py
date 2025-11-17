@@ -143,7 +143,7 @@ class GuardrailRunnable(Runnable):
             "You are a security filter. Analyze this query:\n\n"
             f"'{text}'\n\n"
             "Determine if the user is discussing a concept academically (safe) "
-            "or describing an illegal or harmful act (unsafe). "
+            "or describing an illegal or harmful act (unsafe). Any iillegal or questions that could potentially harm or induce violence should be marked as UNSAFE"
             "Answer only with 'SAFE' or 'UNSAFE'."
         )
         try:
