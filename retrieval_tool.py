@@ -1,32 +1,36 @@
 """
-(Task 2.2 - FINAL VERSION - with Query Expansion)
-This is your "read-only" RAG tool.
-Give this file to Person 3.
+(Task 2.6 - FINAL-KG-HYBRID VERSION)
 
 CHANGES:
-1.  This tool is now a complete "black box" for retrieval.
-2.  Absorbed the logic from 'agent_tools/query_analyzer.py'.
-3.  The public '.search()' method no longer takes 'filter_labels'.
-4.  It now has a new private method '_get_labels_from_query'
-    that calls Gemini to generate labels *internally*.
-5.  Loads the reranker model locally.
+1.  Implements the Knowledge Graph (BONUS) as a metadata filter.
+2.  Brings back the Gemini Query Analyzer ('_get_entities_from_query')
+    to extract entities (e.g., 'article 14') from the user's query.
+3.  The 'search' method now has a 'use_filter: bool' flag,
+    which allows you to run the A/B test.
+4.  This creates a 3-part hybrid search:
+    - Dense (Vector)
+    - Keyword (BM25)
+    - Knowledge Graph (Entity Filter)
 """
 
 import os
-import requests
 import pinecone
 from dotenv import load_dotenv
 from sentence_transformers import SentenceTransformer, CrossEncoder
-from typing import Literal, Dict, Any, List
+from typing import Literal, Dict, Any, List, Optional
 import time
 import json
 import google.generativeai as genai
 from google.generativeai.types import GenerationConfig
 import logging
+import pickle
+from rank_bm25 import BM25Okapi 
+import numpy as np 
+import re
 
-# (Task 2.4 - TODO) Import BM25
-# from rank_bm25 import BM25Okapi
-# import pickle
+# --- BM25 File Paths ---
+BM25_INDEX_FILE = 'bm25_index.pkl'
+CHUNK_DB_FILE = 'bm25_chunk_db.json'
 
 # --- Model Configuration ---
 MODEL_CONFIG = {
@@ -43,9 +47,11 @@ MODEL_CONFIG = {
 
 # --- Gemini Query Analyzer Config ---
 QUERY_ANALYZER_SYSTEM_PROMPT = (
-    "You are a search query analyzer. Your job is to extract the 3-5 most important "
-    "keywords, topics, or legal article numbers from the user's query. \n"
-    "Focus on specific, filterable terms (like 'article 14', 'fundamental rights', 'equality'). \n"
+    "You are a search query analyzer. Your job is to extract the 3-5 most specific, "
+    "unique, and important keywords, topics, or legal article numbers from the user's query. \n"
+    "CRITICAL: Prioritize specific entities. For example, if the query is "
+    "'what is equality in article 14 of the constitution', you should return "
+    "['article 14', 'equality'] and NOT ['constitution'].\n"
     "Return your response as a JSON list of strings."
     "\n\nQuery: {query}"
 )
@@ -113,21 +119,41 @@ class RAGTool:
             generation_config=generation_config
         )
         
+        # --- NEW: Load BM25 Index ---
+        try:
+            print(f"Loading BM25 index from {BM25_INDEX_FILE}...")
+            with open(BM25_INDEX_FILE, 'rb') as f:
+                self.bm25_index = pickle.load(f)
+            print(f"Loading chunk database from {CHUNK_DB_FILE}...")
+            with open(CHUNK_DB_FILE, 'r', encoding='utf-8') as f:
+                save_data = json.load(f)
+                self.chunk_db = save_data['chunk_db']
+                self.doc_ids = save_data['doc_ids']
+            print("BM25 assets loaded successfully.")
+        except Exception as e:
+            print(f"--- FATAL ERROR: Could not load BM25 assets ---")
+            print(f"--- {e} ---")
+            print(f"--- Did you run 'pip install rank-bm25' and 'python build_bm25_index.py' first? ---")
+            self.bm25_index = None
+            self.chunk_db = None
+            self.doc_ids = []
+        # --- !! ---------------- !! ---
+
         print("RAGTool initialized successfully.")
 
-    def _get_labels_from_query(self, query: str) -> List[str]:
+    def _get_entities_from_query(self, query: str) -> List[str]:
         """
-        Takes a raw user query and returns a list of lowercase filter labels.
-        This is the new internal step.
+        Takes a raw user query and returns a list of lowercase filter entities.
         """
         try:
             prompt = QUERY_ANALYZER_SYSTEM_PROMPT.format(query=query)
             response = self.gemini_analyzer.generate_content(contents=prompt)
             
-            labels_list = json.loads(response.text)
-            lowercase_labels = [label.lower() for label in labels_list]
-            print(f"[RAGTool] Generated labels: {lowercase_labels}")
-            return lowercase_labels
+            entities_list = json.loads(response.text)
+            # Normalize to lowercase to match the index
+            lowercase_entities = [str(entity).lower() for entity in entities_list]
+            print(f"[RAGTool] Generated entities: {lowercase_entities}")
+            return lowercase_entities
             
         except Exception as e:
             print(f"Error in RAGTool Query Analyzer: {e}")
@@ -146,32 +172,83 @@ class RAGTool:
             print(f"Error getting query embedding: {e}")
             return None
 
-    def _hybrid_search(self, query, query_embedding, filter_labels=None, top_k=50):
+    def _reciprocal_rank_fusion(self, results_lists, k=60):
         """
-        Performs vector search with metadata filtering.
+        Performs RRF fusion on multiple result lists.
+        k controls the influence of lower-ranked items.
         """
-        if not self.index:
-            print(f"Search failed: Index '{self.index_name}' is not available.")
-            return [] 
+        fused_scores = {}
+        
+        print(f"Fusing {len(results_lists)} result lists...")
+        for results in results_lists:
+            for rank, doc_id in enumerate(results):
+                if doc_id not in fused_scores:
+                    fused_scores[doc_id] = 0
+                # RRF formula
+                fused_scores[doc_id] += 1.0 / (k + rank + 1)
+        
+        # Sort by fused score
+        reranked_results = sorted(fused_scores.items(), key=lambda x: x[1], reverse=True)
+        return reranked_results
 
+    def _hybrid_search(self, query, query_embedding, filter_entities=None, top_k=50):
+        """
+        Performs TRUE hybrid search (Dense + Keyword + KG Entity Filter)
+        """
+        if not self.index or not self.bm25_index:
+            print(f"Search failed: Index or BM25 not available.")
+            return [], [] 
+
+        # --- 1. Dense Search (Pinecone) ---
         metadata_filter = {}
-        if filter_labels and isinstance(filter_labels, list):
-            print(f"[RAGTool] Applying metadata filters: {filter_labels}")
-            metadata_filter["labels"] = {"$in": filter_labels}
+        if filter_entities and isinstance(filter_entities, list):
+            print(f"[RAGTool] Applying KG entity filters: {filter_entities}")
+            # Use the 'entities' field we created during ingestion
+            metadata_filter["entities"] = {"$in": filter_entities}
         else:
-            print("[RAGTool] No filters applied, performing broad search.")
-            
+            print("[RAGTool] No KG entities extracted, performing broad search.")
+        
         vector_results = self.index.query(
             vector=query_embedding,
             top_k=top_k,
-            include_metadata=True,
+            include_metadata=False, # We only need IDs
             filter=metadata_filter if metadata_filter else None
         )
         pinecone_matches = vector_results.get("matches", [])
-        
-        return pinecone_matches 
+        pinecone_ids = [match['id'] for match in pinecone_matches]
+        print(f"Found {len(pinecone_ids)} dense results.")
 
-    def _rerank_results(self, query, candidates):
+        # --- 2. Keyword Search (BM25) ---
+        token_pattern = re.compile(r'(?u)\b\w\w+\b')
+        tokenized_query = token_pattern.findall(query.lower())
+        bm25_scores = self.bm25_index.get_scores(tokenized_query)
+        
+        bm25_top_n_indices = np.argsort(bm25_scores)[::-1][:top_k]
+        bm25_ids = [self.doc_ids[i] for i in bm25_top_n_indices if bm25_scores[i] > 0]
+        print(f"Found {len(bm25_ids)} keyword results.")
+
+        # --- 3. Fuse Results (RRF) ---
+        fused_results = self._reciprocal_rank_fusion([pinecone_ids, bm25_ids])
+        
+        fused_doc_ids = [doc_id for doc_id, score in fused_results][:top_k]
+        
+        # --- 4. Fetch full data for reranking ---
+        if not fused_doc_ids:
+            return [], []
+            
+        fetch_response = self.index.fetch(ids=fused_doc_ids)
+        
+        if not fetch_response.vectors:
+            return [], [] 
+        
+        candidates_from_pinecone = list(fetch_response.vectors.values())
+
+        print(f"Fetched {len(candidates_from_pinecone)} fused candidates for reranking.")
+        
+        return candidates_from_pinecone, fused_results
+
+
+    def _rerank_results(self, query, candidates, fused_results):
         """
         Reranks results using the LOCAL bge-reranker model.
         """
@@ -180,16 +257,33 @@ class RAGTool:
             
         print(f"Reranking {len(candidates)} candidates locally...")
         
-        documents_to_rerank = [match["metadata"]["text"] for match in candidates]
-        pairs = [(query, doc) for doc in documents_to_rerank]
+        rrf_score_map = dict(fused_results)
+        
+        candidates_to_rerank = []
+        for vector_obj in candidates:
+            doc_id = vector_obj.id
+            # Pinecone v3+ stores metadata in .metadata
+            metadata = vector_obj.metadata if hasattr(vector_obj, 'metadata') else {}
+            
+            if 'text' not in metadata:
+                metadata['text'] = self.chunk_db.get(doc_id, "")
+            
+            candidates_to_rerank.append({
+                "id": doc_id,
+                "score": rrf_score_map.get(doc_id, 0.0), # Add the RRF score
+                "metadata": metadata
+            })
+        
+        documents_to_rerank_text = [match["metadata"]["text"] for match in candidates_to_rerank]
+        pairs = [(query, doc) for doc in documents_to_rerank_text]
         
         try:
             scores = self.reranker.predict(pairs)
             
             final_candidates = []
             for i, score in enumerate(scores):
-                candidates[i]["rerank_score"] = score
-                final_candidates.append(candidates[i])
+                candidates_to_rerank[i]["rerank_score"] = float(score) # Ensure score is float
+                final_candidates.append(candidates_to_rerank[i])
                 
             final_candidates.sort(key=lambda x: x["rerank_score"], reverse=True)
             print("Reranking complete.")
@@ -197,18 +291,23 @@ class RAGTool:
             
         except Exception as e:
             print(f"Error during local reranking: {e}. Returning non-reranked results.")
-            return sorted(candidates, key=lambda x: x.get('score', 0), reverse=True)
+            return sorted(candidates_to_rerank, key=lambda x: x.get('score', 0), reverse=True)
 
-    def search(self, query: str, top_k: int = 5) -> List[Dict[str, Any]]:
+    def search(self, query: str, top_k: int = 5, use_filter: bool = True) -> List[Dict[str, Any]]:
         """
         The main public method for Person 3.
-        It now automatically generates filter labels.
+        It now performs a true hybrid search.
+        'use_filter' flag controls the KG entity filter for evaluation.
         """
         print(f"\nRAGTool ({self.model_key}): Received search query: '{query}'")
         
-        # --- NEW STEP 1: Generate Labels from Query ---
-        filter_labels = self._get_labels_from_query(query)
-        # --- !! ---------------- !! ---
+        filter_entities = None
+        if use_filter:
+            # --- NEW STEP 1: Get Entities from Query ---
+            filter_entities = self._get_entities_from_query(query)
+            # --- !! ---------------- !! ---
+        else:
+            print("[RAGTool] Skipping entity filter for this query.")
 
         # --- STEP 2: Get Query Embedding ---
         query_embedding = self._get_query_embedding(query)
@@ -216,28 +315,45 @@ class RAGTool:
             return [] 
 
         # --- STEP 3: Hybrid Search ---
-        candidates = self._hybrid_search(
+        candidates, fused_results = self._hybrid_search(
             query, 
             query_embedding, 
-            filter_labels=filter_labels, # Pass the generated labels
+            filter_entities=filter_entities, # Pass the generated entities
             top_k=top_k * 10
         )
         
-        if not candidates:
-            return [] 
+        if not candidates and filter_entities: # Only fallback if we used a filter
+            print("[RAGTool] No results found with entity filter. Trying broad search...")
+            # Fallback to a broad search WITH NO FILTERS
+            candidates, fused_results = self._hybrid_search(
+                query,
+                query_embedding,
+                filter_entities=None, # No filters
+                top_k=top_k * 10
+            )
+            if not candidates:
+                print("[RAGTool] No results found even with broad search.")
+                return []
             
         # --- STEP 4: Rerank ---
-        final_candidates = self._rerank_results(query, candidates)
+        final_candidates = self._rerank_results(query, candidates, fused_results)
             
         # --- STEP 5: Format and Return ---
         contexts = []
-        for match in final_candidates[:top_k]:
+        for match_dict in final_candidates[:top_k]:
+            metadata = match_dict.get("metadata", {})
+            if not metadata.get("text"):
+                metadata["text"] = self.chunk_db.get(match_dict.get("id"), "")
+            if not metadata.get("source"):
+                 metadata["source"] = "Source not found in vector metadata"
+
             contexts.append({
-                "text": match["metadata"]["text"],
-                "source": match["metadata"]["source"],
-                "labels": match["metadata"].get("labels", []),
-                "summary": match["metadata"].get("summary", ""),
-                "score": match.get("rerank_score", match.get("score"))
+                "text": metadata["text"],
+                "source": metadata["source"],
+                "labels": metadata.get("labels", []),
+                "entities": metadata.get("entities", []), # <-- Add entities to final output
+                "summary": metadata.get("summary", ""),
+                "score": match_dict.get("rerank_score", match_dict.get("score"))
             })
             
         return contexts
@@ -249,17 +365,32 @@ if __name__ == "__main__":
         rag_tool_legal = RAGTool(model_key="legal-bert")
         
         query1 = "What is Article 14 of the Indian Constitution?"
-        results = rag_tool_legal.search(query1, top_k=3)
         
-        print(f"\n--- Results for: '{query1}' (using 'legal-bert') ---")
+        print("\n--- TEST 1: WITH KG FILTER ---")
+        results = rag_tool_legal.search(query1, top_k=3, use_filter=True)
+        
+        print(f"\n--- Results for: '{query1}' (using 'legal-bert' WITH filter) ---")
         if results:
             for i, res in enumerate(results):
                 print(f"\nResult {i+1} (Score: {res['score']:.4f})")
                 print(f"Source: {res['source']}")
-                print(f"Labels: {res['labels']}")
+                print(f"Entities: {res['entities']}")
                 print(f"Text: {res['text'][:250]}...")
         else:
-            print("No results found. (Have you run the ingestion pipeline for 'index-legal-bert'?)")
+            print("No results found.")
+            
+        print("\n--- TEST 2: WITHOUT KG FILTER ---")
+        results_no_filter = rag_tool_legal.search(query1, top_k=3, use_filter=False)
+        
+        print(f"\n--- Results for: '{query1}' (using 'legal-bert' WITHOUT filter) ---")
+        if results_no_filter:
+            for i, res in enumerate(results_no_filter):
+                print(f"\nResult {i+1} (Score: {res['score']:.4f})")
+                print(f"Source: {res['source']}")
+                print(f"Entities: {res['entities']}")
+                print(f"Text: {res['text'][:250]}...")
+        else:
+            print("No results found.")
             
     except ValueError as e:
         print(f"Error initializing RAGTool: {e}")
